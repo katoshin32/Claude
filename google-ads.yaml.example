@@ -1,0 +1,14 @@
+# Google Ads API 設定テンプレート
+# このファイルを google-ads.yaml にコピーして値を入力してください。
+#
+# 取得方法:
+#   developer_token: Google Ads API Center (https://ads.google.com/aw/apicenter)
+#   client_id / client_secret: Google Cloud Console (https://console.cloud.google.com/apis/credentials)
+#   refresh_token: OAuth2 フローで取得
+#   login_customer_id: MCC アカウントの場合のみ必要
+
+developer_token: "INSERT_DEVELOPER_TOKEN"
+client_id: "INSERT_CLIENT_ID"
+client_secret: "INSERT_CLIENT_SECRET"
+refresh_token: "INSERT_REFRESH_TOKEN"
+login_customer_id: "INSERT_LOGIN_CUSTOMER_ID"

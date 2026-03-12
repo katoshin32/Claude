@@ -1,0 +1,5 @@
+google-ads.yaml
+__pycache__/
+*.pyc
+.env
+output/
