@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>File Share</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="FileShare">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="apple-touch-icon" href="/icons/icon-192.svg">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -557,6 +563,21 @@
       files = files.filter(f => f.id !== data.id);
       renderFiles();
     });
+
+    // Register Service Worker for PWA + Share Target
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').then(reg => {
+        console.log('SW registered:', reg.scope);
+      }).catch(err => {
+        console.error('SW registration failed:', err);
+      });
+    }
+
+    // Show toast if redirected from share target
+    if (new URLSearchParams(window.location.search).has('shared')) {
+      showToast('File received via share!');
+      history.replaceState(null, '', '/');
+    }
 
     // Init
     loadInfo();

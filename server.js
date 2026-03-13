@@ -128,6 +128,20 @@ app.delete('/api/files/:fileId', (req, res) => {
   res.json({ success: true });
 });
 
+// Share Target: fallback for when Service Worker doesn't intercept
+app.post('/share-target', upload.array('files', 20), (req, res) => {
+  if (req.files && req.files.length > 0) {
+    const fileInfos = req.files.map(f => ({
+      id: f.filename,
+      originalName: f.originalname,
+      size: f.size,
+      uploadedAt: new Date().toISOString()
+    }));
+    io.emit('files:added', fileInfos);
+  }
+  res.redirect('/?shared=1');
+});
+
 // Socket.io connection handling
 io.on('connection', (socket) => {
   console.log(`Device connected: ${socket.id}`);
