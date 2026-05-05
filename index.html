@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="8週プログラム">
+  <title>8週間 内臓脂肪プログラム</title>
+  <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230b1220'/><text x='50%25' y='58%25' font-size='100' text-anchor='middle' fill='%234c8bf5' font-family='-apple-system'>8w</text></svg>">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg: #0b1220;
+      --panel: #131b2e;
+      --panel2: #1a2440;
+      --text: #e6edf6;
+      --muted: #8a94a6;
+      --accent: #4c8bf5;
+      --accent2: #34d399;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --border: #2a3656;
+    }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+    body {
+      font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic UI", system-ui, sans-serif;
+      min-height: 100dvh;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+      -webkit-text-size-adjust: 100%;
+    }
+    header { padding: 12px 16px 4px; }
+    header h1 { font-size: 17px; margin: 0; font-weight: 600; }
+    header .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    main { padding: 4px 16px 16px; }
+    nav.tabs {
+      position: fixed; left: 0; right: 0; bottom: 0;
+      background: rgba(19,27,46,0.92);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-top: 1px solid var(--border);
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      z-index: 10;
+    }
+    nav.tabs button {
+      background: transparent; border: 0; color: var(--muted);
+      padding: 10px 4px 10px; font-size: 11px;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      font-family: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+    nav.tabs button.active { color: var(--accent); }
+    nav.tabs .ico { font-size: 20px; line-height: 1; }
+    section.tab { display: none; }
+    section.tab.active { display: block; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .card h2 { font-size: 12px; margin: 0 0 10px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+    .row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 5px 0; }
+    .row .label { color: var(--muted); font-size: 13px; }
+    .row .value { font-weight: 600; font-variant-numeric: tabular-nums; }
+    .big { font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .unit { font-size: 13px; color: var(--muted); margin-left: 3px; font-weight: 400; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    button.primary, button.ghost, button.danger {
+      width: 100%; padding: 12px 14px; border-radius: 12px;
+      font-size: 15px; font-weight: 600; font-family: inherit;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+    }
+    button.primary { border: 1px solid var(--accent); background: var(--accent); color: white; }
+    button.ghost { border: 1px solid var(--border); background: transparent; color: var(--accent); }
+    button.danger { border: 1px solid var(--danger); background: transparent; color: var(--danger); font-size: 14px; font-weight: 500; }
+    label.field { display: block; margin: 10px 0; }
+    label.field .lbl { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+    label.field input, label.field select {
+      width: 100%; padding: 12px 12px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--panel2); color: var(--text);
+      font-size: 16px; font-family: inherit;
+      -webkit-appearance: none; appearance: none;
+    }
+    label.field select {
+      background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+      background-position: calc(100% - 16px) center, calc(100% - 11px) center;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+      padding-right: 32px;
+    }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 11px; background: var(--panel2); color: var(--muted); border: 1px solid var(--border); }
+    .pill.ok { color: var(--accent2); border-color: var(--accent2); }
+    .pill.warn { color: var(--warn); border-color: var(--warn); }
+    .pill.bad { color: var(--danger); border-color: var(--danger); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table th, table td { padding: 8px 6px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
+    table th { color: var(--muted); font-weight: 500; font-size: 12px; }
+    table tr:last-child td { border-bottom: 0; }
+    .progress-bar { background: var(--panel2); border-radius: 8px; overflow: hidden; height: 8px; margin-top: 4px; }
+    .progress-bar > div { background: linear-gradient(90deg, var(--accent), var(--accent2)); height: 100%; border-radius: 8px; transition: width 300ms; }
+    svg.chart { width: 100%; height: 200px; display: block; }
+    .small { font-size: 12px; color: var(--muted); }
+    .empty { color: var(--muted); font-size: 13px; text-align: center; padding: 16px 0; }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 12px 0; }
+    .row .value.big-row { font-size: 22px; font-weight: 700; }
+    .legend { display: flex; gap: 12px; justify-content: center; font-size: 11px; color: var(--muted); margin-top: 6px; }
+    .legend i { display: inline-block; width: 12px; height: 2px; vertical-align: middle; margin-right: 4px; }
+    .row-del { background: transparent; border: 0; color: var(--muted); font-size: 12px; padding: 4px 8px; font-family: inherit; }
+    p.note { font-size: 13px; color: var(--muted); margin: 4px 0 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">8週間 内臓脂肪プログラム</h1>
+    <div class="sub" id="subtitle">プロフィールを設定して開始</div>
+  </header>
+  <main id="main"></main>
+  <nav class="tabs" id="tabs" hidden>
+    <button data-tab="home"><span class="ico">🏠</span>ホーム</button>
+    <button data-tab="plan"><span class="ico">📅</span>計画</button>
+    <button data-tab="log"><span class="ico">📝</span>記録</button>
+    <button data-tab="progress"><span class="ico">📈</span>進捗</button>
+    <button data-tab="settings"><span class="ico">⚙️</span>設定</button>
+  </nav>
+  <script>
+    const KEY = 'visceral8w-v1';
+    const todayISO = () => {
+      const d = new Date();
+      return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    };
+
+    const ACTIVITY = {
+      sedentary: { mult: 1.2, label: '座り仕事中心' },
+      light:     { mult: 1.375, label: '軽い運動 (週1-3回)' },
+      moderate:  { mult: 1.55, label: '中程度 (週3-5回)' },
+      active:    { mult: 1.725, label: '活発 (週6-7回)' },
+      veryActive:{ mult: 1.9, label: '非常に活発' },
+    };
+
+    let state = load() || { profile: null, settings: null, weights: {}, waists: {} };
+    let currentTab = 'home';
+
+    function load() {
+      try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; }
+    }
+    function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+
+    function bmr(sex, age, heightCm, weightKg) {
+      return sex === 'female'
+        ? 10 * weightKg + 6.25 * heightCm - 5 * age - 161
+        : 10 * weightKg + 6.25 * heightCm - 5 * age + 5;
+    }
+    function tdeeOf(profile) {
+      return bmr(profile.sex, profile.age, profile.heightCm, profile.startWeight) * ACTIVITY[profile.activity].mult;
+    }
+    function targets() {
+      if (!state.profile || !state.settings) return null;
+      const p = state.profile, s = state.settings;
+      const t = tdeeOf(p);
+      const cal = Math.max(1200, Math.round(t * s.caloriePct / 10) * 10);
+      const protein = Math.round(p.startWeight * s.proteinPerKg);
+      const goal = +(p.startWeight * (1 - s.targetLossPct / 100)).toFixed(1);
+      return { tdee: Math.round(t), cal, protein, fiber: 25, goal };
+    }
+    function currentWeek() {
+      if (!state.profile) return 1;
+      const days = Math.floor((Date.now() - new Date(state.profile.startDate + 'T00:00').getTime()) / 86400000);
+      return Math.max(1, Math.min(8, Math.floor(days / 7) + 1));
+    }
+    function phaseFor(week) {
+      if (week <= 2) return { idx: 1, name: '習慣確立', cardio: 150, focus: 'カロリー設定と運動習慣に体を慣らす' };
+      if (week <= 4) return { idx: 2, name: '強度引き上げ', cardio: 165, focus: '有酸素のボリュームと筋トレ重量を段階的に上げる' };
+      if (week <= 6) return { idx: 3, name: '停滞対策', cardio: 165, focus: 'リフィードを意識的に取り入れる' };
+      return         { idx: 4, name: '最終追い込み', cardio: 180, focus: '有酸素を週180分まで引き上げて目標達成へ' };
+    }
+    function recentWeights() {
+      return Object.entries(state.weights)
+        .map(([d, w]) => ({ d, w: +w }))
+        .sort((a, b) => a.d.localeCompare(b.d));
+    }
+    function rollingAvg7(series) {
+      return series.map((p, i) => {
+        const start = Math.max(0, i - 6);
+        const slice = series.slice(start, i + 1);
+        return { d: p.d, v: slice.reduce((s, x) => s + x.w, 0) / slice.length };
+      });
+    }
+    function adjustment() {
+      const series = recentWeights();
+      if (series.length < 14) {
+        return { status: 'collecting', label: '蓄積中', msg: 'データ蓄積中（14日以上で2週間トレンドを判定）' };
+      }
+      const ma = rollingAvg7(series);
+      const recent = ma[ma.length - 1].v;
+      const old = ma[Math.max(0, ma.length - 15)].v;
+      const lossKg = old - recent;
+      const lossPct = (old - recent) / old * 100;
+      let status, label, msg;
+      if (lossPct < -0.2) { status = 'gain'; label = '増加'; msg = '体重が増加傾向。記録の精度を再確認し、カロリー赤字を見直してください。'; }
+      else if (lossPct < 0.5) { status = 'stall'; label = '停滞'; msg = '0.5%未満。カロリーを100〜150kcal下げる、または有酸素を1日15分追加。'; }
+      else if (lossPct <= 1.6) { status = 'good'; label = '良好'; msg = 'ペース良好。現状を継続してください。'; }
+      else if (lossPct <= 2.5) { status = 'warnfast'; label = 'やや速い'; msg = 'やや速い。筋肉維持のため、必要なら少しカロリーを戻す。'; }
+      else { status = 'fast'; label = '速すぎ'; msg = '減量ペースが速すぎる可能性。摂取カロリーを少し戻し、筋肉維持を優先。'; }
+      return { status, label, msg, lossKg, lossPct };
+    }
+    function pillClassFor(status) {
+      if (status === 'good') return 'ok';
+      if (status === 'stall' || status === 'gain' || status === 'fast') return 'bad';
+      return 'warn';
+    }
+
+    function renderSetup() {
+      document.getElementById('main').innerHTML = `
+        <div class="card">
+          <h2>はじめに</h2>
+          <p class="note">8週間の内臓脂肪減少プログラムを開始します。プロフィールを入力してください。</p>
+          <label class="field"><span class="lbl">性別</span>
+            <select id="setupSex">
+              <option value="male">男性</option>
+              <option value="female">女性</option>
+            </select>
+          </label>
+          <div class="grid2">
+            <label class="field"><span class="lbl">年齢</span><input type="number" id="setupAge" inputmode="numeric" placeholder="例 42"></label>
+            <label class="field"><span class="lbl">身長 (cm)</span><input type="number" id="setupHeight" inputmode="decimal" step="0.1" placeholder="例 172"></label>
+          </div>
+          <div class="grid2">
+            <label class="field"><span class="lbl">現在の体重 (kg)</span><input type="number" id="setupWeight" inputmode="decimal" step="0.1" placeholder="例 78.5"></label>
+            <label class="field"><span class="lbl">開始日</span><input type="date" id="setupDate" value="${todayISO()}"></label>
+          </div>
+          <label class="field"><span class="lbl">活動レベル</span>
+            <select id="setupActivity">
+              ${Object.entries(ACTIVITY).map(([k, v]) => `<option value="${k}" ${k === 'light' ? 'selected' : ''}>${v.label} ×${v.mult}</option>`).join('')}
+            </select>
+          </label>
+          <label class="field"><span class="lbl">目標減量 (% / 8週)</span>
+            <select id="setupTarget">
+              ${[4, 4.5, 5, 5.5, 6].map(v => `<option value="${v}" ${v === 5 ? 'selected' : ''}>${v}%</option>`).join('')}
+            </select>
+          </label>
+          <button class="primary" id="setupGo">プログラムを開始</button>
+        </div>
+        <div class="card">
+          <h2>このアプリについて</h2>
+          <p class="note">入力データは端末内（localStorage）にのみ保存されます。サーバには送信しません。Safariで「ホーム画面に追加」するとアプリのように使えます。</p>
+        </div>
+      `;
+      document.getElementById('setupGo').addEventListener('click', () => {
+        const sex = document.getElementById('setupSex').value;
+        const age = parseInt(document.getElementById('setupAge').value, 10);
+        const heightCm = parseFloat(document.getElementById('setupHeight').value);
+        const startWeight = parseFloat(document.getElementById('setupWeight').value);
+        const startDate = document.getElementById('setupDate').value;
+        const activity = document.getElementById('setupActivity').value;
+        const targetLossPct = parseFloat(document.getElementById('setupTarget').value);
+        if (!isFinite(age) || !isFinite(heightCm) || !isFinite(startWeight) || !startDate) {
+          alert('全ての項目を入力してください');
+          return;
+        }
+        state.profile = { sex, age, heightCm, startWeight, startDate, activity };
+        state.settings = { targetLossPct, caloriePct: 0.825, proteinPerKg: 1.8 };
+        state.weights[startDate] = startWeight;
+        save();
+        bootstrap();
+      });
+    }
+
+    function renderHome() {
+      const main = document.getElementById('home');
+      const t = targets();
+      const week = currentWeek();
+      const phase = phaseFor(week);
+      const todayKg = state.weights[todayISO()];
+      const series = recentWeights();
+      const last = series[series.length - 1];
+      const adj = adjustment();
+      const progressPct = series.length
+        ? Math.min(100, Math.max(0, (state.profile.startWeight - last.w) / (state.profile.startWeight - t.goal) * 100))
+        : 0;
+      main.innerHTML = `
+        <div class="card">
+          <h2>今週</h2>
+          <div class="row"><span class="label">プログラム週</span><span class="value big-row">${week} <span class="unit">/ 8 週</span></span></div>
+          <div class="row"><span class="label">フェーズ</span><span class="value">${phase.idx}. ${phase.name}</span></div>
+          <div class="small">${phase.focus}</div>
+        </div>
+
+        <div class="card">
+          <h2>1日の目標</h2>
+          <div class="row"><span class="label">摂取カロリー</span><span class="value big-row">${t.cal}<span class="unit">kcal</span></span></div>
+          <div class="row"><span class="label">タンパク質</span><span class="value">${t.protein}<span class="unit">g</span></span></div>
+          <div class="row"><span class="label">食物繊維</span><span class="value">${t.fiber}<span class="unit">g 以上</span></span></div>
+          <div class="row"><span class="label">維持カロリー (TDEE)</span><span class="value">${t.tdee}<span class="unit">kcal</span></span></div>
+          <hr>
+          <div class="row"><span class="label">今週の有酸素</span><span class="value">${phase.cardio}<span class="unit">分</span></span></div>
+          <div class="row"><span class="label">筋トレ</span><span class="value">週 2-3 回</span></div>
+        </div>
+
+        <div class="card">
+          <h2>今日の記録</h2>
+          <label class="field">
+            <span class="lbl">朝の体重 (kg)</span>
+            <input type="number" step="0.1" id="todayWeight" value="${todayKg ?? ''}" inputmode="decimal" placeholder="例 72.4">
+          </label>
+          <button class="primary" id="saveTodayWeight">${todayKg ? '今日の体重を更新' : '今日の体重を保存'}</button>
+        </div>
+
+        <div class="card">
+          <h2>進捗</h2>
+          <div class="row"><span class="label">開始体重</span><span class="value">${state.profile.startWeight.toFixed(1)}<span class="unit">kg</span></span></div>
+          <div class="row"><span class="label">最新体重</span><span class="value">${last ? last.w.toFixed(1) : '-'}<span class="unit">kg</span></span></div>
+          <div class="row"><span class="label">目標体重</span><span class="value">${t.goal.toFixed(1)}<span class="unit">kg</span></span></div>
+          ${last ? `<div class="row"><span class="label">変化</span><span class="value">${(last.w - state.profile.startWeight >= 0 ? '+' : '') + (last.w - state.profile.startWeight).toFixed(1)}<span class="unit">kg</span></span></div>` : ''}
+          <div class="progress-bar"><div style="width:${progressPct}%"></div></div>
+          <div class="small" style="margin-top:8px"><span class="pill ${pillClassFor(adj.status)}">${adj.label}</span> ${adj.msg}</div>
+        </div>
+      `;
+      document.getElementById('saveTodayWeight').addEventListener('click', () => {
+        const v = parseFloat(document.getElementById('todayWeight').value);
+        if (isFinite(v) && v > 0) {
+          state.weights[todayISO()] = v;
+          save();
+          renderAll();
+        }
+      });
+    }
+
+    function renderPlan() {
+      const main = document.getElementById('plan');
+      const t = targets();
+      const week = currentWeek();
+      const cur = phaseFor(week).idx;
+      const phases = [
+        { weeks: '週 1-2', name: '習慣確立', cardio: 150, focus: '体を慣らす' },
+        { weeks: '週 3-4', name: '強度引き上げ', cardio: 165, focus: '段階的に強度を上げる' },
+        { weeks: '週 5-6', name: '停滞対策', cardio: 165, focus: 'リフィードを活用' },
+        { weeks: '週 7-8', name: '最終追い込み', cardio: 180, focus: '目標到達' },
+      ];
+      const schedule = [
+        ['月', '筋トレ 40分 + 有酸素 30分'],
+        ['火', '休息 / 軽い散歩'],
+        ['水', '有酸素 30-45分'],
+        ['木', '休息（回復日）'],
+        ['金', '筋トレ 40分 + 有酸素 30分'],
+        ['土', '休息（回復日）'],
+        ['日', '有酸素 30-45分（リフィード可）'],
+      ];
+      main.innerHTML = `
+        <div class="card">
+          <h2>8週間フェーズ</h2>
+          <table>
+            <thead><tr><th>週</th><th>フェーズ</th><th>有酸素/週</th></tr></thead>
+            <tbody>
+              ${phases.map((p, i) => `
+                <tr ${i + 1 === cur ? 'style="background:var(--panel2)"' : ''}>
+                  <td>${p.weeks}</td>
+                  <td><strong>${p.name}</strong><br><span class="small">${p.focus}</span></td>
+                  <td>${p.cardio}分</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h2>週のスケジュール例</h2>
+          <table>
+            ${schedule.map(([d, plan]) => `<tr><td style="width:30px"><strong>${d}</strong></td><td>${plan}</td></tr>`).join('')}
+          </table>
+          <div class="small" style="margin-top:10px">
+            ・同日に行う場合は必ず筋トレを先に。<br>
+            ・HIIT は週 1-2 回まで。疲労や睡眠の質低下があればウォーキングへ切替。
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>食事の3原則</h2>
+          <div class="row"><span class="label">1. カロリー赤字</span><span class="value">${t.cal} kcal</span></div>
+          <div class="row"><span class="label">2. タンパク質</span><span class="value">${t.protein} g/日</span></div>
+          <div class="row"><span class="label">3. リフィード</span><span class="value">週1回 維持カロリー</span></div>
+          <div class="small" style="margin-top:10px">
+            ・タンパク質は 1食 30-40g を 3-4食に分散。<br>
+            ・食物繊維 25g 以上。<br>
+            ・1200 kcal を下回らない。
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>筋トレ メニュー例 (週2-3回)</h2>
+          <table>
+            <tr><td>下半身</td><td>スクワット / レッグプレス</td></tr>
+            <tr><td>胸</td><td>チェストプレス / ダンベルベンチ</td></tr>
+            <tr><td>背中</td><td>ローイング / ラットプル</td></tr>
+            <tr><td>肩</td><td>ショルダープレス</td></tr>
+            <tr><td>体幹</td><td>プランク / デッドバグ</td></tr>
+          </table>
+          <div class="small" style="margin-top:8px">1回 40-45 分。各種目 8-12回 × 3セットを目安に。</div>
+        </div>
+      `;
+    }
+
+    function renderLog() {
+      const main = document.getElementById('log');
+      const wEntries = Object.entries(state.weights).sort((a, b) => b[0].localeCompare(a[0])).slice(0, 60);
+      const cEntries = Object.entries(state.waists).sort((a, b) => b[0].localeCompare(a[0])).slice(0, 30);
+      main.innerHTML = `
+        <div class="card">
+          <h2>体重を記録（毎朝）</h2>
+          <div class="grid2">
+            <label class="field"><span class="lbl">日付</span><input type="date" id="weightDate" value="${todayISO()}"></label>
+            <label class="field"><span class="lbl">体重 (kg)</span><input type="number" step="0.1" id="weightVal" inputmode="decimal" placeholder="72.4"></label>
+          </div>
+          <button class="primary" id="saveWeight">体重を保存</button>
+        </div>
+
+        <div class="card">
+          <h2>ウエストを記録（週1回）</h2>
+          <div class="grid2">
+            <label class="field"><span class="lbl">日付</span><input type="date" id="waistDate" value="${todayISO()}"></label>
+            <label class="field"><span class="lbl">ウエスト (cm)</span><input type="number" step="0.1" id="waistVal" inputmode="decimal" placeholder="85.0"></label>
+          </div>
+          <button class="primary" id="saveWaist">ウエストを保存</button>
+        </div>
+
+        <div class="card">
+          <h2>体重の履歴</h2>
+          ${wEntries.length === 0 ? '<div class="empty">記録がまだありません</div>' :
+            `<table><tbody>${wEntries.map(([d, w]) => `<tr><td>${d}</td><td style="text-align:right">${(+w).toFixed(1)} kg</td><td style="width:60px;text-align:right"><button class="row-del" data-del-w="${d}">削除</button></td></tr>`).join('')}</tbody></table>`}
+        </div>
+
+        <div class="card">
+          <h2>ウエストの履歴</h2>
+          ${cEntries.length === 0 ? '<div class="empty">記録がまだありません</div>' :
+            `<table><tbody>${cEntries.map(([d, w]) => `<tr><td>${d}</td><td style="text-align:right">${(+w).toFixed(1)} cm</td><td style="width:60px;text-align:right"><button class="row-del" data-del-c="${d}">削除</button></td></tr>`).join('')}</tbody></table>`}
+        </div>
+      `;
+      document.getElementById('saveWeight').addEventListener('click', () => {
+        const d = document.getElementById('weightDate').value;
+        const v = parseFloat(document.getElementById('weightVal').value);
+        if (d && isFinite(v) && v > 0) { state.weights[d] = v; save(); renderAll(); }
+      });
+      document.getElementById('saveWaist').addEventListener('click', () => {
+        const d = document.getElementById('waistDate').value;
+        const v = parseFloat(document.getElementById('waistVal').value);
+        if (d && isFinite(v) && v > 0) { state.waists[d] = v; save(); renderAll(); }
+      });
+      main.querySelectorAll('[data-del-w]').forEach(b => b.addEventListener('click', () => {
+        delete state.weights[b.dataset.delW]; save(); renderAll();
+      }));
+      main.querySelectorAll('[data-del-c]').forEach(b => b.addEventListener('click', () => {
+        delete state.waists[b.dataset.delC]; save(); renderAll();
+      }));
+    }
+
+    function renderProgress() {
+      const main = document.getElementById('progress');
+      const t = targets();
+      const adj = adjustment();
+      const series = recentWeights();
+      const ma = series.length ? rollingAvg7(series) : [];
+      const waist = Object.entries(state.waists).map(([d, w]) => ({ d, w: +w })).sort((a, b) => a.d.localeCompare(b.d));
+      const last = series[series.length - 1];
+      const progressPct = last ? Math.min(100, Math.max(0, (state.profile.startWeight - last.w) / (state.profile.startWeight - t.goal) * 100)) : 0;
+
+      main.innerHTML = `
+        <div class="card">
+          <h2>体重 (実測 + 7日移動平均)</h2>
+          ${series.length === 0 ? '<div class="empty">体重を記録すると表示されます</div>' :
+            `<svg class="chart" id="weightChart" viewBox="0 0 600 200" preserveAspectRatio="none"></svg>
+             <div class="legend">
+               <span><i style="background:#8a94a6"></i>実測</span>
+               <span><i style="background:#4c8bf5"></i>7日平均</span>
+               <span><i style="background:#34d399"></i>目標 ${t.goal.toFixed(1)}kg</span>
+             </div>`}
+        </div>
+
+        <div class="card">
+          <h2>2週間トレンド</h2>
+          <div class="row"><span class="label">変化</span><span class="value">${adj.lossKg !== undefined ? (adj.lossKg >= 0 ? '−' : '+') + Math.abs(adj.lossKg).toFixed(2) + ' kg' : '-'}</span></div>
+          <div class="row"><span class="label">パーセント</span><span class="value">${adj.lossPct !== undefined ? (adj.lossPct >= 0 ? '−' : '+') + Math.abs(adj.lossPct).toFixed(2) + ' %' : '-'}</span></div>
+          <div class="small" style="margin-top:8px"><span class="pill ${pillClassFor(adj.status)}">${adj.label}</span> ${adj.msg}</div>
+          <div class="small" style="margin-top:6px">目標は2週で 1.0-1.6%減（週0.5-0.8%）。0.5%未満なら調整。</div>
+        </div>
+
+        <div class="card">
+          <h2>ウエスト</h2>
+          ${waist.length === 0 ? '<div class="empty">ウエストを記録すると表示されます</div>' :
+            `<svg class="chart" id="waistChart" viewBox="0 0 600 200" preserveAspectRatio="none"></svg>`}
+        </div>
+
+        <div class="card">
+          <h2>目標達成度</h2>
+          <div class="row"><span class="label">体重</span><span class="value">${Math.round(progressPct)} %</span></div>
+          <div class="progress-bar"><div style="width:${progressPct}%"></div></div>
+          <div class="small" style="margin-top:8px">目標 ${t.goal.toFixed(1)} kg まで残り ${last ? Math.max(0, last.w - t.goal).toFixed(1) : '-'} kg</div>
+        </div>
+
+        <div class="card">
+          <h2>データ</h2>
+          <button class="ghost" id="exportCsv">CSV をダウンロード</button>
+        </div>
+      `;
+      if (series.length) drawChart('weightChart', series.map(p => ({ d: p.d, v: p.w })), { ma: ma.map(p => ({ d: p.d, v: p.v })), goal: t.goal });
+      if (waist.length) drawChart('waistChart', waist.map(p => ({ d: p.d, v: p.w })), {});
+      const ex = document.getElementById('exportCsv');
+      if (ex) ex.addEventListener('click', exportCsv);
+    }
+
+    function drawChart(id, series, opts) {
+      const svg = document.getElementById(id);
+      if (!svg || series.length === 0) return;
+      const W = 600, H = 200, pad = { l: 38, r: 10, t: 12, b: 22 };
+      const xs = series.map(p => new Date(p.d + 'T00:00').getTime());
+      const minX = Math.min(...xs), maxX = Math.max(...xs);
+      const xRange = Math.max(1, maxX - minX);
+      const allVals = [...series.map(p => p.v), ...(opts.ma ? opts.ma.map(p => p.v) : []), ...(opts.goal != null ? [opts.goal] : [])];
+      const dataMin = Math.min(...allVals), dataMax = Math.max(...allVals);
+      const pad_y = Math.max(0.5, (dataMax - dataMin) * 0.15);
+      const minY = dataMin - pad_y, maxY = dataMax + pad_y;
+      const yRange = Math.max(0.1, maxY - minY);
+      const x = t => pad.l + (t - minX) / xRange * (W - pad.l - pad.r);
+      const y = v => pad.t + (1 - (v - minY) / yRange) * (H - pad.t - pad.b);
+      const pathFor = pts => pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${x(new Date(p.d + 'T00:00').getTime()).toFixed(1)} ${y(p.v).toFixed(1)}`).join(' ');
+      const parts = [];
+      for (let i = 0; i <= 4; i++) {
+        const yy = pad.t + (H - pad.t - pad.b) * i / 4;
+        const yv = maxY - yRange * i / 4;
+        parts.push(`<line x1="${pad.l}" x2="${W - pad.r}" y1="${yy}" y2="${yy}" stroke="#2a3656" stroke-width="0.5"/>`);
+        parts.push(`<text x="4" y="${yy + 3}" fill="#8a94a6" font-size="10">${yv.toFixed(1)}</text>`);
+      }
+      parts.push(`<text x="${pad.l}" y="${H - 6}" fill="#8a94a6" font-size="10">${series[0].d.slice(5)}</text>`);
+      parts.push(`<text x="${W - pad.r}" y="${H - 6}" fill="#8a94a6" font-size="10" text-anchor="end">${series[series.length - 1].d.slice(5)}</text>`);
+      if (opts.goal != null) {
+        parts.push(`<line x1="${pad.l}" x2="${W - pad.r}" y1="${y(opts.goal)}" y2="${y(opts.goal)}" stroke="#34d399" stroke-width="1" stroke-dasharray="4 4"/>`);
+      }
+      parts.push(`<path d="${pathFor(series)}" stroke="#8a94a6" stroke-width="1.2" fill="none"/>`);
+      series.forEach(p => parts.push(`<circle cx="${x(new Date(p.d + 'T00:00').getTime())}" cy="${y(p.v)}" r="2" fill="#8a94a6"/>`));
+      if (opts.ma && opts.ma.length) {
+        parts.push(`<path d="${pathFor(opts.ma)}" stroke="#4c8bf5" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`);
+      }
+      svg.innerHTML = parts.join('');
+    }
+
+    function exportCsv() {
+      const rows = [['type', 'date', 'value']];
+      Object.entries(state.weights).sort((a, b) => a[0].localeCompare(b[0])).forEach(([d, v]) => rows.push(['weight', d, v]));
+      Object.entries(state.waists).sort((a, b) => a[0].localeCompare(b[0])).forEach(([d, v]) => rows.push(['waist', d, v]));
+      const csv = rows.map(r => r.join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'visceral8w-log.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    function renderSettings() {
+      const main = document.getElementById('settings');
+      const p = state.profile, s = state.settings;
+      main.innerHTML = `
+        <div class="card">
+          <h2>プロフィール</h2>
+          <label class="field"><span class="lbl">性別</span>
+            <select id="sex">
+              <option value="male" ${p.sex === 'male' ? 'selected' : ''}>男性</option>
+              <option value="female" ${p.sex === 'female' ? 'selected' : ''}>女性</option>
+            </select>
+          </label>
+          <div class="grid2">
+            <label class="field"><span class="lbl">年齢</span><input type="number" id="age" value="${p.age}" inputmode="numeric"></label>
+            <label class="field"><span class="lbl">身長 (cm)</span><input type="number" id="height" value="${p.heightCm}" inputmode="decimal" step="0.1"></label>
+          </div>
+          <div class="grid2">
+            <label class="field"><span class="lbl">開始体重 (kg)</span><input type="number" id="startWeight" value="${p.startWeight}" inputmode="decimal" step="0.1"></label>
+            <label class="field"><span class="lbl">開始日</span><input type="date" id="startDate" value="${p.startDate}"></label>
+          </div>
+          <label class="field"><span class="lbl">活動レベル</span>
+            <select id="activity">
+              ${Object.entries(ACTIVITY).map(([k, v]) => `<option value="${k}" ${p.activity === k ? 'selected' : ''}>${v.label} ×${v.mult}</option>`).join('')}
+            </select>
+          </label>
+        </div>
+
+        <div class="card">
+          <h2>プログラム設定</h2>
+          <label class="field"><span class="lbl">目標減量 (% / 8週)</span>
+            <select id="targetLossPct">
+              ${[4, 4.5, 5, 5.5, 6].map(v => `<option value="${v}" ${+s.targetLossPct === v ? 'selected' : ''}>${v}%</option>`).join('')}
+            </select>
+          </label>
+          <label class="field"><span class="lbl">摂取カロリー比率 (× TDEE)</span>
+            <select id="caloriePct">
+              ${[0.80, 0.825, 0.85].map(v => `<option value="${v}" ${+s.caloriePct === v ? 'selected' : ''}>${(v * 100).toFixed(1)}%</option>`).join('')}
+            </select>
+          </label>
+          <label class="field"><span class="lbl">タンパク質 (g/kg)</span>
+            <select id="proteinPerKg">
+              ${[1.6, 1.7, 1.8, 1.9, 2.0].map(v => `<option value="${v}" ${+s.proteinPerKg === v ? 'selected' : ''}>${v.toFixed(1)} g/kg</option>`).join('')}
+            </select>
+          </label>
+          <button class="primary" id="saveSettings">設定を保存</button>
+        </div>
+
+        <div class="card">
+          <h2>データ</h2>
+          <button class="ghost" id="exportCsv2" style="margin-bottom:10px">CSV エクスポート</button>
+          <button class="danger" id="resetAll">すべてリセット</button>
+        </div>
+
+        <div class="card">
+          <h2>ヒント</h2>
+          <p class="note">Safari のメニュー → 「ホーム画面に追加」でアプリのように起動できます。データは端末内に保存されます。</p>
+        </div>
+      `;
+      document.getElementById('saveSettings').addEventListener('click', () => {
+        state.profile = {
+          sex: document.getElementById('sex').value,
+          age: parseInt(document.getElementById('age').value, 10),
+          heightCm: parseFloat(document.getElementById('height').value),
+          startWeight: parseFloat(document.getElementById('startWeight').value),
+          startDate: document.getElementById('startDate').value,
+          activity: document.getElementById('activity').value,
+        };
+        state.settings = {
+          targetLossPct: parseFloat(document.getElementById('targetLossPct').value),
+          caloriePct: parseFloat(document.getElementById('caloriePct').value),
+          proteinPerKg: parseFloat(document.getElementById('proteinPerKg').value),
+        };
+        save();
+        renderAll();
+      });
+      document.getElementById('exportCsv2').addEventListener('click', exportCsv);
+      document.getElementById('resetAll').addEventListener('click', () => {
+        if (confirm('すべての記録と設定をリセットします。続けますか？')) {
+          localStorage.removeItem(KEY);
+          state = { profile: null, settings: null, weights: {}, waists: {} };
+          bootstrap();
+        }
+      });
+    }
+
+    function activateTab(name) {
+      currentTab = name;
+      document.querySelectorAll('.tab').forEach(s => s.classList.toggle('active', s.id === name));
+      document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function renderAll() {
+      if (!state.profile) return;
+      renderHome(); renderPlan(); renderLog(); renderProgress(); renderSettings();
+      const week = currentWeek();
+      const phase = phaseFor(week);
+      document.getElementById('subtitle').textContent = `週 ${week}/8 ・ ${phase.name}フェーズ`;
+    }
+
+    function bootstrap() {
+      if (!state.profile) {
+        document.getElementById('tabs').hidden = true;
+        document.getElementById('subtitle').textContent = 'プロフィールを設定して開始';
+        renderSetup();
+      } else {
+        document.getElementById('tabs').hidden = false;
+        document.getElementById('main').innerHTML = `
+          <section class="tab" id="home"></section>
+          <section class="tab" id="plan"></section>
+          <section class="tab" id="log"></section>
+          <section class="tab" id="progress"></section>
+          <section class="tab" id="settings"></section>
+        `;
+        renderAll();
+        activateTab(currentTab);
+      }
+    }
+
+    document.getElementById('tabs').addEventListener('click', e => {
+      const btn = e.target.closest('button[data-tab]');
+      if (btn) activateTab(btn.dataset.tab);
+    });
+
+    bootstrap();
+  </script>
+</body>
+</html>
