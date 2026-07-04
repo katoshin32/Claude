@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トレントの意見照会書が届いた方へ|冨田・島岡法律事務所(名古屋・全国対応)</title>
+<meta name="description" content="トレント(BitTorrent)の意見照会書・示談請求への対応。家族に知られず解決。匿名のままLINEで相談OK、弁護士本人が24時間以内に返信。依頼が不要な方にはそうお伝えします。名古屋・冨田・島岡法律事務所。">
+<!--
+================================================================
+公開前に差し替えが必要なプレースホルダー(検索: TODO)
+ 1. LINE公式アカウントURL   → href="#line" の箇所(3ヶ所)
+ 2. ウェブ相談フォームURL    → href="#form" の箇所(2ヶ所)
+ 3. 弁護士写真              → .photo-placeholder を実写真<img>に差し替え(2ヶ所)
+ 4. トレント関連の相談件数    → 「100件以上」を「トレント・意見照会書関連◯◯件(2026年◯月時点)」に
+                              差し替え推奨(実数の裏付けが取れる場合のみ)
+ 5. 中日新聞記事・ITベンゴープロ監修記事のリンク
+ 6. 「秘匿の仕組み」セクションの各運用項目が実運用と一致しているか要確認
+ 7. 弁護士メッセージ(引用部)の文言は加藤先生ご本人の確認を推奨
+================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "冨田・島岡法律事務所",
+  "description": "トレント(BitTorrent)の意見照会書・発信者情報開示・示談請求への対応を扱う法律事務所",
+  "address": {
+    "@type": "PostalAddress",
+    "postalCode": "460-0008",
+    "addressRegion": "愛知県",
+    "addressLocality": "名古屋市中区",
+    "streetAddress": "栄2-12-12 アーク栄白川パークビル3階305号"
+  },
+  "telephone": "+81-52-204-1885",
+  "areaServed": "日本全国(オンライン対応)",
+  "openingHours": "Mo-Su 10:00-19:00"
+}
+</script>
+<style>
+:root{
+  --bg:#FAF7F1;
+  --bg-alt:#F2EADD;
+  --paper:#FFFFFF;
+  --ink:#33261C;
+  --ink-soft:#6E5B4B;
+  --brand:#8C5A33;
+  --brand-deep:#46331F;
+  --header:#2E211A;
+  --accent:#B0703C;
+  --border:#E6DACA;
+  --line-green:#06C755;
+  --tel-brown:#7C4A2D;
+  --radius:16px;
+  --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.9;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--brand);text-decoration:none}
+h1,h2,h3{font-family:"Shippori Mincho","Noto Serif JP",serif;font-weight:600;line-height:1.5}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+@media(min-width:768px){section{padding:88px 0}}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:var(--header);color:#F5EDE3;
+  box-shadow:0 1px 8px rgba(0,0,0,.25);
+}
+.site-header .inner{
+  max-width:var(--maxw);margin:0 auto;padding:10px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.brand{line-height:1.3}
+.brand .name{font-family:"Shippori Mincho",serif;font-size:1.02rem;font-weight:600;letter-spacing:.04em}
+.brand .en{font-size:.6rem;letter-spacing:.18em;opacity:.65}
+.header-cta{display:flex;align-items:center;gap:10px}
+.header-tel{display:none;text-align:right;line-height:1.35;color:#F5EDE3}
+.header-tel .num{font-size:1.15rem;font-weight:700;letter-spacing:.03em}
+.header-tel .hours{font-size:.66rem;opacity:.75}
+.header-btn{
+  background:var(--accent);color:#fff;font-weight:700;font-size:.82rem;
+  padding:9px 16px;border-radius:999px;white-space:nowrap;
+}
+.header-btn:hover{opacity:.9}
+@media(min-width:768px){
+  .header-tel{display:block}
+  .brand .name{font-size:1.15rem}
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;border-radius:999px;font-weight:700;
+  padding:15px 28px;line-height:1.4;transition:transform .15s,box-shadow .15s;
+  box-shadow:0 4px 14px rgba(60,40,20,.18);
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(60,40,20,.24)}
+.btn .main{font-size:1.02rem}
+.btn .sub{font-size:.7rem;font-weight:500;opacity:.9}
+.btn-line{background:var(--line-green);color:#fff}
+.btn-tel{background:var(--tel-brown);color:#fff}
+.btn-form{background:var(--accent);color:#fff}
+.btn-ghost{background:transparent;color:var(--brand-deep);box-shadow:none;border:1.5px solid var(--brand-deep);font-weight:600}
+
+/* ---------- hero ---------- */
+.hero{
+  background:linear-gradient(160deg,#F7F0E5 0%,#F3E7D5 55%,#EDDEC7 100%);
+  padding:44px 0 56px;
+}
+.hero .grid{display:grid;gap:28px}
+@media(min-width:900px){
+  .hero{padding:72px 0 84px}
+  .hero .grid{grid-template-columns:1.25fr .85fr;gap:48px;align-items:center}
+}
+.kicker{
+  display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;
+  color:var(--brand);background:rgba(176,112,60,.1);
+  border:1px solid rgba(176,112,60,.35);border-radius:999px;padding:4px 14px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(1.62rem,5.6vw,2.5rem);color:var(--brand-deep);margin-bottom:16px}
+.hero .lead{color:var(--ink-soft);font-size:.98rem;margin-bottom:22px}
+.answers{list-style:none;display:grid;gap:10px;margin-bottom:26px}
+.answers li{
+  background:rgba(255,255,255,.75);border:1px solid var(--border);
+  border-radius:12px;padding:12px 16px;display:flex;gap:10px;align-items:flex-start;
+  font-size:.92rem;line-height:1.7;
+}
+.answers .ico{flex:0 0 auto;width:24px;height:24px;border-radius:50%;
+  background:var(--brand);color:#fff;font-size:.8rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;margin-top:4px}
+.answers b{color:var(--brand-deep)}
+.hero-cta{display:grid;gap:12px;max-width:420px}
+.form-link{font-size:.82rem;color:var(--ink-soft);text-align:center}
+.form-link a{text-decoration:underline}
+.lawyer-card{
+  background:var(--paper);border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 8px 30px rgba(70,50,30,.14);max-width:340px;margin:0 auto;
+}
+.photo-placeholder{
+  aspect-ratio:3/3.4;background:linear-gradient(180deg,#E9DCC8,#DCCBB0);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#8A745C;gap:8px;
+}
+.photo-placeholder svg{width:72px;height:72px;opacity:.55}
+.photo-placeholder span{font-size:.72rem;letter-spacing:.06em}
+.lawyer-card .plate{padding:14px 18px;text-align:center}
+.lawyer-card .plate .nm{font-family:"Shippori Mincho",serif;font-weight:600;font-size:1.05rem}
+.lawyer-card .plate .aff{font-size:.72rem;color:var(--ink-soft)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chips span{
+  background:#fff;border:1px solid var(--border);border-radius:999px;
+  font-size:.74rem;font-weight:600;color:var(--brand-deep);padding:6px 13px;
+}
+
+/* ---------- section headings ---------- */
+.sec-head{text-align:center;margin-bottom:40px}
+.sec-head .en{font-size:.68rem;letter-spacing:.22em;color:var(--accent);font-weight:700;text-transform:uppercase}
+.sec-head h2{font-size:clamp(1.4rem,4.4vw,1.95rem);color:var(--brand-deep);margin-top:6px}
+.sec-head p{color:var(--ink-soft);font-size:.92rem;margin-top:12px;max-width:640px;margin-left:auto;margin-right:auto}
+
+/* ---------- stance ---------- */
+.stance{background:var(--paper)}
+.stance-copy{
+  max-width:720px;margin:0 auto 40px;font-size:.98rem;color:var(--ink);
+  background:var(--bg);border-left:4px solid var(--brand);
+  border-radius:0 var(--radius) var(--radius) 0;padding:24px 26px;
+}
+.promise-grid{display:grid;gap:16px}
+@media(min-width:768px){.promise-grid{grid-template-columns:repeat(3,1fr)}}
+.promise{
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);
+  padding:26px 22px;
+}
+.promise .no{font-family:"Shippori Mincho",serif;color:var(--accent);font-size:.8rem;letter-spacing:.15em;font-weight:700}
+.promise h3{font-size:1.08rem;color:var(--brand-deep);margin:6px 0 10px}
+.promise p{font-size:.88rem;color:var(--ink-soft)}
+.exits{margin-top:44px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:28px 24px}
+.exits h3{text-align:center;font-size:1.12rem;color:var(--brand-deep);margin-bottom:20px}
+.exits ol{list-style:none;display:grid;gap:12px;counter-reset:exit}
+@media(min-width:768px){.exits ol{grid-template-columns:repeat(3,1fr)}}
+.exits li{
+  counter-increment:exit;background:#fff;border:1px solid var(--border);
+  border-radius:12px;padding:18px 16px;font-size:.86rem;line-height:1.75;
+}
+.exits li::before{
+  content:counter(exit,katakana-iroha)"";
+  content:"出口 " counter(exit);
+  display:inline-block;font-size:.68rem;font-weight:700;color:#fff;
+  background:var(--brand);border-radius:999px;padding:2px 10px;margin-bottom:8px;
+}
+.exits li b{display:block;color:var(--brand-deep);font-size:.95rem;margin-bottom:4px}
+.exits .note{font-size:.78rem;color:var(--ink-soft);text-align:center;margin-top:16px}
+
+/* ---------- merits ---------- */
+.merits{background:var(--bg-alt)}
+.merit-grid{display:grid;gap:16px}
+@media(min-width:768px){.merit-grid{grid-template-columns:repeat(3,1fr)}}
+.merit{background:var(--paper);border-radius:var(--radius);padding:26px 22px;border:1px solid var(--border)}
+.merit h3{font-size:1.04rem;color:var(--brand-deep);margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--bg-alt)}
+.merit .before{font-size:.82rem;color:var(--ink-soft);background:var(--bg);border-radius:10px;padding:10px 14px;margin-bottom:10px}
+.merit .before b{color:#9C4A32;font-size:.7rem;letter-spacing:.1em;display:block}
+.merit .after{font-size:.86rem;background:rgba(140,90,51,.08);border-radius:10px;padding:10px 14px}
+.merit .after b{color:var(--brand);font-size:.7rem;letter-spacing:.1em;display:block}
+
+/* ---------- privacy ---------- */
+.privacy{background:var(--brand-deep);color:#F3EADD}
+.privacy .sec-head h2{color:#fff}
+.privacy .sec-head p{color:rgba(243,234,221,.75)}
+.privacy-list{display:grid;gap:14px;max-width:840px;margin:0 auto}
+.privacy-item{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start;
+}
+.privacy-item .num{
+  flex:0 0 auto;width:34px;height:34px;border-radius:50%;
+  background:var(--accent);color:#fff;font-weight:700;font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;margin-top:4px;
+}
+.privacy-item h3{font-size:1rem;color:#fff;margin-bottom:4px}
+.privacy-item p{font-size:.86rem;color:rgba(243,234,221,.82)}
+.gender-note{
+  max-width:840px;margin:28px auto 0;background:rgba(176,112,60,.18);
+  border:1px solid rgba(176,112,60,.5);border-radius:14px;padding:20px 24px;
+  font-size:.88rem;color:rgba(248,241,232,.92);
+}
+.gender-note b{color:#fff}
+
+/* ---------- knowledge ---------- */
+.know-grid{display:grid;gap:16px}
+@media(min-width:768px){.know-grid{grid-template-columns:repeat(3,1fr)}}
+.know{background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px}
+.know .tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;color:var(--accent)}
+.know h3{font-size:1.02rem;color:var(--brand-deep);margin:6px 0 10px}
+.know p{font-size:.86rem;color:var(--ink-soft)}
+.senders{
+  margin-top:36px;background:var(--paper);border:1.5px solid var(--brand);
+  border-radius:var(--radius);padding:26px 24px;
+}
+.senders h3{font-size:1.05rem;color:var(--brand-deep);margin-bottom:10px}
+.senders p{font-size:.88rem;color:var(--ink-soft)}
+
+/* ---------- flow ---------- */
+.flow{background:var(--paper)}
+.flow-grid{display:grid;gap:22px}
+@media(min-width:768px){.flow-grid{grid-template-columns:repeat(4,1fr)}}
+.step{text-align:center;position:relative}
+.step .badge{
+  width:56px;height:56px;border-radius:50%;margin:0 auto 12px;
+  background:var(--brand);color:#fff;font-family:"Shippori Mincho",serif;
+  font-size:1.3rem;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.step h3{font-size:.98rem;color:var(--brand-deep);margin-bottom:6px}
+.step p{font-size:.8rem;color:var(--ink-soft)}
+.flow-note{
+  margin-top:40px;background:var(--bg);border-radius:var(--radius);
+  padding:26px 24px;text-align:center;
+}
+.flow-note b{font-family:"Shippori Mincho",serif;font-size:1.08rem;color:var(--brand-deep);display:block;margin-bottom:8px}
+.flow-note p{font-size:.86rem;color:var(--ink-soft)}
+
+/* ---------- cases ---------- */
+.cases{background:var(--bg-alt)}
+.case-grid{display:grid;gap:16px}
+@media(min-width:768px){.case-grid{grid-template-columns:repeat(2,1fr)}}
+.case{background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px}
+.case .label{font-size:.68rem;font-weight:700;color:#fff;background:var(--accent);border-radius:999px;padding:3px 12px;display:inline-block;margin-bottom:12px}
+.case .amounts{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.case .amt{line-height:1.3}
+.case .amt .cap{font-size:.66rem;color:var(--ink-soft)}
+.case .amt .val{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.4rem}
+.case .amt.req .val{color:#9C4A32}
+.case .amt.res .val{color:var(--brand);font-size:1.6rem}
+.case .arrow{color:var(--accent);font-size:1.2rem}
+.case dl{font-size:.8rem;color:var(--ink-soft);display:grid;grid-template-columns:auto 1fr;gap:2px 10px}
+.case dt{font-weight:700;color:var(--brand-deep)}
+.case dt::after{content:":"}
+.cases .disclaimer{font-size:.74rem;color:var(--ink-soft);text-align:center;margin-top:22px}
+
+/* ---------- pricing ---------- */
+.plan-grid{display:grid;gap:18px}
+@media(min-width:900px){.plan-grid{grid-template-columns:repeat(3,1fr);align-items:start}}
+.plan{background:var(--paper);border:1.5px solid var(--border);border-radius:var(--radius);padding:28px 24px;position:relative}
+.plan.reco{border-color:var(--brand);box-shadow:0 8px 28px rgba(140,90,51,.14)}
+.plan .reco-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--brand);color:#fff;font-size:.72rem;font-weight:700;
+  border-radius:999px;padding:3px 16px;white-space:nowrap;
+}
+.plan .for{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.05em}
+.plan h3{font-size:1.1rem;color:var(--brand-deep);margin:4px 0 8px}
+.plan .price{font-family:"Shippori Mincho",serif;font-size:1.7rem;font-weight:700;color:var(--brand-deep)}
+.plan .price small{font-size:.78rem;font-weight:500;color:var(--ink-soft)}
+.plan .price-note{font-size:.74rem;color:var(--ink-soft);margin-bottom:14px}
+.plan ul{list-style:none;display:grid;gap:7px;border-top:1px dashed var(--border);padding-top:14px}
+.plan li{font-size:.84rem;padding-left:20px;position:relative;color:var(--ink)}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--brand);font-weight:700}
+.multi{
+  margin-top:36px;background:var(--paper);border:1.5px solid var(--brand);
+  border-radius:var(--radius);padding:28px 24px;
+}
+.multi h3{text-align:center;font-size:1.15rem;color:var(--brand-deep);margin-bottom:8px}
+.multi>p{font-size:.86rem;color:var(--ink-soft);max-width:720px;margin:0 auto 18px}
+.multi table{width:100%;border-collapse:collapse;font-size:.88rem}
+.multi th,.multi td{padding:11px 14px;border-bottom:1px solid var(--border);text-align:left}
+.multi th{color:var(--ink-soft);font-weight:500;width:60%}
+.multi td{font-weight:700;color:var(--brand-deep);text-align:right}
+.multi tr:last-child td{color:var(--brand)}
+.multi .fine{font-size:.72rem;color:var(--ink-soft);margin-top:12px}
+.honest{
+  margin-top:36px;background:var(--bg);border-left:4px solid var(--brand);
+  border-radius:0 var(--radius) var(--radius) 0;padding:26px 26px;max-width:840px;margin-left:auto;margin-right:auto;
+}
+.honest h3{font-size:1.05rem;color:var(--brand-deep);margin-bottom:10px}
+.honest p{font-size:.88rem;color:var(--ink);margin-bottom:10px}
+.honest p:last-child{margin-bottom:0}
+.payment{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:32px}
+.payment span{background:var(--paper);border:1px solid var(--border);border-radius:999px;font-size:.78rem;font-weight:600;padding:8px 18px;color:var(--brand-deep)}
+
+/* ---------- profile ---------- */
+.profile{background:var(--paper)}
+.profile .grid{display:grid;gap:32px}
+@media(min-width:860px){.profile .grid{grid-template-columns:.7fr 1.3fr;align-items:start}}
+.profile .photo-wrap{max-width:300px;margin:0 auto;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 26px rgba(70,50,30,.15)}
+.profile h3{font-size:1.3rem;color:var(--brand-deep)}
+.profile .aff{font-size:.8rem;color:var(--accent);font-weight:700;margin-bottom:14px}
+.quote{
+  background:var(--bg);border-radius:var(--radius);padding:22px 24px;
+  font-size:.9rem;margin-bottom:20px;
+}
+.quote b{font-family:"Shippori Mincho",serif;display:block;color:var(--brand-deep);font-size:1rem;margin-bottom:8px}
+.prof-cols{display:grid;gap:20px;font-size:.85rem}
+@media(min-width:600px){.prof-cols{grid-template-columns:1fr 1fr}}
+.prof-cols h4{font-size:.82rem;color:var(--accent);letter-spacing:.08em;margin-bottom:8px}
+.prof-cols ul{list-style:none;display:grid;gap:4px;color:var(--ink-soft)}
+.prof-cols li b{color:var(--ink)}
+.media-grid{display:grid;gap:14px;margin-top:36px}
+@media(min-width:600px){.media-grid{grid-template-columns:1fr 1fr}}
+.media-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:20px 22px}
+.media-card .kind{font-size:.66rem;font-weight:700;color:var(--accent);letter-spacing:.1em}
+.media-card h4{font-size:.98rem;color:var(--brand-deep);margin:4px 0 6px}
+.media-card p{font-size:.8rem;color:var(--ink-soft)}
+
+/* ---------- family ---------- */
+.family{background:var(--bg-alt)}
+.family .box{
+  max-width:760px;margin:0 auto;background:var(--paper);
+  border-radius:var(--radius);padding:34px 28px;text-align:center;
+  border:1px solid var(--border);
+}
+.family h2{font-size:clamp(1.25rem,4vw,1.6rem);color:var(--brand-deep);margin-bottom:14px}
+.family p{font-size:.9rem;color:var(--ink-soft);text-align:left;margin-bottom:12px}
+.family .cta{max-width:360px;margin:22px auto 0;display:grid;gap:10px}
+
+/* ---------- faq ---------- */
+.faq-list{max-width:800px;margin:0 auto;display:grid;gap:12px}
+details{
+  background:var(--paper);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;
+}
+summary{
+  cursor:pointer;list-style:none;display:flex;gap:14px;align-items:flex-start;
+  padding:18px 20px;font-weight:700;font-size:.92rem;color:var(--brand-deep);
+}
+summary::-webkit-details-marker{display:none}
+summary .q{flex:0 0 auto;color:#fff;background:var(--brand);border-radius:8px;
+  width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;margin-top:2px}
+summary .tgl{margin-left:auto;flex:0 0 auto;color:var(--accent);transition:transform .2s;margin-top:4px}
+details[open] .tgl{transform:rotate(45deg)}
+details .a{padding:0 20px 20px 62px;font-size:.86rem;color:var(--ink-soft)}
+details .a p+p{margin-top:8px}
+
+/* ---------- final cta ---------- */
+.final{
+  background:linear-gradient(160deg,#4A3423,#2E211A);color:#F3EADD;text-align:center;
+}
+.final h2{font-size:clamp(1.4rem,4.6vw,2rem);color:#fff;margin-bottom:12px}
+.final p{font-size:.9rem;color:rgba(243,234,221,.8);max-width:560px;margin:0 auto 28px}
+.final .cta{max-width:420px;margin:0 auto;display:grid;gap:12px}
+.final .form-link{color:rgba(243,234,221,.7)}
+.final .form-link a{color:#E8C9A6}
+
+/* ---------- footer ---------- */
+footer{background:#241A14;color:rgba(240,230,216,.75);padding:44px 0 120px;font-size:.8rem}
+@media(min-width:768px){footer{padding-bottom:44px}}
+footer .fname{font-family:"Shippori Mincho",serif;color:#fff;font-size:1.05rem;margin-bottom:4px}
+footer .grid{display:grid;gap:24px;margin-top:18px}
+@media(min-width:768px){footer .grid{grid-template-columns:1fr 1fr}}
+footer h4{color:#E8C9A6;font-size:.78rem;letter-spacing:.1em;margin-bottom:6px}
+footer .legal{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:.7rem;line-height:1.8;color:rgba(240,230,216,.55)}
+
+/* ---------- sticky bar (mobile) ---------- */
+.sticky-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  display:grid;grid-template-columns:1.2fr 1fr;gap:8px;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(46,33,26,.97);backdrop-filter:blur(6px);
+  box-shadow:0 -4px 16px rgba(0,0,0,.25);
+}
+.sticky-bar .btn{padding:11px 10px;box-shadow:none;border-radius:12px}
+.sticky-bar .btn .main{font-size:.88rem}
+.sticky-bar .btn .sub{font-size:.62rem}
+@media(min-width:768px){.sticky-bar{display:none}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <div class="brand">
+      <div class="name">冨田・島岡法律事務所</div>
+      <div class="en">TOMIDA &amp; SHIMAOKA LAW OFFICE</div>
+    </div>
+    <div class="header-cta">
+      <div class="header-tel">
+        <div class="num">052-204-1885</div>
+        <div class="hours">電話受付 10:00〜19:00(土日祝も対応)</div>
+      </div>
+      <!-- TODO: ウェブ相談フォームのURLに差し替え -->
+      <a class="header-btn" href="#form">ウェブで相談<br><small style="font-weight:500">24時間受付</small></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ FV ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <span class="kicker">トレント(BitTorrent)の意見照会書・示談請求 相談窓口</span>
+        <h1>トレントの意見照会書が<br>突然届いた方へ</h1>
+        <p class="lead">書類の写真をLINEで送っていただければ、弁護士本人が内容を確認し、<b>「今やるべきこと」と「やらなくていいこと」</b>をお伝えします。</p>
+        <ul class="answers">
+          <li><span class="ico">秘</span><span><b>ご家族・職場に知られず解決できます。</b><br>ご自宅への郵送物なし・連絡はLINEに一本化できます。</span></li>
+          <li><span class="ico">期</span><span><b>回答期限(通常2週間)まで、まだ間に合います。</b><br>期限を過ぎてしまった場合も、打てる手は残っています。</span></li>
+          <li><span class="ico">匿</span><span><b>匿名のまま相談できます。</b><br>お名前を名乗るのは、依頼を決めてからで大丈夫です。</span></li>
+        </ul>
+        <div class="hero-cta">
+          <!-- TODO: LINE公式アカウントのURLに差し替え -->
+          <a class="btn btn-line" href="#line">
+            <span class="main">LINEで書類の写真を送る</span>
+            <span class="sub">匿名OK・24時間受付・相談だけでも大丈夫です</span>
+          </a>
+          <a class="btn btn-tel" href="tel:0522041885">
+            <span class="main">電話で無料相談 052-204-1885</span>
+            <span class="sub">受付 10:00〜19:00(土日祝も対応)</span>
+          </a>
+          <!-- TODO: ウェブ相談フォームのURLに差し替え -->
+          <p class="form-link">LINEを使わない方は <a href="#form">ウェブフォーム(24時間受付)</a> からどうぞ</p>
+        </div>
+        <div class="chips">
+          <span>初回相談無料</span><span>秘密厳守</span><span>弁護士本人が直接対応</span><span>全国オンライン対応</span><span>原則24時間以内に返信</span>
+        </div>
+      </div>
+      <div>
+        <div class="lawyer-card">
+          <!-- TODO: 実際の弁護士写真<img>に差し替え -->
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.6 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+            <span>弁護士写真(差し替え)</span>
+          </div>
+          <div class="plate">
+            <div class="nm">加藤 信 弁護士</div>
+            <div class="aff">愛知県弁護士会所属|冨田・島岡法律事務所</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ スタンス ============ -->
+<section class="stance" id="stance">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">Our Policy</span>
+      <h2>依頼しなくていい方には、<br>そうお伝えします。</h2>
+    </div>
+    <div class="stance-copy">
+      トレント案件は、ご自身で調査・交渉・やりとりを最後まで行えるのであれば、必ずしも弁護士に依頼する必要はありません。それはトレント以外の事件と同じです。<br>
+      当事務所の初回相談では、まず<b>「あなたの場合、そもそも弁護士が必要かどうか」</b>から一緒に整理します。
+    </div>
+    <div class="promise-grid">
+      <div class="promise">
+        <span class="no">PROMISE 01</span>
+        <h3>煽りません</h3>
+        <p>逮捕や訴訟の不安をあおって契約を急がせることはしません。リスクは、事実の範囲で正確にお伝えします。</p>
+      </div>
+      <div class="promise">
+        <span class="no">PROMISE 02</span>
+        <h3>押し付けません</h3>
+        <p>自力対応・回答書のみ・すべて依頼・当面様子見——選択肢とそれぞれのリスクを並べてご説明します。決めるのはご本人です。</p>
+      </div>
+      <div class="promise">
+        <span class="no">PROMISE 03</span>
+        <h3>正直に言います</h3>
+        <p>ご依頼いただくメリットが薄いと判断した場合は、その旨をはっきりお伝えした上で、ご自身で対応する場合の進め方をご案内します。</p>
+      </div>
+    </div>
+    <div class="exits">
+      <h3>初回相談の「出口」は3つ。どれで終わっても構いません。</h3>
+      <ol>
+        <li><b>自力で対応できそうな方</b>進め方と注意点をご案内して終了。相談だけで終わってまったく問題ありません。</li>
+        <li><b>回答書だけ任せたい方</b>意見照会書への回答書案を弁護士が作成します(11万円)。その後のやりとりはご自身で。</li>
+        <li><b>すべて任せたい方</b>書類の精査・交渉・和解方針の検討まで、弁護士が窓口としてすべて代理します(33万円〜)。</li>
+      </ol>
+      <p class="note">どの出口が合っているかも、初回相談で率直にお伝えします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 依頼メリット ============ -->
+<section class="merits">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">Why hire a lawyer</span>
+      <h2>弁護士に依頼する意味は、<br>「勝ち負け」より「解放」です</h2>
+      <p>相手方の示談基準そのものを大きく動かせないケースもあります。それでも依頼に意味があるのは、依頼した日から生活が変わるからです。</p>
+    </div>
+    <div class="merit-grid">
+      <div class="merit">
+        <h3>① やりとりのストレスから解放</h3>
+        <div class="before"><b>BEFORE</b>請求の封筒が届くたびに動悸がする。ポストを見るのが怖い。</div>
+        <div class="after"><b>AFTER</b>受任後は、相手方・プロバイダとの連絡窓口がすべて弁護士に変わります。請求や催促があなたに直接届くことはなくなります。</div>
+      </div>
+      <div class="merit">
+        <h3>② 調べて判断する手間がなくなる</h3>
+        <div class="before"><b>BEFORE</b>知恵袋や掲示板を深夜まで読み続けて、結局どうすべきか分からない。</div>
+        <div class="after"><b>AFTER</b>書面の精査・方針の検討・交渉の判断は弁護士本人が行い、経過をその都度ご報告します。あなたは日常に戻れます。</div>
+      </div>
+      <div class="merit">
+        <h3>③ 郵送物のやりとりが不要に</h3>
+        <div class="before"><b>BEFORE</b>書類の受け取りや返送のたびに、家族に見られないか気を張っている。</div>
+        <div class="after"><b>AFTER</b>書類の受領・提出は事務所側で完結。ご自宅に届く郵便物をなくし、ご家族に知られる入口を塞ぎます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 秘匿の仕組み ============ -->
+<section class="privacy" id="privacy">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">Privacy</span>
+      <h2>誰にも知られず解決するための仕組み</h2>
+      <p>「秘密厳守」を言葉だけで終わらせないために、運用のレベルでご用意しています。</p>
+    </div>
+    <!-- TODO: 以下5項目が実運用と一致しているか、公開前にご確認ください -->
+    <div class="privacy-list">
+      <div class="privacy-item"><span class="num">1</span><div><h3>ご自宅への郵送物なし</h3><p>ご希望の方には書類を一切郵送せず、LINE・メールのみでやりとりを完結します。</p></div></div>
+      <div class="privacy-item"><span class="num">2</span><div><h3>連絡窓口が弁護士に変わります</h3><p>ご依頼後は、権利者側・プロバイダからの連絡はすべて当事務所宛になります。請求書や通知がご自宅に届き続ける状態が止まります。</p></div></div>
+      <div class="privacy-item"><span class="num">3</span><div><h3>お電話は時間指定・非通知に対応</h3><p>ご家族がいる時間帯を避けた連絡など、ご事情に合わせた方法で対応します。</p></div></div>
+      <div class="privacy-item"><span class="num">4</span><div><h3>LINEの内容は弁護士本人のみが確認</h3><p>初回のご連絡から依頼後のやりとりまで、弁護士本人が直接対応します。相談内容が本人以外の目に触れることはありません。</p></div></div>
+      <div class="privacy-item"><span class="num">5</span><div><h3>弁護士の守秘義務は生涯続きます</h3><p>依頼に至らず、相談だけで終わった場合でも、弁護士法上の守秘義務の対象です。ご相談の事実や内容が外部に漏れることはありません。</p></div></div>
+    </div>
+    <div class="gender-note">
+      <b>男性弁護士による、偏見のない対応。</b><br>
+      アダルト動画に関するご相談が大半を占めます。当事務所では男性弁護士が偏見なく、淡々と事務的に対応します。作品名を口に出しにくい場合は、書類の写真を送っていただくだけで結構です。恥ずかしがらせるようなことは一切ありません。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 知っておくべきこと ============ -->
+<section id="knowledge">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">What you should know</span>
+      <h2>意見照会書が届いた今、<br>知っておいてほしいこと</h2>
+    </div>
+    <div class="know-grid">
+      <div class="know">
+        <span class="tag">期限について</span>
+        <h3>通常2週間。ただし、パニックになる段階ではありません</h3>
+        <p>回答期限内にやるべきことは、整理すれば多くありません。落ち着いて全体像を把握することが先です。期限を過ぎてしまった場合にも、打てる手は残っています。</p>
+      </div>
+      <div class="know">
+        <span class="tag">放置のリスク</span>
+        <h3>「無視」はおすすめしません</h3>
+        <p>回答をしない場合、プロバイダの判断で開示に進むことがあります。また、同意・不同意の回答内容は、その後の交渉や訴訟で証拠になり得るため、書き方には注意が必要です。</p>
+      </div>
+      <div class="know">
+        <span class="tag">金額について</span>
+        <h3>提示額=支払うべき額、ではありません</h3>
+        <p>提示される示談金額と、裁判所が実際に認めてきた損害額の水準には、差があるケースがあります。支払う・支払わない・減額を求める——どの選択にもメリットとリスクがあり、状況によって最適解は変わります。</p>
+      </div>
+    </div>
+    <div class="senders">
+      <h3>ITJ法律事務所・赤れんが法律事務所などから書面が届いた方へ</h3>
+      <p>当事務所では、ITJ法律事務所・赤れんが法律事務所をはじめとする権利者側代理人からの意見照会書・示談提案への対応を継続的に取り扱っています。書面の発信元や種類によって、その後の進み方や交渉の勘所は異なります。まずは届いた書面の写真をLINEでお送りください。どの段階の書類かを弁護士本人が判別してお答えします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 流れ ============ -->
+<section class="flow">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">Process</span>
+      <h2>解決までの流れ</h2>
+      <p>相談から解決まで4ステップ。まずはLINEで書類の写真をお送りください。</p>
+    </div>
+    <div class="flow-grid">
+      <div class="step"><div class="badge">1</div><h3>LINEで問い合わせ</h3><p>書類の写真を送るだけでOK。匿名のままで構いません。原則24時間以内に弁護士本人が返信します。</p></div>
+      <div class="step"><div class="badge">2</div><h3>初回無料相談</h3><p>LINE・電話またはオンラインで状況を確認し、「依頼が必要かどうか」を含めた選択肢をご説明します。</p></div>
+      <div class="step"><div class="badge">3</div><h3>ご依頼・お支払い</h3><p>依頼する場合のみ、プラン確定後に着手金をお支払いください。分割払い・クレジットカードに対応しています。</p></div>
+      <div class="step"><div class="badge">4</div><h3>弁護士による代理対応</h3><p>意見照会書への回答から示談交渉まで、すべて弁護士が窓口となって対応。経過は随時ご報告します。</p></div>
+    </div>
+    <div class="flow-note">
+      <b>土日祝も対応・原則24時間以内に弁護士本人が返信します</b>
+      <p>お急ぎの案件にも対応できるよう、土日祝を含めて弁護士本人が確認しています。一人で悩まず、まずはご相談ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 解決事例 ============ -->
+<section class="cases">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">Cases</span>
+      <h2>解決事例</h2>
+      <!-- TODO: トレント関連の相談件数の実数(裏付けあり)に差し替え推奨
+           例:「トレント・意見照会書関連のご相談 ◯◯件(2026年◯月時点)」 -->
+      <p>インターネットトラブル事案の解決実績100件以上。ここでは典型的な事例の一部をご紹介します。</p>
+    </div>
+    <div class="case-grid">
+      <div class="case">
+        <span class="label">示談交渉</span>
+        <div class="amounts">
+          <div class="amt req"><div class="cap">請求額</div><div class="val">80万円</div></div>
+          <div class="arrow">→</div>
+          <div class="amt res"><div class="cap">解決額</div><div class="val">0円</div></div>
+        </div>
+        <dl><dt>状況</dt><dd>トレント利用で意見照会書が届いたご本人からの相談</dd><dt>対応</dt><dd>書面精査のうえ回答・交渉方針を組み立て、支払いなしで終結</dd></dl>
+      </div>
+      <div class="case">
+        <span class="label">示談交渉</span>
+        <div class="amounts">
+          <div class="amt req"><div class="cap">請求額</div><div class="val">55万円</div></div>
+          <div class="arrow">→</div>
+          <div class="amt res"><div class="cap">解決額</div><div class="val">0円</div></div>
+        </div>
+        <dl><dt>状況</dt><dd>トレントでのアップロードを理由とする55万円の請求</dd><dt>対応</dt><dd>請求根拠を精査し交渉。支払いなしで終結</dd></dl>
+      </div>
+      <div class="case">
+        <span class="label">和解成立</span>
+        <div class="amounts">
+          <div class="amt req"><div class="cap">請求額</div><div class="val">150万円</div></div>
+          <div class="arrow">→</div>
+          <div class="amt res"><div class="cap">解決額</div><div class="val">50万円</div></div>
+        </div>
+        <dl><dt>状況</dt><dd>人気動画のトレントアップロードによる高額請求</dd><dt>対応</dt><dd>減額交渉により和解成立</dd><dt>期間</dt><dd>約1ヶ月</dd></dl>
+      </div>
+      <div class="case">
+        <span class="label">示談交渉</span>
+        <div class="amounts">
+          <div class="amt req"><div class="cap">請求額</div><div class="val">200万円</div></div>
+          <div class="arrow">→</div>
+          <div class="amt res"><div class="cap">解決額</div><div class="val">0円</div></div>
+        </div>
+        <dl><dt>状況</dt><dd>名誉毀損での発信者情報開示・刑事告訴まで発展した事案</dd><dt>対応</dt><dd>刑事・民事の両面から対応し、支払いなしで終結</dd></dl>
+      </div>
+    </div>
+    <p class="disclaimer">※掲載内容は依頼者の同意を得て、特定されない形で表記しています。個々の事案により結果は異なり、結果を保証するものではありません。</p>
+  </div>
+</section>
+
+<!-- ============ 料金 ============ -->
+<section id="pricing">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">Pricing</span>
+      <h2>費用は、最初にすべてお見せします</h2>
+      <p>「あとから増える」不安をなくすため、追加費用の条件まで先に明示します。表示はすべて税込です。</p>
+    </div>
+    <div class="plan-grid">
+      <div class="plan">
+        <span class="for">自分で対応を進めたい方に</span>
+        <h3>回答書のみプラン</h3>
+        <div class="price">11<small>万円(税込)</small></div>
+        <p class="price-note">意見照会書への回答書案を弁護士が作成。その後のやりとりはご自身で行う方向けです。</p>
+        <ul>
+          <li>回答書案の作成</li>
+          <li>法的アドバイス</li>
+          <li>書類の確認・修正</li>
+        </ul>
+      </div>
+      <div class="plan reco">
+        <span class="reco-badge">ご依頼の多いプラン</span>
+        <span class="for">やりとりをすべて任せたい方に</span>
+        <h3>標準対応プラン</h3>
+        <div class="price">33<small>万円(税込)/請求会社1社あたり</small></div>
+        <p class="price-note">書類確認・交渉窓口・和解方針の検討まで。着手金以外の費用はかかりません。</p>
+        <ul>
+          <li>届いた書類の精査・段階の判別</li>
+          <li>相手方の請求根拠の確認</li>
+          <li>回答書の作成・送付</li>
+          <li>相手方との連絡・交渉窓口</li>
+          <li>高額示談に応じるべきかの検討</li>
+          <li>低額和解・保留を含む方針の比較検討</li>
+          <li>和解の対象範囲・追加請求リスクの確認</li>
+          <li>依頼後のLINE・メールでの弁護士直接対応</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <span class="for">万一、裁判になった場合に</span>
+        <h3>訴訟対応プラン</h3>
+        <div class="price">33<small>万円(着手金)+成功報酬</small></div>
+        <p class="price-note">標準対応プランからの継続の場合、追加着手金は11万円です。</p>
+        <ul>
+          <li>訴訟手続きの全面対応</li>
+          <li>裁判所への出廷代理</li>
+          <li>成功報酬は減額分の20%</li>
+          <li>和解交渉を含む</li>
+          <li>最終的な解決まで完全サポート</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="multi">
+      <h3>複数社から請求が来ても、追加着手金が青天井にならない設計です</h3>
+      <p>トレント案件では、1社の解決後に別の権利者から追加の意見照会書や通知が届くことがあります。「弁護士費用がどこまで増えるのか分からない」という不安をなくすため、追加分の着手金に上限を設けています。</p>
+      <table>
+        <tr><th>1社目(標準対応プラン)</th><td>33万円</td></tr>
+        <tr><th>2〜4社目の追加対応</th><td>1社あたり16万5,000円</td></tr>
+        <tr><th>5社目以降の追加対応</th><td>追加着手金なし</td></tr>
+      </table>
+      <p class="fine">※5社目以降について、裁判所対応など通常の交渉と異なる手続が必要になる場合の費用は別途ご説明します。受任の際に必ず書面でご確認いただきます。</p>
+    </div>
+
+    <div class="honest">
+      <h3>Q. 弁護士費用のほうが高くつくことはありませんか?</h3>
+      <p><b>A. あります。</b>提示されている金額や状況によっては、費用面だけを見れば依頼しないほうが合理的なケースもあります。初回相談でそのように判断した場合は、はっきりそうお伝えし、ご自身で対応する場合の進め方をご案内します。</p>
+      <p>それでもご依頼いただく方の多くは、金額の損得ではなく、<b>「相手方とのやりとり・調査・判断・郵送物のすべてから解放されること」</b>を目的にされています。どちらが合っているかは、率直にご相談ください。</p>
+    </div>
+
+    <div class="payment">
+      <span>クレジットカード対応(VISA / Master / JCB / AMEX)</span>
+      <span>分割払い対応</span>
+      <span>依頼前に費用を書面で明示</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 弁護士紹介 ============ -->
+<section class="profile">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">Profile</span>
+      <h2>弁護士・事務所紹介</h2>
+    </div>
+    <div class="grid">
+      <div class="photo-wrap">
+        <!-- TODO: 実際の弁護士写真<img>に差し替え -->
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.6 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          <span>弁護士写真(差し替え)</span>
+        </div>
+      </div>
+      <div>
+        <h3>加藤 信 弁護士</h3>
+        <p class="aff">愛知県弁護士会所属|冨田・島岡法律事務所</p>
+        <!-- TODO: 引用メッセージはご本人の確認を推奨 -->
+        <div class="quote">
+          <b>「不安を煽って依頼を勧めることは、しません。」</b>
+          意見照会書が届いた方の多くは、書類そのものよりも「誰にも相談できないこと」に苦しんでいます。私は、あなたを追い込む側ではなく、選択肢を並べて一緒に考える側の弁護士でありたいと考えています。依頼が不要なら、そう言います。まずは書類を見せてください。
+        </div>
+        <div class="prof-cols">
+          <div>
+            <h4>注力分野</h4>
+            <ul>
+              <li>発信者情報開示請求への対応</li>
+              <li>著作権侵害(トレント)対応</li>
+              <li>示談交渉</li>
+              <li>インターネット法務</li>
+            </ul>
+          </div>
+          <div>
+            <h4>経歴</h4>
+            <ul>
+              <li><b>2012年</b> 愛知県立刈谷高校卒業</li>
+              <li><b>2016年</b> 名古屋大学法学部 法律・政治学科卒業</li>
+              <li><b>2018年</b> 名古屋大学法科大学院修了</li>
+              <li><b>2019年</b> 最高裁判所司法研修所入所(配属庁:大津地方裁判所)</li>
+              <li><b>2020年</b> 愛知県弁護士会登録</li>
+            </ul>
+          </div>
+        </div>
+        <div class="media-grid">
+          <!-- TODO: 記事リンクを設定 -->
+          <div class="media-card">
+            <span class="kind">新聞掲載</span>
+            <h4>中日新聞</h4>
+            <p>2025年6月2日|加害者側のインターネットトラブルを多く扱う弁護士としてコメント</p>
+          </div>
+          <div class="media-card">
+            <span class="kind">監修記事</span>
+            <h4>ITベンゴープロ 監修</h4>
+            <p>インターネットトラブル関連の法的知識について専門家として監修</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 家族向け ============ -->
+<section class="family">
+  <div class="container">
+    <div class="box">
+      <h2>ご家族宛てに書類が届いた方へ</h2>
+      <p>意見照会書は、実際にトレントを使った本人ではなく<b>「回線の契約者」宛て</b>に届きます。心当たりがないのに書類を受け取った、実際に使ったのは同居のお子さんや配偶者だった——そうしたご相談は珍しくありません。</p>
+      <p>契約者の方がどこまで責任を負うのか、世帯として何をどの順番で対応すべきか、ご本人を責める前にまず全体像を整理しましょう。ご家族からのご相談は、お電話でも丁寧に対応します。</p>
+      <div class="cta">
+        <a class="btn btn-tel" href="tel:0522041885">
+          <span class="main">電話で相談する 052-204-1885</span>
+          <span class="sub">受付 10:00〜19:00(土日祝も対応)・初回無料</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">FAQ</span>
+      <h2>よくある質問</h2>
+      <p>実際のご相談で多く寄せられる質問にお答えします。</p>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary><span class="q">Q1</span>意見照会書とは何ですか?なぜ届いたのですか?<span class="tgl">+</span></summary>
+        <div class="a"><p>権利者(主にアダルト動画などのメーカー)が「この通信をした契約者の情報を開示してよいか」をプロバイダがあなたに確認するための書類です。トレント(BitTorrent)はダウンロードと同時に自動でアップロード(送信)が行われる仕組みのため、権利者側の監視システムに記録されたIPアドレスをもとに、回線契約者宛てに送られています。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q2</span>無視・放置するとどうなりますか?<span class="tgl">+</span></summary>
+        <div class="a"><p>回答がない場合、プロバイダが自らの判断で開示に進むことがあります。開示後は権利者側から直接、損害賠償請求の通知が届く流れが一般的です。「無視すれば消える」とは限らない一方、慌てて言われるがまま支払う必要もありません。まずは書面の種類と段階を確認することが先です。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q3</span>「同意しない」と回答すれば、開示されずに済みますか?<span class="tgl">+</span></summary>
+        <div class="a"><p>不同意と回答しても、最終的には裁判所の手続などを通じて開示が認められるケースが多いのが実情です。ただし、回答書に何をどう書くかは、その後の交渉や訴訟で証拠として扱われ得るため重要です。理由の書き方には注意が必要です。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q4</span>回答期限を過ぎてしまいました。もう手遅れですか?<span class="tgl">+</span></summary>
+        <div class="a"><p>手遅れではありません。期限経過後もプロバイダに連絡して対応できる場合がありますし、開示後の示談交渉の段階でも打てる手は残っています。「期限が過ぎたから終わり」と諦めて放置することが、いちばん選択肢を狭めます。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q5</span>家族や会社に知られずに解決できますか?<span class="tgl">+</span></summary>
+        <div class="a"><p>可能です。ご依頼後は相手方との連絡窓口がすべて弁護士に変わり、ご希望があればご自宅への郵送物をなくし、LINE・メールのみでやりとりを完結できます。また、この手続はあなたの勤務先に通知されるものではありません。詳しくは「誰にも知られず解決するための仕組み」をご覧ください。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q6</span>身に覚えがありません。家族が使ったのかもしれません。<span class="tgl">+</span></summary>
+        <div class="a"><p>意見照会書は回線契約者宛てに届くため、実際の利用者が同居のご家族だったというケースは珍しくありません。契約者ご本人が直ちに責任を負うとは限らず、誰が・どう対応すべきかは状況によって変わります。誤検知の可能性を含めて確認しますので、心当たりがない場合こそ早めにご相談ください。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q7</span>逮捕されたり、前科がついたりしますか?<span class="tgl">+</span></summary>
+        <div class="a"><p>著作権侵害には刑事罰の定めがあり、権利者側が刑事告訴の方針を示す例もあります。ただし、意見照会書が届いた段階で直ちに逮捕につながるわけではありません。過度に恐れる必要はありませんが、放置してよい理由にもならない、というのが正確なところです。ご事情を伺えば、現実的なリスクの程度をご説明できます。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q8</span>示談金の相場はいくらですか?<span class="tgl">+</span></summary>
+        <div class="a"><p>権利者側の提示額は、1作品あたり数十万円、複数作品をまとめた包括和解でさらに高額になる例が見られます。一方で、提示額がそのまま「支払うべき額」とは限らず、事案によっては大幅に低い金額や支払いなしで終結することもあります。書面を拝見すれば、あなたのケースの見通しをお伝えできます。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q9</span>一度示談したのに、別の会社からまた書類が届きました。<span class="tgl">+</span></summary>
+        <div class="a"><p>権利者(メーカー)ごとに請求は別々に行われるため、1社と示談しても他社から追加の請求が届くことがあります。当事務所では追加分の着手金に上限を設けており(2〜4社目は1社16万5,000円、5社目以降は追加着手金なし)、「終わりが見えない」状態にならない設計にしています。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q10</span>弁護士に依頼せず、自分で対応してもいいですか?<span class="tgl">+</span></summary>
+        <div class="a"><p>構いません。ご自身で調査・交渉・やりとりを最後まで行えるのであれば、弁護士に依頼する必要はありません。初回相談で「ご自身で対応できそうです」と判断した場合は、そのようにお伝えした上で進め方をご案内します。途中で難しくなった段階から依頼いただくこともできます。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q11</span>匿名のまま相談できますか?<span class="tgl">+</span></summary>
+        <div class="a"><p>できます。LINEでのご相談はニックネームのままで構いません。お名前などの確認が必要になるのは、正式にご依頼いただくと決めた段階からです。なお、相談だけで終わった場合も弁護士の守秘義務の対象となり、内容が外部に伝わることはありません。</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q12</span>費用を一括で支払うのが難しいのですが。<span class="tgl">+</span></summary>
+        <div class="a"><p>分割払い・クレジットカード(VISA / Master / JCB / AMEX)に対応しています。お支払い方法についても初回相談時に遠慮なくご相談ください。</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 最終CTA ============ -->
+<section class="final">
+  <div class="container">
+    <h2>まずは、書類の写真を送るだけ。</h2>
+    <p>匿名のままで構いません。相談だけで終わっても大丈夫です。<br>原則24時間以内に、弁護士本人が返信します。</p>
+    <div class="cta">
+      <!-- TODO: LINE公式アカウントのURLに差し替え -->
+      <a class="btn btn-line" href="#line">
+        <span class="main">LINEで書類の写真を送る</span>
+        <span class="sub">匿名OK・24時間受付</span>
+      </a>
+      <a class="btn btn-tel" href="tel:0522041885">
+        <span class="main">電話で無料相談 052-204-1885</span>
+        <span class="sub">受付 10:00〜19:00(土日祝も対応)</span>
+      </a>
+      <!-- TODO: ウェブ相談フォームのURLに差し替え -->
+      <p class="form-link"><a href="#form">ウェブフォームで相談する(24時間受付)</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fname">冨田・島岡法律事務所</div>
+    <div style="font-size:.68rem;letter-spacing:.14em;opacity:.6">TOMIDA &amp; SHIMAOKA LAW OFFICE</div>
+    <div class="grid">
+      <div>
+        <h4>事務所情報</h4>
+        <p>担当弁護士:加藤 信(愛知県弁護士会)<br>
+        〒460-0008 愛知県名古屋市中区栄2-12-12<br>
+        アーク栄白川パークビル3階305号<br>
+        TEL:052-204-1885 / FAX:052-204-1886</p>
+      </div>
+      <div>
+        <h4>対応エリア</h4>
+        <p>愛知県・岐阜県・三重県を中心とした東海圏<br>※オンライン相談により全国対応も可能です</p>
+        <h4 style="margin-top:14px">受付時間</h4>
+        <p>電話:10:00〜19:00(土日祝も対応)<br>LINE・ウェブフォーム:24時間受付</p>
+      </div>
+    </div>
+    <div class="legal">
+      ※本サイトに掲載の解決事例は、依頼者の同意を得て特定されない形で掲載したものであり、個々の案件の結果を保証するものではありません。<br>
+      © 冨田・島岡法律事務所
+    </div>
+  </div>
+</footer>
+
+<!-- 固定追従CTA(モバイルのみ表示) -->
+<div class="sticky-bar">
+  <!-- TODO: LINE公式アカウントのURLに差し替え -->
+  <a class="btn btn-line" href="#line">
+    <span class="main">LINEで相談</span>
+    <span class="sub">匿名OK・24時間受付</span>
+  </a>
+  <a class="btn btn-tel" href="tel:0522041885">
+    <span class="main">電話で相談</span>
+    <span class="sub">10:00〜19:00</span>
+  </a>
+</div>
+
+<script>
+// FAQ: 開いたとき他を閉じる(1つずつ読ませる)
+document.querySelectorAll('.faq-list details').forEach(d => {
+  d.addEventListener('toggle', () => {
+    if (d.open) {
+      document.querySelectorAll('.faq-list details[open]').forEach(o => { if (o !== d) o.open = false; });
+    }
+  });
+});
+</script>
+</body>
+</html>
