@@ -8,7 +8,14 @@ index.html
 assets/css/style.css
 assets/js/main.js
 assets/img/lawyer.jpg   ← 現行LPからの複製。元データに差し替えてください
+readdy/
+  README.md             ← Readdy への差し替え手順（現行サイト向けはこちら）
+  App.tsx               ← Readdy が React 構成の場合に貼り付けるファイル
+  head-tags.html        ← <head> に入れるタイトル・OGP設定
 ```
+
+**現行サイトは Readdy で公開されているため、差し替え手順は
+[`readdy/README.md`](readdy/README.md) を参照してください。**
 
 弁護士写真は、現行LPの画面を取り込んだものを暫定的に入れてあります。
 表示確認には使えますが解像度が足りないため、公開前に元の画像ファイルに
