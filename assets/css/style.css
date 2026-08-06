@@ -263,7 +263,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .sec-results { background: var(--bg-warm); }
 .sec-flow { background: var(--bg); }
 .sec-lawyer { background: var(--bg-warm); }
-.sec-faq { background: var(--bg); }
+.sec-access { background: var(--bg); }
+.sec-faq { background: var(--bg-warm); }
 
 /* 見出しはアクセント色の明朝＋罫線。罫線中央の切り欠きが下へ視線を送る */
 .sec-head { text-align: center; margin-bottom: 38px; }
@@ -655,6 +656,11 @@ ul.do-list li::before {
   box-shadow: 0 3px 10px rgba(184, 115, 51, .3);
 }
 .flow-item h3 { font-size: .98rem; color: var(--brown); margin-bottom: 10px; }
+.fl-tag {
+  display: inline-block; margin-top: 7px;
+  font-family: var(--sans); font-size: .66rem; font-weight: 700; letter-spacing: .06em;
+  background: var(--accent); color: #fff; border-radius: 999px; padding: 3px 12px;
+}
 .flow-item p { font-size: .84rem; color: var(--ink-mid); text-align: left; }
 
 .flow-note {
@@ -704,7 +710,7 @@ ul.do-list li::before {
 .career dd { margin: 0; color: var(--ink-mid); }
 
 .office-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px;
 }
 .office-item {
   background: #fff; border: 1px solid var(--rule); border-radius: var(--radius); padding: 24px 26px;
@@ -717,7 +723,36 @@ ul.do-list li::before {
 .office-name { font-weight: 700; color: var(--brown) !important; }
 
 /* ------------------------------------------------------------
-   9. FAQ
+   9. アクセス
+   ------------------------------------------------------------ */
+.access { display: grid; grid-template-columns: 1fr 1.08fr; gap: 34px; align-items: start; }
+.ac-route {
+  display: flex; align-items: center; gap: 11px;
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--brown);
+  background: #fff; border: 1px solid var(--accent-pale); border-radius: 999px;
+  padding: 13px 24px; margin-bottom: 24px;
+}
+.ac-route-ico { flex: 0 0 auto; width: 22px; height: 22px; color: var(--accent); }
+.ac-route-ico svg { width: 100%; height: 100%; display: block; }
+
+.ac-list > div {
+  display: grid; grid-template-columns: 6.5em 1fr; gap: 14px;
+  padding: 14px 2px; border-bottom: 1px solid var(--rule);
+}
+.ac-list > div:first-child { border-top: 1px solid var(--rule); }
+.ac-list dt { font-size: .84rem; font-weight: 700; color: var(--accent-dark); }
+.ac-list dd { margin: 0; font-size: .89rem; color: var(--ink-mid); line-height: 1.9; }
+
+/* 地図が読み込めなかったときに枠だけ残るよう背景を敷いておく */
+.access-map {
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--rule); background: var(--bg-deep);
+  aspect-ratio: 4 / 3;
+}
+.access-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* ------------------------------------------------------------
+   10. FAQ
    ------------------------------------------------------------ */
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
 .faq-item {
@@ -747,7 +782,7 @@ ul.do-list li::before {
 }
 
 /* ------------------------------------------------------------
-   10. 最終CTA
+   11. 最終CTA
    ------------------------------------------------------------ */
 .sec-final {
   background: linear-gradient(160deg, #4A3527 0%, #35251A 100%);
@@ -817,6 +852,7 @@ ul.do-list li::before {
   .fee-other-body { grid-template-columns: 1fr; }
   /* 2列だと3枚目が取り残されて座りが悪いので1列にする */
   .promise-list { grid-template-columns: 1fr; }
+  .access { grid-template-columns: 1fr; gap: 26px; }
   .result-grid { grid-template-columns: 1fr 1fr; }
   .result-card.is-primary { grid-column: span 2; }
   .flow-list { grid-template-columns: 1fr 1fr; gap: 26px 18px; }

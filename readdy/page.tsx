@@ -83,7 +83,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .sec-results{background:var(--bg-warm)}
 .sec-flow{background:var(--bg)}
 .sec-lawyer{background:var(--bg-warm)}
-.sec-faq{background:var(--bg)}
+.sec-access{background:var(--bg)}
+.sec-faq{background:var(--bg-warm)}
 .sec-head{text-align:center;margin-bottom:38px}
 .sec-head h2{font-size:clamp(1.28rem,2.6vw,1.85rem);color:var(--accent);letter-spacing:.1em;margin-bottom:14px}
 .sec-head h2 em{font-style:normal;color:var(--brown)}
@@ -215,6 +216,7 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .flow-item{position:relative;background:#fff;border:1px solid var(--rule);border-radius:var(--radius);padding:30px 22px 24px;text-align:center}
 .flow-num{position:absolute;top:-16px;left:50%;transform:translate(-50%);width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--serif);font-size:1rem;font-weight:600;display:grid;place-items:center;box-shadow:0 3px 10px #b873334d}
 .flow-item h3{font-size:.98rem;color:var(--brown);margin-bottom:10px}
+.fl-tag{display:inline-block;margin-top:7px;font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.06em;background:var(--accent);color:#fff;border-radius:999px;padding:3px 12px}
 .flow-item p{font-size:.84rem;color:var(--ink-mid);text-align:left}
 .flow-note{margin-top:34px;background:var(--accent-pale);border-radius:var(--radius);padding:24px 28px;text-align:center}
 .flow-note p:first-child{font-size:1.05rem;color:var(--brown);font-family:var(--serif)}
@@ -234,11 +236,21 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .career div{display:flex;gap:14px;padding:4px 0;font-size:.86rem}
 .career dt{flex:0 0 4.5em;color:var(--ink-soft)}
 .career dd{margin:0;color:var(--ink-mid)}
-.office-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.office-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:40px}
 .office-item{background:#fff;border:1px solid var(--rule);border-radius:var(--radius);padding:24px 26px}
 .office-item h3{font-size:.95rem;color:var(--accent-dark);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
 .office-item p{font-size:.85rem;color:var(--ink-mid);margin-bottom:.9em}
 .office-name{font-weight:700;color:var(--brown)!important}
+.access{display:grid;grid-template-columns:1fr 1.08fr;gap:34px;align-items:start}
+.ac-route{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--brown);background:#fff;border:1px solid var(--accent-pale);border-radius:999px;padding:13px 24px;margin-bottom:24px}
+.ac-route-ico{flex:0 0 auto;width:22px;height:22px;color:var(--accent)}
+.ac-route-ico svg{width:100%;height:100%;display:block}
+.ac-list>div{display:grid;grid-template-columns:6.5em 1fr;gap:14px;padding:14px 2px;border-bottom:1px solid var(--rule)}
+.ac-list>div:first-child{border-top:1px solid var(--rule)}
+.ac-list dt{font-size:.84rem;font-weight:700;color:var(--accent-dark)}
+.ac-list dd{margin:0;font-size:.89rem;color:var(--ink-mid);line-height:1.9}
+.access-map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--rule);background:var(--bg-deep);aspect-ratio:4 / 3}
+.access-map iframe{width:100%;height:100%;border:0;display:block}
 .faq-list{display:flex;flex-direction:column;gap:12px}
 .faq-item{background:#fff;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
 .faq-item>summary{cursor:pointer;list-style:none;position:relative;padding:18px 56px 18px 54px;font-family:var(--serif);font-size:1.02rem;color:var(--brown);line-height:1.6}
@@ -270,6 +282,7 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .split,.fee-main{grid-template-columns:1fr}
 .fee-headline{border-right:0;border-bottom:1px solid var(--accent-pale)}
 .fee-other-body,.promise-list{grid-template-columns:1fr}
+.access{grid-template-columns:1fr;gap:26px}
 .result-grid{grid-template-columns:1fr 1fr}
 .result-card.is-primary{grid-column:span 2}
 .flow-list{grid-template-columns:1fr 1fr;gap:26px 18px}
@@ -863,12 +876,16 @@ export default function Home() {
             <li className="flow-item">
               <span className="flow-num">1</span>
               <h3>LINEで書類の写真を送る</h3>
-              <p>お名前と、届いた書類の写真を送ってください。無料・24時間受付です。</p>
+              <p>お名前と、届いた書類の写真を送ってください。無料・24時間受付です。弁護士本人が確認し、原則24時間以内にご返信します。</p>
             </li>
             <li className="flow-item">
               <span className="flow-num">2</span>
-              <h3>弁護士が確認し、方針と費用をご説明</h3>
-              <p>弁護士本人が書類を確認し、取り得る対応・見込まれる解決額・費用の総額をお伝えします。原則24時間以内、土日祝も対応します。</p>
+              <h3>弁護士本人と法律相談<br /><span className="fl-tag">初回無料</span></h3>
+              <p>
+                担当する弁護士が直接、書類の内容・取り得る対応・見込まれる解決額・費用の総額をご説明します。
+                事務所へお越しいただくほか、<strong>遠方の方はGoogle Meetを使ったウェブ相談</strong>にも対応していますので、
+                全国どこからでもご相談いただけます。
+              </p>
             </li>
             <li className="flow-item">
               <span className="flow-num">3</span>
@@ -955,19 +972,11 @@ export default function Home() {
 
           <div className="office-grid">
             <div className="office-item">
-              <h3>事務所情報</h3>
-              <p className="office-name">冨田・島岡法律事務所</p>
-              <p>〒460-0008<br />愛知県名古屋市中区栄2-12-12<br />アーク栄白川パークビル3階305号</p>
-              <p>TEL: <a href="tel:0522041885">052-204-1885</a><br />FAX: 052-204-1886</p>
-            </div>
-            <div className="office-item">
-              <h3>対応エリア</h3>
-              <p>愛知県・岐阜県・三重県を中心とした東海圏</p>
-              <p>※ LINE・オンライン面談により、<strong>全国からご依頼いただけます</strong>。ご来所は必須ではありません。</p>
-            </div>
-            <div className="office-item">
               <h3>メディア掲載</h3>
               <p><strong>中日新聞掲載</strong>（2025年6月2日）<br />加害者側のインターネットトラブルを多く取り扱う弁護士としてコメント</p>
+            </div>
+            <div className="office-item">
+              <h3>監修実績</h3>
               <p><strong>ITベンゴプロ 監修</strong><br />インターネットトラブル関連の法的知識について専門家として監修</p>
             </div>
           </div>
@@ -975,7 +984,69 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           9. よくある質問
+           9. アクセス
+           ============================================================ */}
+      <section className="sec sec-access" id="access">
+        <div className="wrap">
+          <div className="sec-head">
+            <h2>アクセス</h2>
+            <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
+          </div>
+          <p className="sec-lead center">
+            ご来所は必須ではありません。遠方の方は<strong>Google Meetを使ったウェブ相談</strong>で全国どこからでもご相談いただけます。
+          </p>
+
+          <div className="access">
+            <div className="access-info">
+              <p className="ac-route">
+                <span className="ac-route-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+                  </svg>
+                </span>
+                地下鉄「伏見駅」5番出口から徒歩7分
+              </p>
+
+              <dl className="ac-list">
+                <div>
+                  <dt>所在地</dt>
+                  <dd>
+                    <strong>冨田・島岡法律事務所</strong><br />
+                    〒460-0008 愛知県名古屋市中区栄2-12-12<br />
+                    アーク栄白川パークビル3階305号
+                  </dd>
+                </div>
+                <div>
+                  <dt>お電話</dt>
+                  <dd>
+                    <a href="tel:0522041885" data-tel-cta="">052-204-1885</a>（受付 10:00〜19:00）<br />
+                    FAX 052-204-1886
+                  </dd>
+                </div>
+                <div>
+                  <dt>駐車場</dt>
+                  <dd>専用の駐車場はございません。近隣にコインパーキングが多数ありますので、そちらをご利用ください。</dd>
+                </div>
+                <div>
+                  <dt>ご相談方法</dt>
+                  <dd>ご来所のほか、Google Meetによるウェブ相談・お電話での相談にも対応しています。</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div className="access-map">
+              <iframe
+                src="https://maps.google.com/maps?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%842-12-12%20%E3%82%A2%E3%83%BC%E3%82%AF%E6%A0%84%E7%99%BD%E5%B7%9D%E3%83%91%E3%83%BC%E3%82%AF%E3%83%93%E3%83%AB&amp;z=17&amp;hl=ja&amp;output=embed"
+                title="冨田・島岡法律事務所の地図"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+           10. よくある質問
            ============================================================ */}
       <section className="sec sec-faq" id="faq">
         <div className="wrap narrow">
@@ -1115,7 +1186,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           10. 最終CTA
+           11. 最終CTA
            ============================================================ */}
       <section className="sec sec-final" id="contact">
         <div className="wrap narrow">
