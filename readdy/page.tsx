@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 /* ============================================================
    トレントLP（改修版）
    このファイルを app/page.tsx にそのまま上書きしてください。
@@ -321,11 +323,76 @@ html{scroll-padding-top:68px}}
 .split-col{padding:24px 22px}
 .talk-demo{padding:18px 14px 14px}
 .bubble{max-width:84%}}
+@keyframes lpRise{0%{opacity:0;transform:translateY(16px)}
+to{opacity:1;transform:none}}
+@keyframes lpBubble{0%{opacity:0;transform:translateY(12px) scale(.96)}
+to{opacity:1;transform:none}}
+.hero-eyebrow,.hero-title,.hero-lead,.hero-price,.hero-cta,.hero-figure,.hero-circles li{animation:lpRise .6s cubic-bezier(.22,.85,.3,1) backwards}
+.hero-eyebrow{animation-delay:.04s}
+.hero-title{animation-delay:.1s}
+.hero-figure{animation-delay:.22s}
+.hero-lead{animation-delay:.2s}
+.hero-price{animation-delay:.28s}
+.hero-cta{animation-delay:.36s}
+.hero-circles li:nth-child(1){animation-delay:.44s}
+.hero-circles li:nth-child(2){animation-delay:.52s}
+.hero-circles li:nth-child(3){animation-delay:.6s}
+.hero-circles li:nth-child(4){animation-delay:.68s}
+.anim-ready [data-reveal],.anim-ready [data-stagger]>*{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,.85,.3,1)}
+.anim-ready [data-reveal].is-in,.anim-ready [data-stagger].is-in>*{opacity:1;transform:none}
+.anim-ready [data-stagger].is-in>*:nth-child(2){transition-delay:.09s}
+.anim-ready [data-stagger].is-in>*:nth-child(3){transition-delay:.18s}
+.anim-ready [data-stagger].is-in>*:nth-child(4){transition-delay:.27s}
+.anim-ready [data-stagger].is-in>*:nth-child(5){transition-delay:.36s}
+.anim-ready [data-talk]>.talk-row{opacity:0}
+.anim-ready [data-talk].is-in>.talk-row{opacity:1;animation:lpBubble .5s cubic-bezier(.22,.85,.3,1) backwards}
+.anim-ready [data-talk].is-in>.talk-row:nth-child(1){animation-delay:.15s}
+.anim-ready [data-talk].is-in>.talk-row:nth-child(2){animation-delay:.75s}
+.anim-ready [data-talk].is-in>.talk-row:nth-child(3){animation-delay:1.35s}
+.anim-ready [data-talk].is-in>.talk-row:nth-child(4){animation-delay:1.8s}
+.anim-ready [data-talk].is-in>.talk-row:nth-child(5){animation-delay:2.4s}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
 .btn{transition:none}
-.btn:hover{transform:none}}`;
+.btn:hover{transform:none}
+.hero-eyebrow,.hero-title,.hero-lead,.hero-price,.hero-cta,.hero-figure,.hero-circles li,.anim-ready [data-reveal],.anim-ready [data-stagger]>*,.anim-ready [data-talk]>.talk-row,.anim-ready [data-talk].is-in>.talk-row{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}}`;
 
 export default function Home() {
+  /* スクロールで要素を出す。
+     anim-ready は JavaScript が動いたときだけ付くので、
+     読み込めなかった場合は全て最初から表示されたままになる。 */
+  useEffect(() => {
+    const targets = document.querySelectorAll('[data-reveal], [data-stagger], [data-talk]');
+    if (!targets.length || !('IntersectionObserver' in window)) return;
+
+    const root = document.documentElement;
+    root.classList.add('anim-ready');
+
+    // すでに画面内にあるものは即表示（読み込み直後のちらつき防止）
+    targets.forEach((el) => {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-in');
+    });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: '0px 0px -12% 0px' },
+    );
+
+    targets.forEach((el) => {
+      if (!el.classList.contains('is-in')) io.observe(el);
+    });
+
+    return () => {
+      io.disconnect();
+      root.classList.remove('anim-ready');
+    };
+  }, []);
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
@@ -482,11 +549,11 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-empathy">
         <div className="wrap narrow">
-          <div className="sec-head">
+          <div className="sec-head" data-reveal>
             <h2>このような方から、ご相談をいただいています</h2>
             <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
           </div>
-          <ul className="check-list">
+          <ul className="check-list" data-stagger>
             <li>突然、書類が届いて戸惑っている</li>
             <li>家族や職場には知らせたくない</li>
             <li>弁護士に相談するのは初めてで、少し不安がある</li>
@@ -494,7 +561,7 @@ export default function Home() {
             <li>費用がいくらかかるのか分からず、踏み出せずにいる</li>
           </ul>
 
-          <div className="ally">
+          <div className="ally" data-reveal>
             <div className="ally-inner">
               <p className="ally-lead">
                 トレントの仕組みをよく知らないまま使ってしまった——<br />
@@ -521,13 +588,13 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-promise">
         <div className="wrap">
-          <div className="sec-head">
+          <div className="sec-head" data-reveal>
             <h2>3つのお約束</h2>
             <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
           </div>
           <p className="sec-lead center">ご依頼いただいた方に、事務所として次の3つをお約束します。</p>
 
-          <ul className="promise-list">
+          <ul className="promise-list" data-stagger>
             <li className="promise">
               <span className="pr-num">PROMISE 01</span>
               <h3 className="pr-title"><em>「じっくり」</em>お聞きします</h3>
@@ -569,7 +636,7 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-delegate">
         <div className="wrap">
-          <div className="sec-head">
+          <div className="sec-head" data-reveal>
             <h2>お願いするのは、<br />書類の写真を送っていただくことだけ。</h2>
             <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
           </div>
@@ -578,7 +645,7 @@ export default function Home() {
             直接、電話や手紙のやり取りをしていただく必要はありません。
           </p>
 
-          <div className="split">
+          <div className="split" data-stagger>
             <div className="split-col split-you">
               <h3><span className="split-tag">お願いすること</span></h3>
               <ol className="do-list">
@@ -607,7 +674,7 @@ export default function Home() {
           {/* LINE相談のイメージ */}
           <div className="talk-demo">
             <p className="talk-demo-title">ご相談は、こんなやり取りから始まります</p>
-            <div className="talk">
+            <div className="talk" data-talk>
               <div className="talk-row talk-you">
                 <div className="talk-avatar" aria-hidden="true">弁</div>
                 <div className="bubble bubble-you">
@@ -669,7 +736,7 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-fee" id="fee">
         <div className="wrap">
-          <div className="sec-head">
+          <div className="sec-head" data-reveal>
             <h2>費用は、<em>1社あたり33万円</em>だけ。</h2>
             <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
           </div>
@@ -678,7 +745,7 @@ export default function Home() {
             成功報酬はいただきませんので、<strong>示談がまとまっても、金額が下がっても、追加のご負担は発生しません。</strong>
           </p>
 
-          <div className="fee-main">
+          <div className="fee-main" data-reveal>
             <div className="fee-headline">
               <p className="fee-plan-name">標準対応プラン<span>（おすすめ）</span></p>
               <p className="fee-amount"><span className="fee-num">33</span><span className="fee-unit">万円</span><span className="fee-tax">（税込）</span></p>
@@ -698,7 +765,7 @@ export default function Home() {
             </ul>
           </div>
 
-          <div className="fee-table-block">
+          <div className="fee-table-block" data-reveal>
             <h3 className="fee-table-title">複数社から請求が届いた場合も、半額でお受けします</h3>
             <p className="fee-table-lead">
               多くの方は1社からのご請求ですが、まれに別の作品・別の権利者から、
@@ -787,7 +854,7 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-results">
         <div className="wrap">
-          <div className="sec-head">
+          <div className="sec-head" data-reveal>
             <h2>これまでの解決事例</h2>
             <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
           </div>
@@ -797,7 +864,7 @@ export default function Home() {
             事案の内容と請求の根拠を精査したうえで、適正な金額での解決を目指します。
           </p>
 
-          <div className="result-grid">
+          <div className="result-grid" data-stagger>
             <article className="result-card is-primary">
               <p className="rc-tag">示談交渉</p>
               <h3 className="rc-title">トレントアップロードで88万円請求</h3>
@@ -866,13 +933,13 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-flow" id="flow">
         <div className="wrap">
-          <div className="sec-head">
+          <div className="sec-head" data-reveal>
             <h2>解決までの流れ</h2>
             <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
           </div>
           <p className="sec-lead center">ご相談から解決まで、4つのステップで進みます。</p>
 
-          <ol className="flow-list">
+          <ol className="flow-list" data-stagger>
             <li className="flow-item">
               <span className="flow-num">1</span>
               <h3>LINEで書類の写真を送る</h3>
@@ -911,12 +978,12 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-lawyer">
         <div className="wrap">
-          <div className="sec-head">
+          <div className="sec-head" data-reveal>
             <h2>担当する弁護士</h2>
             <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
           </div>
 
-          <div className="lawyer">
+          <div className="lawyer" data-reveal>
             <div className="lawyer-photo">
               {/* 画像差し替え: 弁護士本人の写真 */}
               <img src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="400" height="500" loading="lazy" />
@@ -970,7 +1037,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="office-grid">
+          <div className="office-grid" data-stagger>
             <div className="office-item">
               <h3>メディア掲載</h3>
               <p><strong>中日新聞掲載</strong>（2025年6月2日）<br />加害者側のインターネットトラブルを多く取り扱う弁護士としてコメント</p>
@@ -988,7 +1055,7 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-access" id="access">
         <div className="wrap">
-          <div className="sec-head">
+          <div className="sec-head" data-reveal>
             <h2>アクセス</h2>
             <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
           </div>
@@ -996,7 +1063,7 @@ export default function Home() {
             ご来所は必須ではありません。遠方の方は<strong>Google Meetを使ったウェブ相談</strong>で全国どこからでもご相談いただけます。
           </p>
 
-          <div className="access">
+          <div className="access" data-stagger>
             <div className="access-info">
               <p className="ac-route">
                 <span className="ac-route-ico" aria-hidden="true">
@@ -1050,12 +1117,12 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-faq" id="faq">
         <div className="wrap narrow">
-          <div className="sec-head">
+          <div className="sec-head" data-reveal>
             <h2>よくあるご質問</h2>
             <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
           </div>
 
-          <div className="faq-list">
+          <div className="faq-list" data-reveal>
             <details className="faq-item">
               <summary>家族や職場に知られませんか？</summary>
               <div className="faq-body">

@@ -81,6 +81,40 @@ var CONFIG = {
     });
   });
 
+  /* --- スクロールで要素を出す ----------------------------------- */
+  initReveal();
+
+  function initReveal() {
+    var targets = document.querySelectorAll('[data-reveal], [data-stagger], [data-talk]');
+    if (!targets.length) return;
+
+    // IntersectionObserver が無ければ何もしない。
+    // anim-ready を付けなければ全て最初から表示されたままになる。
+    if (!('IntersectionObserver' in window)) return;
+
+    document.documentElement.classList.add('anim-ready');
+
+    // すでに画面内にあるものは即表示する。
+    // 隠してから出し直すと、読み込み直後にちらつくため。
+    Array.prototype.forEach.call(targets, function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('is-in');
+      }
+    });
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+
+    Array.prototype.forEach.call(targets, function (el) {
+      if (!el.classList.contains('is-in')) io.observe(el);
+    });
+  }
+
   /* --- 計測ヘルパー -------------------------------------------- */
   function track(eventName, params) {
     if (typeof window.gtag === 'function') {

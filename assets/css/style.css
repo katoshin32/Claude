@@ -915,8 +915,84 @@ ul.do-list li::before {
   .bubble { max-width: 84%; }
 }
 
+/* ------------------------------------------------------------
+   アニメーション
+
+   方針：動きを全体に散らさない。ファーストビューの入場、
+   スクロールでの控えめな出現、LINEトークの順次表示の3つに絞る。
+   とくにトークは「送ると返事が来る」体験そのものを見せるため、
+   装飾ではなく説明として動かしている。
+
+   .anim-ready は JavaScript が動いたときだけ付く。
+   付かなければ全て最初から表示されたままなので、
+   スクリプトが読み込めなくても本文が消えることはない。
+   ------------------------------------------------------------ */
+@keyframes lpRise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes lpBubble {
+  from { opacity: 0; transform: translateY(12px) scale(.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ファーストビューは読み込み直後に順に出る。JSは使わない */
+.hero-eyebrow, .hero-title, .hero-lead, .hero-price, .hero-cta,
+.hero-figure, .hero-circles li {
+  animation: lpRise .6s cubic-bezier(.22, .85, .3, 1) backwards;
+}
+.hero-eyebrow { animation-delay: .04s; }
+.hero-title   { animation-delay: .10s; }
+.hero-figure  { animation-delay: .22s; }
+.hero-lead    { animation-delay: .20s; }
+.hero-price   { animation-delay: .28s; }
+.hero-cta     { animation-delay: .36s; }
+.hero-circles li:nth-child(1) { animation-delay: .44s; }
+.hero-circles li:nth-child(2) { animation-delay: .52s; }
+.hero-circles li:nth-child(3) { animation-delay: .60s; }
+.hero-circles li:nth-child(4) { animation-delay: .68s; }
+
+/* スクロールで現れる要素 */
+.anim-ready [data-reveal],
+.anim-ready [data-stagger] > * {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .65s ease, transform .65s cubic-bezier(.22, .85, .3, 1);
+}
+.anim-ready [data-reveal].is-in,
+.anim-ready [data-stagger].is-in > * { opacity: 1; transform: none; }
+
+.anim-ready [data-stagger].is-in > *:nth-child(2) { transition-delay: .09s; }
+.anim-ready [data-stagger].is-in > *:nth-child(3) { transition-delay: .18s; }
+.anim-ready [data-stagger].is-in > *:nth-child(4) { transition-delay: .27s; }
+.anim-ready [data-stagger].is-in > *:nth-child(5) { transition-delay: .36s; }
+
+/* LINEのやり取りは、実際の会話の間合いで順に出す */
+.anim-ready [data-talk] > .talk-row { opacity: 0; }
+.anim-ready [data-talk].is-in > .talk-row {
+  opacity: 1;
+  animation: lpBubble .5s cubic-bezier(.22, .85, .3, 1) backwards;
+}
+.anim-ready [data-talk].is-in > .talk-row:nth-child(1) { animation-delay: .15s; }
+.anim-ready [data-talk].is-in > .talk-row:nth-child(2) { animation-delay: .75s; }
+.anim-ready [data-talk].is-in > .talk-row:nth-child(3) { animation-delay: 1.35s; }
+.anim-ready [data-talk].is-in > .talk-row:nth-child(4) { animation-delay: 1.80s; }
+.anim-ready [data-talk].is-in > .talk-row:nth-child(5) { animation-delay: 2.40s; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn { transition: none; }
   .btn:hover { transform: none; }
+
+  /* 動きを減らす設定の方には一切動かさない */
+  .hero-eyebrow, .hero-title, .hero-lead, .hero-price, .hero-cta,
+  .hero-figure, .hero-circles li,
+  .anim-ready [data-reveal],
+  .anim-ready [data-stagger] > *,
+  .anim-ready [data-talk] > .talk-row,
+  .anim-ready [data-talk].is-in > .talk-row {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }
