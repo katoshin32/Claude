@@ -265,40 +265,65 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .sec-lawyer { background: var(--bg-warm); }
 .sec-faq { background: var(--bg); }
 
-.eyebrow {
-  font-size: .7rem; letter-spacing: .22em; color: var(--accent);
-  font-weight: 700; margin-bottom: 10px;
+/* 見出しはアクセント色の明朝＋罫線。罫線中央の切り欠きが下へ視線を送る */
+.sec-head { text-align: center; margin-bottom: 38px; }
+.sec-head h2 {
+  font-size: clamp(1.28rem, 2.6vw, 1.85rem);
+  color: var(--accent); letter-spacing: .1em;
+  margin-bottom: 14px;
 }
-.sec-title {
-  font-size: clamp(1.45rem, 2.7vw, 2rem);
-  color: var(--brown); margin-bottom: 18px;
+.sec-head h2 em { font-style: normal; color: var(--brown); }
+.sec-rule {
+  display: block; width: min(100%, 420px); height: 16px;
+  margin: 0 auto; color: var(--accent);
 }
-.sec-title.center, .sec-lead.center { text-align: center; }
-.sec-title.center { margin-left: auto; margin-right: auto; }
-.sec-title em { font-style: normal; color: var(--accent-dark); }
 .sec-lead {
   color: var(--ink-mid); max-width: 44em; margin-bottom: 36px;
 }
-.sec-lead.center { margin-left: auto; margin-right: auto; }
-.sec-title.center + .sec-lead.center { margin-top: 0; }
-.eyebrow + .sec-title.center { text-align: center; }
-.sec .eyebrow { text-align: center; }
-.sec-empathy .eyebrow, .sec-empathy .sec-title { text-align: left; }
+.sec-lead.center { margin-left: auto; margin-right: auto; text-align: center; }
 
 /* ------------------------------------------------------------
    2. 共感
    ------------------------------------------------------------ */
-.check-list { margin-bottom: 36px; }
+/* 1項目=1カード。区切り線を並べるより圧迫感が少ない */
+.check-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 44px; }
 .check-list li {
-  position: relative; padding: 13px 0 13px 34px;
-  border-bottom: 1px solid var(--rule);
-  color: var(--ink-mid);
+  display: flex; align-items: center; gap: 16px;
+  background: var(--bg-warm); border-radius: 10px;
+  padding: 17px 26px;
+  color: var(--brown); font-weight: 500; line-height: 1.7;
 }
 .check-list li::before {
-  content: ""; position: absolute; left: 4px; top: 21px;
-  width: 14px; height: 8px;
-  border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
-  transform: rotate(-45deg);
+  content: ""; flex: 0 0 auto; width: 23px; height: 23px;
+  background: no-repeat center / contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C0A16A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='3'/%3E%3Cpath d='M8 12.4l2.9 2.9 5.4-5.9'/%3E%3C/svg%3E");
+}
+
+/* 「味方です」を伝える枠。外枠と内枠の二重で、宣言として見せる */
+.ally {
+  background: #F1E3CB; border-radius: var(--radius);
+  padding: 16px;
+}
+.ally-inner {
+  background: rgba(255, 255, 255, .92);
+  border: 1px solid var(--accent-pale); border-radius: 9px;
+  padding: 36px 32px; text-align: center;
+}
+.ally-lead {
+  color: var(--brown-soft); font-size: .93rem; line-height: 2; margin-bottom: 22px;
+}
+.ally-punch {
+  font-family: var(--serif); color: var(--accent-dark); font-weight: 600;
+  font-size: clamp(1.1rem, 2.3vw, 1.5rem); line-height: 1.85; letter-spacing: .03em;
+}
+/* 「味方で／す。」のような割れ方を防ぐ */
+.ally-punch span { display: inline-block; }
+.ally-punch em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, rgba(184, 115, 51, .2) 62%);
+}
+.ally-note {
+  margin-top: 18px; font-size: .78rem; color: var(--ink-soft); line-height: 1.9;
 }
 
 .callout-warm {

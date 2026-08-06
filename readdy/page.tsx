@@ -84,20 +84,22 @@ ul,ol{margin:0;padding:0;list-style:none}
 .sec-flow{background:var(--bg)}
 .sec-lawyer{background:var(--bg-warm)}
 .sec-faq{background:var(--bg)}
-.eyebrow{font-size:.7rem;letter-spacing:.22em;color:var(--accent);font-weight:700;margin-bottom:10px}
-.sec-title{font-size:clamp(1.45rem,2.7vw,2rem);color:var(--brown);margin-bottom:18px}
-.sec-title.center,.sec-lead.center{text-align:center}
-.sec-title.center{margin-left:auto;margin-right:auto}
-.sec-title em{font-style:normal;color:var(--accent-dark)}
+.sec-head{text-align:center;margin-bottom:38px}
+.sec-head h2{font-size:clamp(1.28rem,2.6vw,1.85rem);color:var(--accent);letter-spacing:.1em;margin-bottom:14px}
+.sec-head h2 em{font-style:normal;color:var(--brown)}
+.sec-rule{display:block;width:min(100%,420px);height:16px;margin:0 auto;color:var(--accent)}
 .sec-lead{color:var(--ink-mid);max-width:44em;margin-bottom:36px}
-.sec-lead.center{margin-left:auto;margin-right:auto}
-.sec-title.center+.sec-lead.center{margin-top:0}
-.eyebrow+.sec-title.center{text-align:center}
-.sec .eyebrow{text-align:center}
-.sec-empathy .eyebrow,.sec-empathy .sec-title{text-align:left}
-.check-list{margin-bottom:36px}
-.check-list li{position:relative;padding:13px 0 13px 34px;border-bottom:1px solid var(--rule);color:var(--ink-mid)}
-.check-list li:before{content:"";position:absolute;left:4px;top:21px;width:14px;height:8px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.sec-lead.center{margin-left:auto;margin-right:auto;text-align:center}
+.check-list{display:flex;flex-direction:column;gap:12px;margin-bottom:44px}
+.check-list li{display:flex;align-items:center;gap:16px;background:var(--bg-warm);border-radius:10px;padding:17px 26px;color:var(--brown);font-weight:500;line-height:1.7}
+.check-list li:before{content:"";flex:0 0 auto;width:23px;height:23px;background:no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C0A16A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='3'/%3E%3Cpath d='M8 12.4l2.9 2.9 5.4-5.9'/%3E%3C/svg%3E")}
+.ally{background:#f1e3cb;border-radius:var(--radius);padding:16px}
+.ally-inner{background:#ffffffeb;border:1px solid var(--accent-pale);border-radius:9px;padding:36px 32px;text-align:center}
+.ally-lead{color:var(--brown-soft);font-size:.93rem;line-height:2;margin-bottom:22px}
+.ally-punch{font-family:var(--serif);color:var(--accent-dark);font-weight:600;font-size:clamp(1.1rem,2.3vw,1.5rem);line-height:1.85;letter-spacing:.03em}
+.ally-punch span{display:inline-block}
+.ally-punch em{font-style:normal;background:linear-gradient(transparent 62%,#b8733333 62%)}
+.ally-note{margin-top:18px;font-size:.78rem;color:var(--ink-soft);line-height:1.9}
 .callout-warm{background:#fff;border:1px solid var(--accent-pale);border-left:4px solid var(--accent);border-radius:var(--radius);padding:28px 32px}
 .callout-warm h3{font-size:1.2rem;color:var(--accent-dark);margin-bottom:12px}
 .callout-warm p{color:var(--ink-mid)}
@@ -459,36 +461,37 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-empathy">
         <div className="wrap narrow">
-          <p className="eyebrow">IMPORTANT</p>
-          <h2 className="sec-title">同じご相談を、<br />数多くお受けしています。</h2>
-          <p className="sec-lead">
-            お手元の書類には、相手方が誰で、何を求めているのかが書かれています。
-            それを拝見すれば、<strong>これからどうなるのか、どう対応すればよいのか</strong>をお伝えできます。
-            まずは書類を見せていただくところから始めましょう。
-          </p>
-
+          <div className="sec-head">
+            <h2>このような方から、ご相談をいただいています</h2>
+            <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
+          </div>
           <ul className="check-list">
             <li>突然、書類が届いて戸惑っている</li>
             <li>家族や職場には知らせたくない</li>
             <li>弁護士に相談するのは初めてで、少し不安がある</li>
             <li>自分で相手方とやり取りするのは避けたい</li>
+            <li>費用がいくらかかるのか分からず、踏み出せずにいる</li>
           </ul>
 
-          <div className="callout-warm">
-            <h3>私たちは、あなたを責めません。</h3>
-            <p>
-              トレントの仕組みをよく理解しないまま使ってしまった、という方がほとんどです。
-              反省されている方が、きちんと手続きを終えて生活を立て直す——そのお手伝いをするのが私たちの仕事です。
-            </p>
-            <p>
-              ご相談の内容は<strong>弁護士の守秘義務</strong>により固く守られます。当事務所からご家族や勤務先へ
-              連絡することは一切ありません。
-            </p>
-            <p className="callout-note">
-              ※ ご相談・ご依頼にあたっては、ご本人確認のためお名前・ご連絡先をお伺いします
-              （匿名でのご依頼はお受けできません）。お伺いした情報が外部に伝わることはありません。
-            </p>
+          <div className="ally">
+            <div className="ally-inner">
+              <p className="ally-lead">
+                トレントの仕組みをよく知らないまま使ってしまった——<br />
+                そういう方から、私たちは数多くのご相談をお受けしています。<br />
+                あなたが抱えている状況は、決して特別なことではありません。
+              </p>
+              <p className="ally-punch">
+                <span>ひとりで抱え込まず、</span><span>頼ってしまってください。</span><br />
+                <span>ご相談いただいたその時から、</span><span>私たちは<em>あなたの味方</em>です。</span>
+              </p>
+            </div>
           </div>
+
+          <p className="ally-note">
+            ※ ご相談の内容は弁護士の守秘義務により固く守られます。当事務所からご家族や勤務先へ
+            連絡することは一切ありません。ご相談・ご依頼にあたっては、ご本人確認のため
+            お名前・ご連絡先をお伺いします（匿名でのご依頼はお受けできません）。
+          </p>
         </div>
       </section>
 
@@ -497,8 +500,10 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-delegate">
         <div className="wrap">
-          <p className="eyebrow">FULL SUPPORT</p>
-          <h2 className="sec-title center">お願いするのは、<br />書類の写真を送っていただくことだけ。</h2>
+          <div className="sec-head">
+            <h2>お願いするのは、<br />書類の写真を送っていただくことだけ。</h2>
+            <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
+          </div>
           <p className="sec-lead center">
             ご依頼後、相手方（権利者・法律事務所）との窓口はすべて弁護士がお引き受けします。
             直接、電話や手紙のやり取りをしていただく必要はありません。
@@ -595,8 +600,10 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-fee" id="fee">
         <div className="wrap">
-          <p className="eyebrow">FEE</p>
-          <h2 className="sec-title center">費用は、<em>1社あたり33万円</em>だけ。</h2>
+          <div className="sec-head">
+            <h2>費用は、<em>1社あたり33万円</em>だけ。</h2>
+            <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
+          </div>
           <p className="sec-lead center">
             最初にこの着手金をお預かりするだけで、あとから費用が増えることはありません。
             成功報酬はいただきませんので、<strong>示談がまとまっても、金額が下がっても、追加のご負担は発生しません。</strong>
@@ -711,8 +718,10 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-results">
         <div className="wrap">
-          <p className="eyebrow">RESULTS</p>
-          <h2 className="sec-title center">これまでの解決事例</h2>
+          <div className="sec-head">
+            <h2>これまでの解決事例</h2>
+            <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
+          </div>
           <p className="sec-lead center">
             インターネットトラブル事案の解決実績は100件以上。
             <strong>すべての案件が0円になるわけではありません。</strong>
@@ -788,8 +797,10 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-flow" id="flow">
         <div className="wrap">
-          <p className="eyebrow">PROCESS</p>
-          <h2 className="sec-title center">解決までの流れ</h2>
+          <div className="sec-head">
+            <h2>解決までの流れ</h2>
+            <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
+          </div>
           <p className="sec-lead center">ご相談から解決まで、4つのステップで進みます。</p>
 
           <ol className="flow-list">
@@ -827,8 +838,10 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-lawyer">
         <div className="wrap">
-          <p className="eyebrow">LAWYER</p>
-          <h2 className="sec-title center">担当する弁護士</h2>
+          <div className="sec-head">
+            <h2>担当する弁護士</h2>
+            <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
+          </div>
 
           <div className="lawyer">
             <div className="lawyer-photo">
@@ -910,8 +923,10 @@ export default function Home() {
            ============================================================ */}
       <section className="sec sec-faq" id="faq">
         <div className="wrap narrow">
-          <p className="eyebrow">FAQ</p>
-          <h2 className="sec-title center">よくあるご質問</h2>
+          <div className="sec-head">
+            <h2>よくあるご質問</h2>
+            <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
+          </div>
 
           <div className="faq-list">
             <details className="faq-item">
