@@ -7,8 +7,12 @@
 index.html
 assets/css/style.css
 assets/js/main.js
-assets/img/lawyer.jpg   ← プレースホルダー。実物の写真に差し替えてください
+assets/img/lawyer.jpg   ← 現行LPからの複製。元データに差し替えてください
 ```
+
+弁護士写真は、現行LPの画面を取り込んだものを暫定的に入れてあります。
+表示確認には使えますが解像度が足りないため、公開前に元の画像ファイルに
+差し替えてください（推奨 800×1000px 前後）。
 
 ---
 
@@ -18,7 +22,7 @@ assets/img/lawyer.jpg   ← プレースホルダー。実物の写真に差し�
 |---|---|---|---|
 | 1 | LINE友だち追加URL | `assets/js/main.js` の `CONFIG.lineUrl` と `index.html` 内6箇所 | `https://lin.ee/XXXXXXX` |
 | 2 | Google広告コンバージョンラベル | `assets/js/main.js` の `CONFIG.gadsConversionLabel` | 空（未送信） |
-| 3 | 弁護士写真 | `assets/img/lawyer.jpg` | プレースホルダー画像 |
+| 3 | 弁護士写真 | `assets/img/lawyer.jpg` | 現行LPから複製した低解像度版（700×875） |
 | 4 | フォームURL | `index.html` の `href="/contact/"` | 仮パス |
 
 LINE URLは以下のコマンドで一括置換できます。
