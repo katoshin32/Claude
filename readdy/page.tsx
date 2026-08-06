@@ -1,20 +1,16 @@
-import { useEffect } from "react";
+'use client';
 
 /* ============================================================
-   冨田・島岡法律事務所 / トレントLP
-   Readdy のコードエディタにそのまま貼り付けて使えます。
+   トレントLP（改修版）
+   このファイルを app/page.tsx にそのまま上書きしてください。
+
+   layout.tsx 側は変更不要です。
+     ・Googleタグ（GA4 / 広告）はそのまま効きます
+     ・LINEクリックのコンバージョン計測（line-cv）もそのまま効きます
+     ・画面下の固定CTA（FloatingCTABar）もそのまま表示されます
    ============================================================ */
 
-/* 弁護士写真。Readdy に既にアップロード済みの画像URLに差し替えてください。
-   現行LPで使っている写真のURLをそのまま指定できます。 */
-const LAWYER_PHOTO = "/lawyer.jpg";
-
-/* LINE友だち追加URL */
-const LINE_URL = "https://lin.ee/Mc3bGjk";
-
-/* Google広告のコンバージョンラベル（例: "AW-1234567890/AbCdEfGh"）。
-   空のままでもエラーにはならず、送信しないだけです。 */
-const GADS_CONVERSION_LABEL = "";
+const LINE_URL = 'https://lin.ee/Mc3bGjk';
 
 const STYLES = `/* ============================================================
    冨田・島岡法律事務所 / トレントLP
@@ -46,8 +42,8 @@ const STYLES = `/* ============================================================
   --rule:         #E9DCCA;
   --red:          #B0402E;
 
-  --serif: "Hiragino Mincho ProN", "HiraMinProN-W3", "Yu Mincho", "YuMincho", "Noto Serif JP", "MS PMincho", serif;
-  --sans:  "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP", "Meiryo", sans-serif;
+  --serif: var(--font-noto-serif-jp, "Hiragino Mincho ProN"), "Hiragino Mincho ProN", "HiraMinProN-W3", "Yu Mincho", "YuMincho", "Noto Serif JP", "MS PMincho", serif;
+  --sans:  var(--font-noto-sans-jp, "Hiragino Sans"), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP", "Meiryo", sans-serif;
 
   --wrap: 1080px;
   --radius: 14px;
@@ -733,24 +729,6 @@ ul.do-list li::before {
 .footer-copy { font-size: .7rem; color: #8E7B68; }
 
 /* ------------------------------------------------------------
-   スマホ固定CTA
-   ------------------------------------------------------------ */
-/* 表示は .is-visible クラスで制御する。hidden 属性だけに頼ると
-   下のメディアクエリの display 指定に上書きされて常時表示になる */
-.sticky-cta {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
-  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-  background: rgba(253, 250, 246, .95);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid var(--rule);
-  display: none;
-  transform: translateY(100%);
-  transition: transform .25s ease;
-}
-.sticky-cta.is-visible { transform: translateY(0); }
-.sticky-cta .btn { padding: 14px 20px; margin: 0 auto; }
-
-/* ------------------------------------------------------------
    レスポンシブ
    ------------------------------------------------------------ */
 @media (max-width: 900px) {
@@ -771,11 +749,6 @@ ul.do-list li::before {
 @media (max-width: 768px) {
   .header-nav { display: none; }
   .header-cta { display: none; }
-  .sticky-cta { display: block; }
-  body { padding-bottom: 76px; }
-  @media (prefers-reduced-motion: reduce) {
-    .sticky-cta { transition: none; }
-  }
   html { scroll-padding-top: 68px; }
 }
 
@@ -826,96 +799,10 @@ ul.do-list li::before {
 }
 `;
 
-const STRUCTURED_DATA = `{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "冨田・島岡法律事務所",
-  "description": "トレント（BitTorrent）の意見照会書・通知書・請求書が届いた方向けの著作権侵害対応・示談交渉。弁護士費用は1社あたり着手金33万円のみ、成功報酬0円。",
-  "url": "https://tomidashimaoka-torrent.com/",
-  "telephone": "+81-52-204-1885",
-  "faxNumber": "+81-52-204-1886",
-  "address": {
-    "@type": "PostalAddress",
-    "postalCode": "460-0008",
-    "addressRegion": "愛知県",
-    "addressLocality": "名古屋市中区",
-    "streetAddress": "栄2-12-12 アーク栄白川パークビル3階305号",
-    "addressCountry": "JP"
-  },
-  "areaServed": "JP",
-  "openingHours": "Mo-Fr 10:00-19:00",
-  "employee": {
-    "@type": "Person",
-    "name": "加藤 信",
-    "jobTitle": "弁護士",
-    "memberOf": { "@type": "Organization", "name": "愛知県弁護士会" }
-  }
-}`;
-
-declare global {
-  interface Window { gtag?: (...args: unknown[]) => void }
-}
-
-export default function App() {
-  useEffect(() => {
-    const track = (name: string, params: Record<string, unknown>) => {
-      window.gtag?.("event", name, params);
-    };
-
-    const cleanups: Array<() => void> = [];
-
-    /* LINEボタン: クリックを計測する */
-    document.querySelectorAll<HTMLAnchorElement>("[data-line-cta]").forEach((btn, i) => {
-      const section = btn.closest("section, header, .sticky-cta");
-      const position = section ? section.id || section.className.split(" ")[0] : "unknown";
-      const onClick = () => {
-        track("line_friend_add", { cta_position: position, cta_index: i });
-        if (GADS_CONVERSION_LABEL) {
-          track("conversion", { send_to: GADS_CONVERSION_LABEL });
-        }
-      };
-      btn.addEventListener("click", onClick);
-      cleanups.push(() => btn.removeEventListener("click", onClick));
-    });
-
-    /* 電話タップを計測する */
-    document.querySelectorAll<HTMLAnchorElement>("[data-tel-cta]").forEach((btn) => {
-      const onClick = () => track("tel_tap", {});
-      btn.addEventListener("click", onClick);
-      cleanups.push(() => btn.removeEventListener("click", onClick));
-    });
-
-    /* FAQ: どの質問が開かれたかを計測する */
-    document.querySelectorAll<HTMLDetailsElement>(".faq-item").forEach((item) => {
-      const onToggle = () => {
-        if (!item.open) return;
-        track("faq_open", { question: item.querySelector("summary")?.textContent?.trim() ?? "" });
-      };
-      item.addEventListener("toggle", onToggle);
-      cleanups.push(() => item.removeEventListener("toggle", onToggle));
-    });
-
-    /* スマホ固定CTA: ファーストビューを過ぎたら出す */
-    const sticky = document.getElementById("stickyCta");
-    const hero = document.querySelector(".hero");
-    if (sticky && hero) {
-      sticky.hidden = false;
-      const observer = new IntersectionObserver(
-        (entries) => sticky.classList.toggle("is-visible", !entries[0].isIntersecting),
-        { rootMargin: "-80px 0px 0px 0px" },
-      );
-      observer.observe(hero);
-      cleanups.push(() => observer.disconnect());
-    }
-
-    return () => cleanups.forEach((fn) => fn());
-  }, []);
-
+export default function Home() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: STRUCTURED_DATA }} />
-
       {/* ============================================================
            ヘッダー
            ============================================================ */}
@@ -986,7 +873,7 @@ export default function App() {
 
           <div className="hero-figure">
             {/* 画像差し替え: 弁護士本人の写真（推奨 800×1000px 前後） */}
-            <img src={LAWYER_PHOTO} alt="加藤信弁護士" width="480" height="600" loading="eager" />
+            <img src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="480" height="600" loading="eager" />
             <p className="hero-figure-cap">加藤 信 弁護士（愛知県弁護士会所属）</p>
           </div>
         </div>
@@ -1371,7 +1258,7 @@ export default function App() {
           <div className="lawyer">
             <div className="lawyer-photo">
               {/* 画像差し替え: 弁護士本人の写真 */}
-              <img src={LAWYER_PHOTO} alt="加藤信弁護士" width="400" height="500" loading="lazy" />
+              <img src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="400" height="500" loading="lazy" />
             </div>
             <div className="lawyer-body">
               <p className="lawyer-name">加藤 信 <span>弁護士</span></p>
@@ -1601,7 +1488,7 @@ export default function App() {
           <div className="final-alt" id="contact-alt">
             <p className="final-alt-title">LINEをお使いでない方は、こちらから</p>
             <div className="final-alt-btns">
-              <a className="btn btn-ghost" href="/contact/">
+              <a className="btn btn-ghost" href="/contact">
                 <span className="btn-main">お問い合わせフォーム</span>
                 <span className="btn-sub">24時間受付</span>
               </a>
@@ -1631,18 +1518,10 @@ export default function App() {
             <a href="#fee">料金</a>
             <a href="#flow">解決の流れ</a>
             <a href="#faq">よくある質問</a>
-            <a href="/privacy/">プライバシーポリシー</a>
           </nav>
           <p className="footer-copy">&copy; 冨田・島岡法律事務所</p>
         </div>
       </footer>
-
-      {/* スマホ固定CTA */}
-      <div className="sticky-cta" id="stickyCta" hidden>
-        <a className="btn btn-line btn-block" href={LINE_URL} target="_blank" rel="noopener" data-line-cta="">
-          <span className="ico-line" aria-hidden="true"></span>LINEで無料相談する
-        </a>
-      </div>
     </>
   );
 }
