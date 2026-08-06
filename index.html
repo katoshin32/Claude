@@ -16,6 +16,30 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="stylesheet" href="assets/css/style.css">
+
+<!-- ============================================================
+     計測タグをここに貼ってください（重要）
+
+     現行サイトに入っているGoogleタグ（gtag.js）を、そのままこの位置に
+     移してください。ここが空のままだと、ページを差し替えた時点で
+     広告のコンバージョン計測が止まります。
+
+     assets/js/main.js は window.gtag があれば以下を自動送信します。
+       ・line_friend_add … LINEボタンのクリック
+       ・tel_tap        … 電話番号のタップ
+       ・faq_open       … FAQの開閉
+     タグ未設置でもエラーにはなりません。
+
+     現行サイトにタグがない場合は、以下をIDを入れて有効化してください。
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-XXXXXXXXXX');
+</script>
+     ============================================================ -->
 </head>
 <body>
 
