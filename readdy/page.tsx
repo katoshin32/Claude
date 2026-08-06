@@ -48,26 +48,34 @@ ul,ol{margin:0;padding:0;list-style:none}
 .header-nav{display:flex;gap:22px}
 .header-nav a{color:#e7d9c8;text-decoration:none;font-size:.84rem;letter-spacing:.06em}
 .header-nav a:hover{color:#fff}
-.hero{background:radial-gradient(1200px 500px at 78% 20%,#fceedc,#fceedc00 60%),linear-gradient(170deg,#fbf3e9,#f7e9d8 55%,#fbf5ec);padding:56px 0 64px;border-bottom:1px solid var(--rule)}
-.hero-inner{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start}
-.hero-eyebrow{font-size:.84rem;letter-spacing:.06em;color:var(--accent-dark);font-weight:700;margin-bottom:14px}
-.hero-title{font-size:clamp(1.5rem,6.3vw,2.45rem);line-height:1.55;margin-bottom:22px;color:var(--brown)}
+.hero{border-bottom:1px solid var(--rule)}
+.hero-main{background:#fbf3e7;padding:48px 0 0}
+.hero-inner{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:start}
+.hero-eyebrow{display:inline-block;background:#fff;color:var(--accent-dark);font-size:.8rem;font-weight:700;letter-spacing:.05em;padding:7px 20px;border-radius:999px;margin-bottom:20px;box-shadow:0 2px 10px #5a3c1e12}
+.hero-title{font-size:clamp(1.5rem,6.3vw,2.3rem);line-height:1.55;margin-bottom:22px;color:var(--brown)}
 .ht-line{display:inline-block}
-.ht-em{font-weight:600;background:linear-gradient(transparent 66%,#b8733338 66%)}
+.ht-em{font-weight:600;color:var(--accent-dark)}
+.ht-mark{color:var(--accent);font-weight:400}
 .hero-lead{font-size:1.02rem;color:var(--ink-mid);max-width:40em;margin-bottom:26px}
 .hero-price{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
-.hero-price li{flex:1 1 150px;background:#ffffffd1;border:1px solid var(--accent-pale);border-radius:12px;padding:12px 16px;text-align:center}
+.hero-price li{flex:1 1 150px;background:#fff;border:1px solid var(--accent-pale);border-radius:18px;padding:14px 16px;text-align:center;box-shadow:0 2px 10px #5a3c1e0d}
 .hero-price .is-cap{border-color:var(--accent);background:#fff}
 .hp-label{display:block;font-size:.74rem;color:var(--ink-soft);letter-spacing:.04em}
 .hp-value{display:block;font-family:var(--serif);font-size:1.85rem;font-weight:600;color:var(--accent-dark);line-height:1.25;white-space:nowrap}
 .hp-value small{font-size:.82rem;margin-left:1px}
 .hp-note{display:block;font-size:.68rem;color:var(--ink-soft)}
-.hero-badges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px}
-.hero-badges li{font-size:.76rem;color:var(--brown-soft);border:1px solid var(--rule);background:#fff9;border-radius:999px;padding:4px 13px}
-.hero-cta-alt{font-size:.8rem;color:var(--ink-soft);margin-top:12px}
-.hero-figure{position:relative}
-.hero-figure img{width:100%;border-radius:var(--radius);box-shadow:0 10px 34px #5a3c1e29;background:var(--bg-deep);aspect-ratio:4 / 5;object-fit:cover}
-.hero-figure-cap{margin-top:10px;font-size:.78rem;color:var(--ink-soft);text-align:center}
+.hero-cta-alt{font-size:.8rem;color:var(--ink-soft);margin-top:14px;line-height:1.9}
+.hero-figure{position:relative;z-index:2;margin-bottom:-48px}
+.hero-illust{width:100%;height:auto;display:block}
+.hero-figure-cap{display:flex;align-items:center;justify-content:center;gap:11px;margin-top:2px;font-size:.84rem;color:var(--brown);font-weight:700}
+.hero-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:3px solid #fff;box-shadow:0 3px 10px #5a3c1e24;background:var(--bg-deep)}
+.hero-figure-cap small{display:block;font-size:.7rem;color:var(--ink-soft);font-weight:400}
+.hero-foot{position:relative;z-index:1;background:#f1e3cb;padding:56px 0 40px}
+.hero-circles{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+.hero-circles li{width:138px;height:138px;border-radius:50%;background:#fbf3e7;border:5px solid #fff;box-shadow:0 4px 14px #5a3c1e17;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:0 8px;text-align:center}
+.hc-ico{width:26px;height:26px;color:var(--accent)}
+.hc-ico svg{width:100%;height:100%;display:block}
+.hc-label{font-size:.8rem;font-weight:700;color:var(--brown);line-height:1.45;letter-spacing:.01em}
 .sec{padding:72px 0}
 .sec-empathy{background:var(--bg)}
 .sec-delegate{background:var(--bg-warm)}
@@ -247,8 +255,8 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .footer-nav a{color:#c9b49e;text-decoration:none;font-size:.8rem}
 .footer-nav a:hover{color:#fff;text-decoration:underline}
 .footer-copy{font-size:.7rem;color:#8e7b68}
-@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:32px}
-.hero-figure{max-width:260px;margin:0 auto}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:24px}
+.hero-figure{max-width:340px;margin:0 auto -40px}
 .split,.fee-main{grid-template-columns:1fr}
 .fee-headline{border-right:0;border-bottom:1px solid var(--accent-pale)}
 .fee-other-body{grid-template-columns:1fr}
@@ -262,8 +270,11 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 html{scroll-padding-top:68px}}
 @media(max-width:620px){body{font-size:15.5px;line-height:1.85}
 .sec{padding:54px 0}
-.hero{padding:36px 0 44px}
+.hero-main{padding:30px 0 0}
+.hero-foot{padding:48px 0 34px}
 .hero-title{line-height:1.5}
+.hero-circles{gap:14px}
+.hero-circles li{width:calc(50% - 7px);height:auto;aspect-ratio:1;border-width:4px}
 .hero-price li{flex:1 1 100%;display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:0 12px;text-align:left;padding:11px 16px}
 .hero-price .hp-label{font-size:.82rem}
 .hero-price .hp-value{font-size:1.55rem;text-align:right;white-space:nowrap}
@@ -321,52 +332,124 @@ export default function Home() {
            1. ファーストビュー
            ============================================================ */}
       <section className="hero">
-        <div className="wrap hero-inner">
-          <div className="hero-body">
-            <p className="hero-eyebrow">トレント（BitTorrent）の意見照会書・通知書・請求書が届いた方へ</p>
+        <div className="hero-main">
+          <div className="wrap hero-inner">
+            <div className="hero-body">
+              <p className="hero-eyebrow">トレント（BitTorrent）の意見照会書・通知書・請求書が届いた方へ</p>
 
-            <h1 className="hero-title">
-              <span className="ht-line">まずは、</span><span className="ht-line">ご安心ください。</span><br />
-              <span className="ht-line ht-em">あとは、</span><span className="ht-line ht-em">すべてお任せください。</span>
-            </h1>
+              <h1 className="hero-title">
+                <span className="ht-line">まずは、</span><span className="ht-line">ご安心ください。</span><br />
+                <span className="ht-line ht-em"><span className="ht-mark" aria-hidden="true">「</span>あとは、</span><span className="ht-line ht-em">すべてお任せください。<span className="ht-mark" aria-hidden="true">」</span></span>
+              </h1>
 
-            <p className="hero-lead">
-              書類の写真をLINEでお送りください。弁護士本人が内容を確認し、
-              これから何が起こるのか、費用はいくらになるのかを、分かりやすくお伝えします。
-            </p>
+              <p className="hero-lead">
+                書類の写真をLINEでお送りください。弁護士本人が内容を確認し、
+                これから何が起こるのか、費用はいくらになるのかを、分かりやすくお伝えします。
+              </p>
 
-            <ul className="hero-price" aria-label="費用の概要">
-              <li className="is-cap"><span className="hp-label">着手金</span><span className="hp-value">33<small>万円</small></span><span className="hp-note">税込・1社あたり</span></li>
-              <li><span className="hp-label">成功報酬・追加費用</span><span className="hp-value">0<small>円</small></span><span className="hp-note">いただくのは着手金のみ</span></li>
-            </ul>
+              <ul className="hero-price" aria-label="費用の概要">
+                <li className="is-cap"><span className="hp-label">着手金</span><span className="hp-value">33<small>万円</small></span><span className="hp-note">税込・1社あたり</span></li>
+                <li><span className="hp-label">成功報酬・追加費用</span><span className="hp-value">0<small>円</small></span><span className="hp-note">いただくのは着手金のみ</span></li>
+              </ul>
 
-            <ul className="hero-badges">
-              <li>初回相談無料</li>
-              <li>LINEで書類送付OK</li>
-              <li>弁護士本人が直接対応</li>
-              <li>クレジットカード・分割払い可</li>
-              <li>土日祝も原則24時間以内に返信</li>
-              <li>オンラインで全国対応</li>
-            </ul>
+              <div className="hero-cta">
+                <a className="btn btn-line btn-lg" href={LINE_URL} target="_blank" rel="noopener" data-line-cta="">
+                  <span className="ico-line" aria-hidden="true"></span>
+                  <span className="btn-main">LINEで書類の写真を送る</span>
+                  <span className="btn-sub">無料・24時間受付／弁護士本人が確認します</span>
+                </a>
+                <p className="hero-cta-alt">
+                  土日祝も原則24時間以内に返信／オンラインで全国対応<br />
+                  LINEをお使いでない方は
+                  <a href="#contact-alt">お問い合わせフォーム・お電話</a>
+                  からもご相談いただけます。
+                </p>
+              </div>
+            </div>
 
-            <div className="hero-cta">
-              <a className="btn btn-line btn-lg" href={LINE_URL} target="_blank" rel="noopener" data-line-cta="">
-                <span className="ico-line" aria-hidden="true"></span>
-                <span className="btn-main">LINEで書類の写真を送る</span>
-                <span className="btn-sub">無料・24時間受付／弁護士本人が確認します</span>
-              </a>
-              <p className="hero-cta-alt">
-                LINEをお使いでない方は
-                <a href="#contact-alt">お問い合わせフォーム・お電話</a>
-                からもご相談いただけます。
+            <div className="hero-figure">
+              {/* 届いた書類とLINEでの相談を表したイラスト */}
+              <svg className="hero-illust" viewBox="0 0 420 400" role="img" aria-label="届いた書類とスマートフォンのイラスト">
+                <circle cx="206" cy="198" r="170" fill="#F7E7D2"/>
+                <g fill="#BCC7A6">
+                  <ellipse cx="64" cy="330" rx="36" ry="14" transform="rotate(-24 64 330)"/>
+                  <ellipse cx="112" cy="354" rx="27" ry="11" transform="rotate(-7 112 354)"/>
+                  <ellipse cx="356" cy="338" rx="31" ry="12" transform="rotate(22 356 338)"/>
+                </g>
+                <g transform="rotate(-7 165 180)">
+                  <rect x="92" y="74" width="150" height="200" rx="9" fill="#fff" stroke="#E7D9C4" strokeWidth="2"/>
+                  <rect x="112" y="100" width="74" height="10" rx="5" fill="#C3B49D"/>
+                  <g fill="#E7DDCE">
+                    <rect x="112" y="128" width="110" height="7" rx="3.5"/>
+                    <rect x="112" y="146" width="110" height="7" rx="3.5"/>
+                    <rect x="112" y="164" width="84" height="7" rx="3.5"/>
+                    <rect x="112" y="192" width="110" height="7" rx="3.5"/>
+                    <rect x="112" y="210" width="62" height="7" rx="3.5"/>
+                  </g>
+                  <circle cx="204" cy="243" r="20" fill="none" stroke="#C0644A" strokeWidth="3"/>
+                  <rect x="194" y="237" width="20" height="4" rx="2" fill="#C0644A"/>
+                  <rect x="194" y="245" width="20" height="4" rx="2" fill="#C0644A"/>
+                </g>
+                <path d="M64 232h180a10 10 0 0 1 10 10v92a10 10 0 0 1-10 10H64a10 10 0 0 1-10-10v-92a10 10 0 0 1 10-10z" fill="#DCA96F"/>
+                <path d="M54 242l100 66 100-66" fill="none" stroke="#F0C89B" strokeWidth="8" strokeLinejoin="round" strokeLinecap="round"/>
+                <g transform="translate(256 126)">
+                  <rect x="0" y="0" width="128" height="218" rx="19" fill="#4A3527"/>
+                  <rect x="8" y="8" width="112" height="202" rx="13" fill="#fff"/>
+                  <rect x="46" y="15" width="36" height="6" rx="3" fill="#EAE1D4"/>
+                  <rect x="18" y="40" width="78" height="32" rx="11" fill="#EFE8DE"/>
+                  <rect x="42" y="84" width="68" height="26" rx="11" fill="#06C755"/>
+                  <rect x="18" y="122" width="86" height="32" rx="11" fill="#EFE8DE"/>
+                  <rect x="54" y="166" width="56" height="24" rx="11" fill="#06C755"/>
+                </g>
+              </svg>
+
+              <p className="hero-figure-cap">
+                <img className="hero-avatar" src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="" width="52" height="52" loading="eager" />
+                <span>担当　加藤 信 弁護士<small>愛知県弁護士会所属</small></span>
               </p>
             </div>
           </div>
+        </div>
 
-          <div className="hero-figure">
-            {/* 画像差し替え: 弁護士本人の写真（推奨 800×1000px 前後） */}
-            <img src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="480" height="600" loading="eager" />
-            <p className="hero-figure-cap">加藤 信 弁護士（愛知県弁護士会所属）</p>
+        <div className="hero-foot">
+          <div className="wrap">
+            <ul className="hero-circles">
+              <li>
+                <span className="hc-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.4 9.4 0 0 1-2.7-.4L3 21l1.6-4.6A8.2 8.2 0 0 1 3 11.5a8.4 8.4 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z"/>
+                  </svg>
+                </span>
+                <span className="hc-label">初回相談<br />無料</span>
+              </li>
+              <li>
+                <span className="hc-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+                    <path d="M14 3v5h5M9 13h6M9 17h4"/>
+                  </svg>
+                </span>
+                <span className="hc-label">LINEで<br />書類を送るだけ</span>
+              </li>
+              <li>
+                <span className="hc-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="8" r="3.6"/>
+                    <path d="M4.5 20a7.5 7.5 0 0 1 15 0"/>
+                  </svg>
+                </span>
+                <span className="hc-label">弁護士本人が<br />直接対応</span>
+              </li>
+              <li>
+                <span className="hc-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2.5" y="5" width="19" height="14" rx="2.5"/>
+                    <path d="M2.5 10h19M6 15h4"/>
+                  </svg>
+                </span>
+                <span className="hc-label">カード・<br />分割払い可</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

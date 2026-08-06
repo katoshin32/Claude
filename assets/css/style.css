@@ -166,32 +166,29 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ------------------------------------------------------------
    1. ファーストビュー
    ------------------------------------------------------------ */
-.hero {
-  background:
-    radial-gradient(1200px 500px at 78% 20%, #FCEEDC 0%, rgba(252,238,220,0) 60%),
-    linear-gradient(170deg, #FBF3E9 0%, #F7E9D8 55%, #FBF5EC 100%);
-  padding: 56px 0 64px;
-  border-bottom: 1px solid var(--rule);
-}
-.hero-inner { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
+/* 上段クリーム／下段は一段濃い帯。イラストが境目にまたがって奥行きを出す */
+.hero { border-bottom: 1px solid var(--rule); }
+.hero-main { background: #FBF3E7; padding: 48px 0 0; }
+.hero-inner { display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start; }
 
 .hero-eyebrow {
-  font-size: .84rem; letter-spacing: .06em; color: var(--accent-dark);
-  font-weight: 700; margin-bottom: 14px;
+  display: inline-block;
+  background: #fff; color: var(--accent-dark);
+  font-size: .8rem; font-weight: 700; letter-spacing: .05em;
+  padding: 7px 20px; border-radius: 999px; margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(90, 60, 30, .07);
 }
 /* 6.3vw は「もう終わりにしませんか。」(12文字) が 360px 幅でも
    1行に収まるよう逆算した値。上限で頭打ちにする */
 .hero-title {
-  font-size: clamp(1.5rem, 6.3vw, 2.45rem);
+  font-size: clamp(1.5rem, 6.3vw, 2.3rem);
   line-height: 1.55; margin-bottom: 22px; color: var(--brown);
 }
 /* 日本語は語中でも改行されるため、文節ごとに inline-block で包んで
    「全部やりま／す。」のような割れ方を防ぐ */
 .ht-line { display: inline-block; }
-.ht-em {
-  font-weight: 600;
-  background: linear-gradient(transparent 66%, rgba(184, 115, 51, .22) 66%);
-}
+.ht-em { font-weight: 600; color: var(--accent-dark); }
+.ht-mark { color: var(--accent); font-weight: 400; }
 .hero-lead {
   font-size: 1.02rem; color: var(--ink-mid); max-width: 40em; margin-bottom: 26px;
 }
@@ -202,11 +199,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .hero-price li {
   flex: 1 1 150px;
-  background: rgba(255,255,255,.82);
+  background: #fff;
   border: 1px solid var(--accent-pale);
-  border-radius: 12px;
-  padding: 12px 16px;
+  border-radius: 18px;
+  padding: 14px 16px;
   text-align: center;
+  box-shadow: 0 2px 10px rgba(90, 60, 30, .05);
 }
 .hero-price .is-cap { border-color: var(--accent); background: #fff; }
 .hp-label { display: block; font-size: .74rem; color: var(--ink-soft); letter-spacing: .04em; }
@@ -217,24 +215,42 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hp-value small { font-size: .82rem; margin-left: 1px; }
 .hp-note { display: block; font-size: .68rem; color: var(--ink-soft); }
 
-.hero-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 26px; }
-.hero-badges li {
-  font-size: .76rem; color: var(--brown-soft);
-  border: 1px solid var(--rule); background: rgba(255,255,255,.6);
-  border-radius: 999px; padding: 4px 13px;
-}
+.hero-cta-alt { font-size: .8rem; color: var(--ink-soft); margin-top: 14px; line-height: 1.9; }
 
-.hero-cta-alt { font-size: .8rem; color: var(--ink-soft); margin-top: 12px; }
-
-.hero-figure { position: relative; }
-.hero-figure img {
-  width: 100%; border-radius: var(--radius);
-  box-shadow: 0 10px 34px rgba(90, 60, 30, .16);
-  background: var(--bg-deep);
-  aspect-ratio: 4 / 5; object-fit: cover;
-}
+/* イラストは下の帯にかぶせる。z-index を上げないと後続の帯に隠れる */
+.hero-figure { position: relative; z-index: 2; margin-bottom: -48px; }
+.hero-illust { width: 100%; height: auto; display: block; }
 .hero-figure-cap {
-  margin-top: 10px; font-size: .78rem; color: var(--ink-soft); text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 11px;
+  margin-top: 2px; font-size: .84rem; color: var(--brown); font-weight: 700;
+}
+.hero-avatar {
+  width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex: 0 0 auto;
+  border: 3px solid #fff; box-shadow: 0 3px 10px rgba(90, 60, 30, .14);
+  background: var(--bg-deep);
+}
+.hero-figure-cap small {
+  display: block; font-size: .7rem; color: var(--ink-soft); font-weight: 400;
+}
+
+/* 下段の帯と丸バッジ */
+.hero-foot {
+  position: relative; z-index: 1;
+  background: #F1E3CB; padding: 56px 0 40px;
+}
+.hero-circles { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.hero-circles li {
+  width: 138px; height: 138px; border-radius: 50%;
+  background: #FBF3E7; border: 5px solid #fff;
+  box-shadow: 0 4px 14px rgba(90, 60, 30, .09);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 7px; padding: 0 8px; text-align: center;
+}
+.hc-ico { width: 26px; height: 26px; color: var(--accent); }
+.hc-ico svg { width: 100%; height: 100%; display: block; }
+.hc-label {
+  font-size: .8rem; font-weight: 700; color: var(--brown);
+  line-height: 1.45; letter-spacing: .01em;
 }
 
 /* ------------------------------------------------------------
@@ -738,8 +754,8 @@ ul.do-list li::before {
    レスポンシブ
    ------------------------------------------------------------ */
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-  .hero-figure { max-width: 260px; margin: 0 auto; }
+  .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+  .hero-figure { max-width: 340px; margin: 0 auto -40px; }
   .split { grid-template-columns: 1fr; }
   .fee-main { grid-template-columns: 1fr; }
   .fee-headline { border-right: 0; border-bottom: 1px solid var(--accent-pale); }
@@ -766,8 +782,11 @@ ul.do-list li::before {
 @media (max-width: 620px) {
   body { font-size: 15.5px; line-height: 1.85; }
   .sec { padding: 54px 0; }
-  .hero { padding: 36px 0 44px; }
+  .hero-main { padding: 30px 0 0; }
+  .hero-foot { padding: 48px 0 34px; }
   .hero-title { line-height: 1.5; }
+  .hero-circles { gap: 14px; }
+  .hero-circles li { width: calc(50% - 7px); height: auto; aspect-ratio: 1; border-width: 4px; }
   .hero-price li {
     flex: 1 1 100%;
     display: grid; grid-template-columns: auto 1fr;
