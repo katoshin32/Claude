@@ -371,18 +371,27 @@ ul.do-list li::before {
 }
 .bubble-me { background: #8DE055; color: #263238; border-bottom-right-radius: 4px; }
 .bubble-you { background: #fff; color: var(--ink); border-bottom-left-radius: 4px; }
-.bubble-photo {
-  display: flex; align-items: center; gap: 8px;
-  font-size: .8rem; color: #3D5A2E;
+/* 吹き出し内の小見出し（LINE自動応答の体裁に合わせる） */
+.bubble-head {
+  display: block; font-weight: 700;
+  padding-bottom: 6px; margin-bottom: 7px;
+  border-bottom: 1px solid rgba(0, 0, 0, .13);
 }
-.bubble-photo-ico {
-  width: 34px; height: 26px; border-radius: 4px;
-  background: #fff; border: 2px solid #6FBF3F; position: relative; flex: 0 0 auto;
+
+/* 送信された書類写真のサムネイル。LINEでは画像に吹き出しが付かない */
+/* aspect-ratio だけでは固有幅が決まらず、flex項目として潰れるので幅を明示する */
+.bubble-photos {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+  background: transparent; padding: 0;
+  width: 240px; max-width: 62%;
 }
-.bubble-photo-ico::after {
-  content: ""; position: absolute; inset: 4px 3px 3px;
-  background: linear-gradient(135deg, #C9DFF0 40%, #7FA96B 40%);
-  border-radius: 2px;
+.doc {
+  aspect-ratio: 3 / 4; border-radius: 3px; overflow: hidden;
+  background: #F4F1EA; position: relative;
+}
+.doc::after {
+  content: ""; position: absolute; inset: 15% 17%;
+  background: repeating-linear-gradient(to bottom, #C3BCAF 0 1px, transparent 1px 5px);
 }
 .talk-demo-note {
   margin-top: 12px; text-align: center; font-size: .7rem; color: rgba(255,255,255,.85);

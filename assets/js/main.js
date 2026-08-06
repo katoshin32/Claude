@@ -5,7 +5,7 @@
 
 var CONFIG = {
   // LINE公式アカウントの友だち追加URL（LINE Official Account Manager で取得）
-  lineUrl: 'https://lin.ee/XXXXXXX',
+  lineUrl: 'https://lin.ee/Mc3bGjk',
 
   // Google広告のコンバージョンラベル。'AW-1234567890/AbCdEfGhIjK' の形式。
   // コンバージョンは「LINE友だち追加」を計測対象とする方針のため、
