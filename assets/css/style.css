@@ -345,7 +345,37 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .callout-slim h3 { font-size: 1.06rem; }
 
 /* ------------------------------------------------------------
-   3. 丸投げできる
+   3. 3つのお約束
+   ------------------------------------------------------------ */
+.sec-promise { background: var(--bg-deep); }
+/* auto-fit で列数が幅に応じて 3→2→1 と変わる */
+.promise-list {
+  display: grid; gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+}
+.promise {
+  background: #fff; border-radius: 12px;
+  border-top: 5px solid var(--accent);
+  padding: 28px 28px 32px;
+  box-shadow: 0 3px 16px rgba(90, 60, 30, .07);
+}
+.pr-num {
+  display: block; text-align: center;
+  font-size: .68rem; letter-spacing: .16em; font-weight: 700;
+  color: var(--ink-soft); margin-bottom: 10px;
+}
+.pr-title {
+  text-align: center; font-size: 1.14rem; color: var(--brown); margin-bottom: 16px;
+}
+.pr-title em { font-style: normal; color: var(--accent); }
+.pr-line {
+  display: block; width: 34px; height: 2px;
+  background: var(--accent-pale); margin: 0 auto 20px;
+}
+.promise p { font-size: .88rem; color: var(--ink-mid); line-height: 2; }
+
+/* ------------------------------------------------------------
+   4. 丸投げできる
    ------------------------------------------------------------ */
 .split { display: grid; grid-template-columns: 1fr 1.25fr; gap: 22px; }
 .split-col {
@@ -441,7 +471,7 @@ ul.do-list li::before {
 .cta-band { display: flex; justify-content: center; margin-top: 44px; }
 
 /* ------------------------------------------------------------
-   4. 料金
+   5. 料金
    ------------------------------------------------------------ */
 .fee-main {
   display: grid; grid-template-columns: 320px 1fr; gap: 0;
@@ -562,7 +592,7 @@ ul.do-list li::before {
 .fo-desc { font-size: .84rem; color: var(--ink-mid); }
 
 /* ------------------------------------------------------------
-   5. 解決実績
+   6. 解決実績
    ------------------------------------------------------------ */
 .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
 .result-card {
@@ -609,7 +639,7 @@ ul.do-list li::before {
 }
 
 /* ------------------------------------------------------------
-   6. 流れ
+   7. 流れ
    ------------------------------------------------------------ */
 .flow-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .flow-item {
@@ -635,7 +665,7 @@ ul.do-list li::before {
 .flow-note p:last-child { font-size: .88rem; color: var(--ink-mid); }
 
 /* ------------------------------------------------------------
-   7. 弁護士紹介
+   8. 弁護士紹介
    ------------------------------------------------------------ */
 .lawyer { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start; }
 .lawyer-photo img {
@@ -687,7 +717,7 @@ ul.do-list li::before {
 .office-name { font-weight: 700; color: var(--brown) !important; }
 
 /* ------------------------------------------------------------
-   8. FAQ
+   9. FAQ
    ------------------------------------------------------------ */
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
 .faq-item {
@@ -717,7 +747,7 @@ ul.do-list li::before {
 }
 
 /* ------------------------------------------------------------
-   9. 最終CTA
+   10. 最終CTA
    ------------------------------------------------------------ */
 .sec-final {
   background: linear-gradient(160deg, #4A3527 0%, #35251A 100%);
@@ -785,6 +815,8 @@ ul.do-list li::before {
   .fee-main { grid-template-columns: 1fr; }
   .fee-headline { border-right: 0; border-bottom: 1px solid var(--accent-pale); }
   .fee-other-body { grid-template-columns: 1fr; }
+  /* 2列だと3枚目が取り残されて座りが悪いので1列にする */
+  .promise-list { grid-template-columns: 1fr; }
   .result-grid { grid-template-columns: 1fr 1fr; }
   .result-card.is-primary { grid-column: span 2; }
   .flow-list { grid-template-columns: 1fr 1fr; gap: 26px 18px; }

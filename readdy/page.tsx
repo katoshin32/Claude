@@ -106,6 +106,14 @@ ul,ol{margin:0;padding:0;list-style:none}
 .callout-note{font-size:.82rem;color:var(--ink-soft);border-top:1px dashed var(--rule);padding-top:12px;margin-top:14px}
 .callout-slim{margin:40px auto 0;max-width:800px}
 .callout-slim h3{font-size:1.06rem}
+.sec-promise{background:var(--bg-deep)}
+.promise-list{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(258px,1fr))}
+.promise{background:#fff;border-radius:12px;border-top:5px solid var(--accent);padding:28px 28px 32px;box-shadow:0 3px 16px #5a3c1e12}
+.pr-num{display:block;text-align:center;font-size:.68rem;letter-spacing:.16em;font-weight:700;color:var(--ink-soft);margin-bottom:10px}
+.pr-title{text-align:center;font-size:1.14rem;color:var(--brown);margin-bottom:16px}
+.pr-title em{font-style:normal;color:var(--accent)}
+.pr-line{display:block;width:34px;height:2px;background:var(--accent-pale);margin:0 auto 20px}
+.promise p{font-size:.88rem;color:var(--ink-mid);line-height:2}
 .split{display:grid;grid-template-columns:1fr 1.25fr;gap:22px}
 .split-col{background:#fff;border-radius:var(--radius);padding:28px 30px;box-shadow:var(--shadow)}
 .split-you{border-top:4px solid var(--accent)}
@@ -261,7 +269,7 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .hero-figure{max-width:340px;margin:0 auto -40px}
 .split,.fee-main{grid-template-columns:1fr}
 .fee-headline{border-right:0;border-bottom:1px solid var(--accent-pale)}
-.fee-other-body{grid-template-columns:1fr}
+.fee-other-body,.promise-list{grid-template-columns:1fr}
 .result-grid{grid-template-columns:1fr 1fr}
 .result-card.is-primary{grid-column:span 2}
 .flow-list{grid-template-columns:1fr 1fr;gap:26px 18px}
@@ -457,7 +465,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           2. 共感 ＋ 責めない
+           2. 共感 ＋ あなたの味方です
            ============================================================ */}
       <section className="sec sec-empathy">
         <div className="wrap narrow">
@@ -496,7 +504,55 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           3. 丸投げできる
+           3. 3つのお約束
+           ============================================================ */}
+      <section className="sec sec-promise">
+        <div className="wrap">
+          <div className="sec-head">
+            <h2>3つのお約束</h2>
+            <svg className="sec-rule" viewBox="0 0 400 16" aria-hidden="true"><path d="M0 1h182l18 13 18-13h182" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/></svg>
+          </div>
+          <p className="sec-lead center">ご依頼いただいた方に、事務所として次の3つをお約束します。</p>
+
+          <ul className="promise-list">
+            <li className="promise">
+              <span className="pr-num">PROMISE 01</span>
+              <h3 className="pr-title"><em>「じっくり」</em>お聞きします</h3>
+              <span className="pr-line" aria-hidden="true"></span>
+              <p>
+                何があったのかを問い詰めることはしません。書類の内容だけでなく、
+                ご家族のこと、お仕事のこと、いま不安に思っていることまで、
+                時間をかけてお聞きします。そのうえで、あなたの状況に合った
+                進め方をご提案します。
+              </p>
+            </li>
+            <li className="promise">
+              <span className="pr-num">PROMISE 02</span>
+              <h3 className="pr-title"><em>「はっきり」</em>お伝えします</h3>
+              <span className="pr-line" aria-hidden="true"></span>
+              <p>
+                弁護士費用は1社あたり着手金33万円のみで、成功報酬はいただきません。
+                相手方へお支払いする示談金の見込みも、ご依頼いただく前にお伝えします。
+                あとから「聞いていない費用」が出てくることはありません。
+              </p>
+            </li>
+            <li className="promise">
+              <span className="pr-num">PROMISE 03</span>
+              <h3 className="pr-title"><em>「すっきり」</em>終わらせます</h3>
+              <span className="pr-line" aria-hidden="true"></span>
+              <p>
+                早く終わらせたいからと、その場しのぎの示談はしません。
+                あとから追加の請求が来ないか、和解の範囲は十分か。
+                ご納得いただける内容かを確かめたうえで、
+                不安を残さない形でこの件を終わらせます。
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* ============================================================
+           4. 丸投げできる
            ============================================================ */}
       <section className="sec sec-delegate">
         <div className="wrap">
@@ -596,7 +652,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           4. 料金
+           5. 料金
            ============================================================ */}
       <section className="sec sec-fee" id="fee">
         <div className="wrap">
@@ -714,7 +770,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           5. 解決実績
+           6. 解決実績
            ============================================================ */}
       <section className="sec sec-results">
         <div className="wrap">
@@ -793,7 +849,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           6. 解決までの流れ
+           7. 解決までの流れ
            ============================================================ */}
       <section className="sec sec-flow" id="flow">
         <div className="wrap">
@@ -834,7 +890,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           7. 弁護士紹介
+           8. 弁護士紹介
            ============================================================ */}
       <section className="sec sec-lawyer">
         <div className="wrap">
@@ -919,7 +975,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           8. よくある質問
+           9. よくある質問
            ============================================================ */}
       <section className="sec sec-faq" id="faq">
         <div className="wrap narrow">
@@ -1059,7 +1115,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-           9. 最終CTA
+           10. 最終CTA
            ============================================================ */}
       <section className="sec sec-final" id="contact">
         <div className="wrap narrow">
