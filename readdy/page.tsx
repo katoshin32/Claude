@@ -56,11 +56,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hero{border-bottom:1px solid var(--rule)}
 .hero-main{position:relative;background:#fbf3e7;overflow:hidden;display:flex;align-items:center;min-height:clamp(460px,52vw,620px);padding:52px 0}
 .hero-inner{position:relative;z-index:2;width:100%}
-.hero-photo{position:absolute;inset:0;z-index:0}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero{--hero-text-w: 32rem}
 .hero-main{--hero-text-end: calc(max(0px, (100vw - var(--wrap)) / 2) + 20px + var(--hero-text-w))}
-.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#FBF3E7 0%,#FBF3E7 calc(var(--hero-text-end) - 120px),rgba(251,243,231,.92) var(--hero-text-end),rgba(251,243,231,.45) calc(var(--hero-text-end) + 150px),rgba(251,243,231,0) calc(var(--hero-text-end) + 320px)),linear-gradient(0deg,#f1e3cbd9,#f1e3cb00 16%)}
+.hero-photo{position:absolute;top:0;right:0;bottom:0;left:var(--hero-text-end);z-index:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 90px);mask-image:linear-gradient(90deg,transparent 0,#000 90px)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:left center}
+.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#f1e3cbd9,#f1e3cb00 16%)}
 .hero-body{position:relative;max-width:var(--hero-text-w)}
 .hero-eyebrow{display:inline-block;color:var(--accent-dark);font-size:.78rem;font-weight:700;letter-spacing:.08em;line-height:1.7;margin-bottom:18px;padding-left:15px;border-left:3px solid var(--accent)}
 .hero-title{font-size:clamp(1.5rem,6.3vw,2.45rem);line-height:1.6;margin-bottom:20px;color:var(--brown);letter-spacing:.02em}
@@ -296,7 +296,8 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .footer-nav a:hover{color:#fff;text-decoration:underline}
 .footer-copy{font-size:.7rem;color:#8e7b68}
 @media(max-width:900px){.hero-main{display:block;min-height:0;padding:250px 0 40px}
-.hero-photo{inset:0 0 auto;height:268px}
+.hero-photo{inset:0 0 auto;height:268px;-webkit-mask-image:none;mask-image:none}
+.hero-photo img{object-position:center}
 .hero-photo:after{background:linear-gradient(180deg,#fbf3e700 42%,#fbf3e7b8 76%,#fbf3e7)}
 .hero-body{max-width:none}
 .split,.fee-main{grid-template-columns:1fr}

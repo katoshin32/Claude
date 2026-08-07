@@ -194,28 +194,32 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .hero-inner { position: relative; z-index: 2; width: 100%; }
 
-.hero-photo { position: absolute; inset: 0; z-index: 0; }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 /* 文字の右端がどの画面幅でも同じ位置に来るよう、実寸で持っておく。
    ＝ 中央寄せの余白 ＋ .wrap の内側余白 ＋ .hero-body の最大幅 */
 .hero { --hero-text-w: 32rem; }
 .hero-main {
   --hero-text-end: calc(max(0px, (100vw - var(--wrap)) / 2) + 20px + var(--hero-text-w));
 }
-/* 文字を枠で囲わない代わりに、左からクリームをかぶせて可読性を確保する。
-   文字が乗る範囲は必ず不透明〜.92、そこから先で写真が出てくるので、
-   板を1枚置いたようには見えない。%ではなく実寸で刻んでいるのは、
-   画面幅が変わっても文字と写真の境目がずれないようにするため */
+
+/* 写真は文字が終わったところから右いっぱいまで。
+   左をクリームで覆う方式だと、写真の左に写っているロゴが
+   隠れてしまうため、覆うのではなく写真自体を右へ寄せている。
+   左端は mask で 90px かけて溶かすので、境目は出ない。
+   object-position: left は、ロゴのある左側から見せるための指定。 */
+.hero-photo {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  left: var(--hero-text-end); z-index: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 90px);
+          mask-image: linear-gradient(90deg, transparent 0, #000 90px);
+}
+.hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: left center;
+}
+/* 下端だけ、次の帯の色へなじませる */
 .hero-photo::after {
   content: ""; position: absolute; inset: 0;
-  background:
-    linear-gradient(90deg,
-      #FBF3E7 0%,
-      #FBF3E7 calc(var(--hero-text-end) - 120px),
-      rgba(251, 243, 231, .92) var(--hero-text-end),
-      rgba(251, 243, 231, .45) calc(var(--hero-text-end) + 150px),
-      rgba(251, 243, 231, 0) calc(var(--hero-text-end) + 320px)),
-    linear-gradient(0deg, rgba(241, 227, 203, .85) 0%, rgba(241, 227, 203, 0) 16%);
+  background: linear-gradient(0deg, rgba(241, 227, 203, .85) 0%, rgba(241, 227, 203, 0) 16%);
 }
 
 .hero-body { position: relative; max-width: var(--hero-text-w); }
@@ -931,7 +935,11 @@ ul.do-list li::before {
 @media (max-width: 900px) {
   /* 横に並べる余地がない幅では、写真を上端の帯にして本文と重ならないようにする */
   .hero-main { display: block; min-height: 0; padding: 250px 0 40px; }
-  .hero-photo { inset: 0 0 auto 0; height: 268px; }
+  .hero-photo {
+    inset: 0 0 auto 0; height: 268px;
+    -webkit-mask-image: none; mask-image: none;
+  }
+  .hero-photo img { object-position: center; }
   .hero-photo::after {
     background: linear-gradient(180deg, rgba(251,243,231,0) 42%, rgba(251,243,231,.72) 76%, #FBF3E7 100%);
   }
