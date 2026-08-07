@@ -51,7 +51,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .header-nav a{color:#e7d9c8;text-decoration:none;font-size:.84rem;letter-spacing:.06em}
 .header-nav a:hover{color:#fff}
 .hero{border-bottom:1px solid var(--rule)}
-.hero-main{background:#fbf3e7;padding:48px 0 0}
+.hero-main{background:#fbf3e7;padding:48px 0 44px}
 .hero-inner{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:start}
 .hero-eyebrow{display:inline-block;background:#fff;color:var(--accent-dark);font-size:.8rem;font-weight:700;letter-spacing:.05em;padding:7px 20px;border-radius:999px;margin-bottom:20px;box-shadow:0 2px 10px #5a3c1e12}
 .hero-title{font-size:clamp(1.5rem,6.3vw,2.3rem);line-height:1.55;margin-bottom:22px;color:var(--brown)}
@@ -67,17 +67,21 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hp-value small{font-size:.82rem;margin-left:1px}
 .hp-note{display:block;font-size:.68rem;color:var(--ink-soft)}
 .hero-cta-alt{font-size:.8rem;color:var(--ink-soft);margin-top:14px;line-height:1.9}
-.hero-figure{position:relative;z-index:2;margin-bottom:-48px}
+.hero-figure{position:relative;z-index:2}
 .hero-illust{width:100%;height:auto;display:block}
-.hero-figure-cap{display:flex;align-items:center;justify-content:center;gap:11px;margin-top:2px;font-size:.84rem;color:var(--brown);font-weight:700}
-.hero-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:3px solid #fff;box-shadow:0 3px 10px #5a3c1e24;background:var(--bg-deep)}
-.hero-figure-cap small{display:block;font-size:.7rem;color:var(--ink-soft);font-weight:400}
+.hero-lawyer{margin:4px 0 0;text-align:center}
+.hero-avatar{width:min(240px,76%);height:auto;aspect-ratio:1;margin:0 auto 14px;border-radius:50%;object-fit:cover;object-position:center 18%;border:6px solid #fff;box-shadow:0 8px 24px #5a3c1e29;background:var(--bg-deep)}
+.hero-lawyer figcaption{display:block;line-height:1.5}
+.hl-role{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;color:#fff;background:var(--accent);border-radius:999px;padding:3px 14px;margin-bottom:8px}
+.hl-name{display:block;font-family:var(--serif);font-size:1.34rem;font-weight:600;color:var(--brown);letter-spacing:.05em}
+.hl-name small{font-size:.8rem;margin-left:6px}
+.hl-bar{display:block;font-size:.78rem;color:var(--ink-soft);margin-top:2px}
 .hero-foot{position:relative;z-index:1;background:#f1e3cb;padding:56px 0 40px}
-.hero-circles{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
-.hero-circles li{width:138px;height:138px;border-radius:50%;background:#fbf3e7;border:5px solid #fff;box-shadow:0 4px 14px #5a3c1e17;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:0 8px;text-align:center}
-.hc-ico{width:26px;height:26px;color:var(--accent)}
-.hc-ico svg{width:100%;height:100%;display:block}
-.hc-label{font-size:.8rem;font-weight:700;color:var(--brown);line-height:1.45;letter-spacing:.01em}
+.hero-circles{display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
+.hero-circles li{width:172px;height:172px;border-radius:50%;background:#fff;border:2px solid var(--accent-pale);box-shadow:0 6px 20px #5a3c1e1f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 14px;text-align:center}
+.hc-ico{width:50px;height:50px;border-radius:50%;background:var(--accent-pale);color:var(--accent-dark);display:grid;place-items:center}
+.hc-ico svg{width:27px;height:27px;display:block}
+.hc-label{font-size:.89rem;font-weight:700;color:var(--brown);line-height:1.5;letter-spacing:.01em}
 .sec{padding:72px 0}
 .sec-empathy{background:var(--bg)}
 .sec-delegate{background:var(--bg-warm)}
@@ -280,7 +284,7 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .footer-nav a:hover{color:#fff;text-decoration:underline}
 .footer-copy{font-size:.7rem;color:#8e7b68}
 @media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:24px}
-.hero-figure{max-width:340px;margin:0 auto -40px}
+.hero-figure{max-width:340px;margin:0 auto}
 .split,.fee-main{grid-template-columns:1fr}
 .fee-headline{border-right:0;border-bottom:1px solid var(--accent-pale)}
 .fee-other-body,.promise-list{grid-template-columns:1fr}
@@ -295,7 +299,7 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 html{scroll-padding-top:68px}}
 @media(max-width:620px){body{font-size:15.5px;line-height:1.85}
 .sec{padding:54px 0}
-.hero-main{padding:30px 0 0}
+.hero-main{padding:30px 0 34px}
 .hero-foot{padding:48px 0 34px}
 .hero-title{line-height:1.5}
 .hero-circles{gap:14px}
@@ -493,10 +497,14 @@ export default function Home() {
                 </g>
               </svg>
 
-              <p className="hero-figure-cap">
-                <img className="hero-avatar" src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="" width="52" height="52" loading="eager" />
-                <span>担当　加藤 信 弁護士<small>愛知県弁護士会所属</small></span>
-              </p>
+              <figure className="hero-lawyer">
+                <img className="hero-avatar" src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="480" height="480" loading="eager" />
+                <figcaption>
+                  <span className="hl-role">担当</span>
+                  <span className="hl-name">加藤 信<small>弁護士</small></span>
+                  <span className="hl-bar">愛知県弁護士会所属</span>
+                </figcaption>
+              </figure>
             </div>
           </div>
         </div>
