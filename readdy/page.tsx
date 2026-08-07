@@ -51,9 +51,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 .header-nav a{color:#e7d9c8;text-decoration:none;font-size:.84rem;letter-spacing:.06em}
 .header-nav a:hover{color:#fff}
 .hero{border-bottom:1px solid var(--rule)}
-.hero-main{background:#fbf3e7;padding:48px 0 44px}
-.hero-inner{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:start}
-.hero-eyebrow{display:inline-block;background:#fff;color:var(--accent-dark);font-size:.8rem;font-weight:700;letter-spacing:.05em;padding:7px 20px;border-radius:999px;margin-bottom:20px;box-shadow:0 2px 10px #5a3c1e12}
+.hero-main{position:relative;background:#fbf3e7;padding:44px 0 40px;overflow:hidden}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 300px;gap:36px;align-items:start}
+.hero-photo{position:absolute;inset:0 0 0 38%;z-index:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fbf3e7,#fbf3e78c 22%,#fbf3e700 46%)}
+.hero-body{background:#fffffff5;border-radius:18px;padding:34px 36px 36px;box-shadow:0 10px 40px #5a3c1e21}
+.hero-eyebrow{display:inline-block;background:var(--accent-pale);color:var(--accent-dark);font-size:.8rem;font-weight:700;letter-spacing:.05em;padding:7px 20px;border-radius:999px;margin-bottom:20px;box-shadow:0 2px 10px #5a3c1e12}
 .hero-title{font-size:clamp(1.5rem,6.3vw,2.3rem);line-height:1.55;margin-bottom:22px;color:var(--brown)}
 .ht-line{display:inline-block}
 .ht-em{font-weight:600;color:var(--accent-dark)}
@@ -70,10 +74,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hero-figure{position:relative;z-index:2}
 .hero-illust{width:100%;height:auto;display:block}
 .hero-lawyer{margin:4px 0 0;text-align:center}
-.hero-avatar{width:min(240px,76%);height:auto;aspect-ratio:1;margin:0 auto 14px;border-radius:50%;object-fit:cover;object-position:center 18%;border:6px solid #fff;box-shadow:0 8px 24px #5a3c1e29;background:var(--bg-deep)}
-.hero-lawyer figcaption{display:block;line-height:1.5}
-.hl-role{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;color:#fff;background:var(--accent);border-radius:999px;padding:3px 14px;margin-bottom:8px}
-.hl-name{display:block;font-family:var(--serif);font-size:1.34rem;font-weight:600;color:var(--brown);letter-spacing:.05em}
+.hero-avatar{width:min(230px,84%);height:auto;aspect-ratio:1;margin:0 auto 14px;border-radius:50%;object-fit:cover;object-position:center 18%;border:6px solid #fff;box-shadow:0 10px 30px #3c281447;background:var(--bg-deep)}
+.hero-lawyer figcaption{display:inline-block;line-height:1.5;background:#fffffff2;border-radius:14px;padding:9px 22px 12px;box-shadow:0 4px 18px #3c281429}
+.hl-role{display:inline-block;margin-top:-26px;font-size:.68rem;font-weight:700;letter-spacing:.12em;color:#fff;background:var(--accent);border-radius:999px;padding:3px 14px;margin-bottom:8px}
+.hl-name{display:block;font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--brown);letter-spacing:.05em}
 .hl-name small{font-size:.8rem;margin-left:6px}
 .hl-bar{display:block;font-size:.78rem;color:var(--ink-soft);margin-top:2px}
 .hero-foot{position:relative;z-index:1;background:#f1e3cb;padding:56px 0 40px}
@@ -134,6 +138,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 ol.do-list li:before{counter-increment:n;content:counter(n);position:absolute;left:0;top:13px;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;text-align:center;line-height:20px}
 ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;height:7px;border-left:2px solid var(--brown);border-bottom:2px solid var(--brown);transform:rotate(-45deg)}
 .split-foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:.86rem;color:var(--accent-dark);font-weight:700}
+.delegate-figure{max-width:340px;margin:0 auto 34px}
+.delegate-illust{width:100%;height:auto;display:block}
 .talk-demo{margin:44px auto 0;max-width:560px;background:#8fa9be;border-radius:var(--radius);padding:22px 18px 16px}
 .talk-demo-title{text-align:center;color:#fff;font-size:.86rem;font-weight:700;letter-spacing:.06em;margin-bottom:16px}
 .talk{display:flex;flex-direction:column;gap:10px}
@@ -291,6 +297,10 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .footer-copy{font-size:.7rem;color:#8e7b68}
 @media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:24px}
 .hero-figure{max-width:340px;margin:0 auto}
+.hero-main{padding-top:210px}
+.hero-photo{inset:0 0 auto;height:250px}
+.hero-photo:after{background:linear-gradient(180deg,#fbf3e700 45%,#fbf3e7b3 78%,#fbf3e7)}
+.hero-body{padding:28px 24px 30px}
 .split,.fee-main{grid-template-columns:1fr}
 .fee-headline{border-right:0;border-bottom:1px solid var(--accent-pale)}
 .fee-other-body,.promise-list{grid-template-columns:1fr}
@@ -306,9 +316,11 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 html{scroll-padding-top:68px}}
 @media(max-width:620px){body{font-size:15.5px;line-height:1.85}
 .sec{padding:54px 0}
-.hero-main{padding:30px 0 34px}
+.hero-main{padding-top:178px;padding-bottom:34px}
+.hero-photo{height:208px}
 .hero-foot{padding:48px 0 34px}
-.hero-title{line-height:1.5}
+.hero-body{padding:26px 20px 28px}
+.hero-title{font-size:clamp(1.2rem,6vw,2.3rem);line-height:1.5}
 .hero-circles{gap:14px}
 .hero-circles li{width:calc(50% - 7px);height:auto;aspect-ratio:1;border-width:4px}
 .hero-price li{flex:1 1 100%;display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:0 12px;text-align:left;padding:11px 16px}
@@ -335,6 +347,7 @@ html{scroll-padding-top:68px}}
 .split-col{padding:24px 22px}
 .talk-demo{padding:18px 14px 14px}
 .bubble{max-width:84%}}
+@media(max-width:380px){.hero-body{padding:24px 16px 26px}}
 @keyframes lpRise{0%{opacity:0;transform:translateY(16px)}
 to{opacity:1;transform:none}}
 @keyframes lpBubble{0%{opacity:0;transform:translateY(12px) scale(.96)}
@@ -435,6 +448,12 @@ export default function Home() {
            ============================================================ */}
       <section className="hero">
         <div className="hero-main">
+          {/* 右側に事務所の写真。文字は白いカードの上に置くので、
+               写真を暗く覆う必要がない */}
+          <div className="hero-photo" aria-hidden="true">
+            <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/14f78b34-fd39-43d9-a203-7d082901fbe6_compressed_unnamed.webp"
+                 alt="" width="1400" height="1050" loading="eager" fetchPriority="high" />
+          </div>
           <div className="wrap hero-inner">
             <div className="hero-body">
               <p className="hero-eyebrow">トレント（BitTorrent）の意見照会書・通知書・請求書が届いた方へ</p>
@@ -470,40 +489,6 @@ export default function Home() {
             </div>
 
             <div className="hero-figure">
-              {/* 届いた書類とLINEでの相談を表したイラスト */}
-              <svg className="hero-illust" viewBox="0 0 420 400" role="img" aria-label="届いた書類とスマートフォンのイラスト">
-                <circle cx="206" cy="198" r="170" fill="#F7E7D2"/>
-                <g fill="#BCC7A6">
-                  <ellipse cx="64" cy="330" rx="36" ry="14" transform="rotate(-24 64 330)"/>
-                  <ellipse cx="112" cy="354" rx="27" ry="11" transform="rotate(-7 112 354)"/>
-                  <ellipse cx="356" cy="338" rx="31" ry="12" transform="rotate(22 356 338)"/>
-                </g>
-                <g transform="rotate(-7 165 180)">
-                  <rect x="92" y="74" width="150" height="200" rx="9" fill="#fff" stroke="#E7D9C4" strokeWidth="2"/>
-                  <rect x="112" y="100" width="74" height="10" rx="5" fill="#C3B49D"/>
-                  <g fill="#E7DDCE">
-                    <rect x="112" y="128" width="110" height="7" rx="3.5"/>
-                    <rect x="112" y="146" width="110" height="7" rx="3.5"/>
-                    <rect x="112" y="164" width="84" height="7" rx="3.5"/>
-                    <rect x="112" y="192" width="110" height="7" rx="3.5"/>
-                    <rect x="112" y="210" width="62" height="7" rx="3.5"/>
-                  </g>
-                  <circle cx="204" cy="243" r="20" fill="none" stroke="#C0644A" strokeWidth="3"/>
-                  <rect x="194" y="237" width="20" height="4" rx="2" fill="#C0644A"/>
-                  <rect x="194" y="245" width="20" height="4" rx="2" fill="#C0644A"/>
-                </g>
-                <path d="M64 232h180a10 10 0 0 1 10 10v92a10 10 0 0 1-10 10H64a10 10 0 0 1-10-10v-92a10 10 0 0 1 10-10z" fill="#DCA96F"/>
-                <path d="M54 242l100 66 100-66" fill="none" stroke="#F0C89B" strokeWidth="8" strokeLinejoin="round" strokeLinecap="round"/>
-                <g transform="translate(256 126)">
-                  <rect x="0" y="0" width="128" height="218" rx="19" fill="#4A3527"/>
-                  <rect x="8" y="8" width="112" height="202" rx="13" fill="#fff"/>
-                  <rect x="46" y="15" width="36" height="6" rx="3" fill="#EAE1D4"/>
-                  <rect x="18" y="40" width="78" height="32" rx="11" fill="#EFE8DE"/>
-                  <rect x="42" y="84" width="68" height="26" rx="11" fill="#06C755"/>
-                  <rect x="18" y="122" width="86" height="32" rx="11" fill="#EFE8DE"/>
-                  <rect x="54" y="166" width="56" height="24" rx="11" fill="#06C755"/>
-                </g>
-              </svg>
 
               <figure className="hero-lawyer">
                 <img className="hero-avatar" src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="480" height="480" loading="eager" />
@@ -660,6 +645,42 @@ export default function Home() {
             ご依頼後、相手方（権利者・法律事務所）との窓口はすべて弁護士がお引き受けします。
             直接、電話や手紙のやり取りをしていただく必要はありません。
           </p>
+
+          <div className="delegate-figure" data-reveal>
+            <svg className="delegate-illust" viewBox="0 0 420 400" role="img" aria-label="届いた書類とスマートフォンのイラスト">
+              <circle cx="206" cy="198" r="170" fill="#F7E7D2"/>
+              <g fill="#BCC7A6">
+                <ellipse cx="64" cy="330" rx="36" ry="14" transform="rotate(-24 64 330)"/>
+                <ellipse cx="112" cy="354" rx="27" ry="11" transform="rotate(-7 112 354)"/>
+                <ellipse cx="356" cy="338" rx="31" ry="12" transform="rotate(22 356 338)"/>
+              </g>
+              <g transform="rotate(-7 165 180)">
+                <rect x="92" y="74" width="150" height="200" rx="9" fill="#fff" stroke="#E7D9C4" strokeWidth="2"/>
+                <rect x="112" y="100" width="74" height="10" rx="5" fill="#C3B49D"/>
+                <g fill="#E7DDCE">
+                  <rect x="112" y="128" width="110" height="7" rx="3.5"/>
+                  <rect x="112" y="146" width="110" height="7" rx="3.5"/>
+                  <rect x="112" y="164" width="84" height="7" rx="3.5"/>
+                  <rect x="112" y="192" width="110" height="7" rx="3.5"/>
+                  <rect x="112" y="210" width="62" height="7" rx="3.5"/>
+                </g>
+                <circle cx="204" cy="243" r="20" fill="none" stroke="#C0644A" strokeWidth="3"/>
+                <rect x="194" y="237" width="20" height="4" rx="2" fill="#C0644A"/>
+                <rect x="194" y="245" width="20" height="4" rx="2" fill="#C0644A"/>
+              </g>
+              <path d="M64 232h180a10 10 0 0 1 10 10v92a10 10 0 0 1-10 10H64a10 10 0 0 1-10-10v-92a10 10 0 0 1 10-10z" fill="#DCA96F"/>
+              <path d="M54 242l100 66 100-66" fill="none" stroke="#F0C89B" strokeWidth="8" strokeLinejoin="round" strokeLinecap="round"/>
+              <g transform="translate(256 126)">
+                <rect x="0" y="0" width="128" height="218" rx="19" fill="#4A3527"/>
+                <rect x="8" y="8" width="112" height="202" rx="13" fill="#fff"/>
+                <rect x="46" y="15" width="36" height="6" rx="3" fill="#EAE1D4"/>
+                <rect x="18" y="40" width="78" height="32" rx="11" fill="#EFE8DE"/>
+                <rect x="42" y="84" width="68" height="26" rx="11" fill="#06C755"/>
+                <rect x="18" y="122" width="86" height="32" rx="11" fill="#EFE8DE"/>
+                <rect x="54" y="166" width="56" height="24" rx="11" fill="#06C755"/>
+              </g>
+            </svg>
+          </div>
 
           <div className="split" data-stagger>
             <div className="split-col split-you">

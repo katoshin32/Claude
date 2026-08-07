@@ -70,6 +70,12 @@
      ============================================================ -->
 <section class="hero">
   <div class="hero-main">
+    <!-- 右側に事務所の写真。文字は白いカードの上に置くので、
+         写真を暗く覆う必要がない -->
+    <div class="hero-photo" aria-hidden="true">
+      <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/14f78b34-fd39-43d9-a203-7d082901fbe6_compressed_unnamed.webp"
+           alt="" width="1400" height="1050" loading="eager" fetchpriority="high">
+    </div>
     <div class="wrap hero-inner">
       <div class="hero-body">
         <p class="hero-eyebrow">トレント（BitTorrent）の意見照会書・通知書・請求書が届いた方へ</p>
@@ -105,40 +111,6 @@
       </div>
 
       <div class="hero-figure">
-        <!-- 届いた書類とLINEでの相談を表したイラスト -->
-        <svg class="hero-illust" viewBox="0 0 420 400" role="img" aria-label="届いた書類とスマートフォンのイラスト">
-          <circle cx="206" cy="198" r="170" fill="#F7E7D2"/>
-          <g fill="#BCC7A6">
-            <ellipse cx="64" cy="330" rx="36" ry="14" transform="rotate(-24 64 330)"/>
-            <ellipse cx="112" cy="354" rx="27" ry="11" transform="rotate(-7 112 354)"/>
-            <ellipse cx="356" cy="338" rx="31" ry="12" transform="rotate(22 356 338)"/>
-          </g>
-          <g transform="rotate(-7 165 180)">
-            <rect x="92" y="74" width="150" height="200" rx="9" fill="#fff" stroke="#E7D9C4" stroke-width="2"/>
-            <rect x="112" y="100" width="74" height="10" rx="5" fill="#C3B49D"/>
-            <g fill="#E7DDCE">
-              <rect x="112" y="128" width="110" height="7" rx="3.5"/>
-              <rect x="112" y="146" width="110" height="7" rx="3.5"/>
-              <rect x="112" y="164" width="84" height="7" rx="3.5"/>
-              <rect x="112" y="192" width="110" height="7" rx="3.5"/>
-              <rect x="112" y="210" width="62" height="7" rx="3.5"/>
-            </g>
-            <circle cx="204" cy="243" r="20" fill="none" stroke="#C0644A" stroke-width="3"/>
-            <rect x="194" y="237" width="20" height="4" rx="2" fill="#C0644A"/>
-            <rect x="194" y="245" width="20" height="4" rx="2" fill="#C0644A"/>
-          </g>
-          <path d="M64 232h180a10 10 0 0 1 10 10v92a10 10 0 0 1-10 10H64a10 10 0 0 1-10-10v-92a10 10 0 0 1 10-10z" fill="#DCA96F"/>
-          <path d="M54 242l100 66 100-66" fill="none" stroke="#F0C89B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
-          <g transform="translate(256 126)">
-            <rect x="0" y="0" width="128" height="218" rx="19" fill="#4A3527"/>
-            <rect x="8" y="8" width="112" height="202" rx="13" fill="#fff"/>
-            <rect x="46" y="15" width="36" height="6" rx="3" fill="#EAE1D4"/>
-            <rect x="18" y="40" width="78" height="32" rx="11" fill="#EFE8DE"/>
-            <rect x="42" y="84" width="68" height="26" rx="11" fill="#06C755"/>
-            <rect x="18" y="122" width="86" height="32" rx="11" fill="#EFE8DE"/>
-            <rect x="54" y="166" width="56" height="24" rx="11" fill="#06C755"/>
-          </g>
-        </svg>
 
         <figure class="hero-lawyer">
           <img class="hero-avatar" src="assets/img/lawyer.jpg" alt="加藤信弁護士" width="480" height="480" loading="eager">
@@ -295,6 +267,42 @@
       ご依頼後、相手方（権利者・法律事務所）との窓口はすべて弁護士がお引き受けします。
       直接、電話や手紙のやり取りをしていただく必要はありません。
     </p>
+
+    <div class="delegate-figure" data-reveal>
+      <svg class="delegate-illust" viewBox="0 0 420 400" role="img" aria-label="届いた書類とスマートフォンのイラスト">
+        <circle cx="206" cy="198" r="170" fill="#F7E7D2"/>
+        <g fill="#BCC7A6">
+          <ellipse cx="64" cy="330" rx="36" ry="14" transform="rotate(-24 64 330)"/>
+          <ellipse cx="112" cy="354" rx="27" ry="11" transform="rotate(-7 112 354)"/>
+          <ellipse cx="356" cy="338" rx="31" ry="12" transform="rotate(22 356 338)"/>
+        </g>
+        <g transform="rotate(-7 165 180)">
+          <rect x="92" y="74" width="150" height="200" rx="9" fill="#fff" stroke="#E7D9C4" stroke-width="2"/>
+          <rect x="112" y="100" width="74" height="10" rx="5" fill="#C3B49D"/>
+          <g fill="#E7DDCE">
+            <rect x="112" y="128" width="110" height="7" rx="3.5"/>
+            <rect x="112" y="146" width="110" height="7" rx="3.5"/>
+            <rect x="112" y="164" width="84" height="7" rx="3.5"/>
+            <rect x="112" y="192" width="110" height="7" rx="3.5"/>
+            <rect x="112" y="210" width="62" height="7" rx="3.5"/>
+          </g>
+          <circle cx="204" cy="243" r="20" fill="none" stroke="#C0644A" stroke-width="3"/>
+          <rect x="194" y="237" width="20" height="4" rx="2" fill="#C0644A"/>
+          <rect x="194" y="245" width="20" height="4" rx="2" fill="#C0644A"/>
+        </g>
+        <path d="M64 232h180a10 10 0 0 1 10 10v92a10 10 0 0 1-10 10H64a10 10 0 0 1-10-10v-92a10 10 0 0 1 10-10z" fill="#DCA96F"/>
+        <path d="M54 242l100 66 100-66" fill="none" stroke="#F0C89B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+        <g transform="translate(256 126)">
+          <rect x="0" y="0" width="128" height="218" rx="19" fill="#4A3527"/>
+          <rect x="8" y="8" width="112" height="202" rx="13" fill="#fff"/>
+          <rect x="46" y="15" width="36" height="6" rx="3" fill="#EAE1D4"/>
+          <rect x="18" y="40" width="78" height="32" rx="11" fill="#EFE8DE"/>
+          <rect x="42" y="84" width="68" height="26" rx="11" fill="#06C755"/>
+          <rect x="18" y="122" width="86" height="32" rx="11" fill="#EFE8DE"/>
+          <rect x="54" y="166" width="56" height="24" rx="11" fill="#06C755"/>
+        </g>
+      </svg>
+    </div>
 
     <div class="split" data-stagger>
       <div class="split-col split-you">

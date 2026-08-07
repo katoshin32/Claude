@@ -166,20 +166,40 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ------------------------------------------------------------
    1. ファーストビュー
    ------------------------------------------------------------ */
-/* 上段クリーム／下段は一段濃い帯。イラストが境目にまたがって奥行きを出す */
+/* 上段は事務所の写真＋白いカード、下段は一段濃い帯 */
 .hero { border-bottom: 1px solid var(--rule); }
-.hero-main { background: #FBF3E7; padding: 48px 0 44px; }
-.hero-inner { display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start; }
+.hero-main { position: relative; background: #FBF3E7; padding: 44px 0 40px; overflow: hidden; }
+.hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 300px; gap: 36px; align-items: start;
+}
+
+/* 写真は右側だけに置く。文字はこの上ではなく白いカードに乗るので、
+   暗いオーバーレイで写真を潰す必要がない */
+.hero-photo { position: absolute; inset: 0 0 0 38%; z-index: 0; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+/* 左端をクリームに溶かして、カードとの境目を消す */
+.hero-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, #FBF3E7 0%, rgba(251, 243, 231, .55) 22%, rgba(251, 243, 231, 0) 46%);
+}
+
+/* 本文は白いカードに載せて可読性を確保する */
+.hero-body {
+  background: rgba(255, 255, 255, .96);
+  border-radius: 18px; padding: 34px 36px 36px;
+  box-shadow: 0 10px 40px rgba(90, 60, 30, .13);
+}
 
 .hero-eyebrow {
   display: inline-block;
-  background: #fff; color: var(--accent-dark);
+  background: var(--accent-pale); color: var(--accent-dark);
   font-size: .8rem; font-weight: 700; letter-spacing: .05em;
   padding: 7px 20px; border-radius: 999px; margin-bottom: 20px;
   box-shadow: 0 2px 10px rgba(90, 60, 30, .07);
 }
-/* 6.3vw は「もう終わりにしませんか。」(12文字) が 360px 幅でも
-   1行に収まるよう逆算した値。上限で頭打ちにする */
+/* 6.3vw は最長の文節「すべてお任せください。」」(12文字) が
+   360px 幅でも1行に収まるよう逆算した値。上限で頭打ちにする */
 .hero-title {
   font-size: clamp(1.5rem, 6.3vw, 2.3rem);
   line-height: 1.55; margin-bottom: 22px; color: var(--brown);
@@ -223,22 +243,28 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
    誰が対応するのかをファーストビューで見せる */
 .hero-lawyer { margin: 4px 0 0; text-align: center; }
 .hero-avatar {
-  width: min(240px, 76%); height: auto; aspect-ratio: 1;
+  width: min(230px, 84%); height: auto; aspect-ratio: 1;
   margin: 0 auto 14px;
   border-radius: 50%; object-fit: cover; object-position: center 18%;
   border: 6px solid #fff;
-  box-shadow: 0 8px 24px rgba(90, 60, 30, .16);
+  box-shadow: 0 10px 30px rgba(60, 40, 20, .28);
   background: var(--bg-deep);
 }
-.hero-lawyer figcaption { display: block; line-height: 1.5; }
+/* 写真の上に文字が乗るので、白い下地を敷いて必ず読めるようにする */
+.hero-lawyer figcaption {
+  display: inline-block; line-height: 1.5;
+  background: rgba(255, 255, 255, .95);
+  border-radius: 14px; padding: 9px 22px 12px;
+  box-shadow: 0 4px 18px rgba(60, 40, 20, .16);
+}
 .hl-role {
-  display: inline-block;
+  display: inline-block; margin-top: -26px;
   font-size: .68rem; font-weight: 700; letter-spacing: .12em;
   color: #fff; background: var(--accent);
   border-radius: 999px; padding: 3px 14px; margin-bottom: 8px;
 }
 .hl-name {
-  display: block; font-family: var(--serif); font-size: 1.34rem;
+  display: block; font-family: var(--serif); font-size: 1.3rem;
   font-weight: 600; color: var(--brown); letter-spacing: .05em;
 }
 .hl-name small { font-size: .8rem; margin-left: 6px; }
@@ -434,6 +460,10 @@ ul.do-list li::before {
   margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule);
   font-size: .86rem; color: var(--accent-dark); font-weight: 700;
 }
+
+/* ヒーローから移したイラスト。ここでは「書類を送る」の説明として働く */
+.delegate-figure { max-width: 340px; margin: 0 auto 34px; }
+.delegate-illust { width: 100%; height: auto; display: block; }
 
 /* LINEトーク再現 */
 .talk-demo {
@@ -886,6 +916,13 @@ ul.do-list li::before {
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 24px; }
   .hero-figure { max-width: 340px; margin: 0 auto; }
+  /* 横並びが崩れる幅では、写真を上端の帯にして本文と重ならないようにする */
+  .hero-main { padding-top: 210px; }
+  .hero-photo { inset: 0 0 auto 0; height: 250px; }
+  .hero-photo::after {
+    background: linear-gradient(180deg, rgba(251,243,231,0) 45%, rgba(251,243,231,.7) 78%, #FBF3E7 100%);
+  }
+  .hero-body { padding: 28px 24px 30px; }
   .split { grid-template-columns: 1fr; }
   .fee-main { grid-template-columns: 1fr; }
   .fee-headline { border-right: 0; border-bottom: 1px solid var(--accent-pale); }
@@ -916,9 +953,15 @@ ul.do-list li::before {
 @media (max-width: 620px) {
   body { font-size: 15.5px; line-height: 1.85; }
   .sec { padding: 54px 0; }
-  .hero-main { padding: 30px 0 34px; }
+  /* 写真の帯は画面が狭いほど詰める。padding-top は帯の高さに合わせる
+     （一括指定にすると上の指定を打ち消してしまうので個別に書く） */
+  .hero-main { padding-top: 178px; padding-bottom: 34px; }
+  .hero-photo { height: 208px; }
   .hero-foot { padding: 48px 0 34px; }
-  .hero-title { line-height: 1.5; }
+  /* 白カードの左右余白のぶん本文が狭くなるので、見出しも合わせて詰める。
+     360px でも「すべてお任せください。」」が1行に収まる値 */
+  .hero-body { padding: 26px 20px 28px; }
+  .hero-title { font-size: clamp(1.2rem, 6vw, 2.3rem); line-height: 1.5; }
   .hero-circles { gap: 14px; }
   .hero-circles li { width: calc(50% - 7px); height: auto; aspect-ratio: 1; border-width: 4px; }
   .hero-price li {
@@ -955,6 +998,12 @@ ul.do-list li::before {
   .split-col { padding: 24px 22px; }
   .talk-demo { padding: 18px 14px 14px; }
   .bubble { max-width: 84%; }
+}
+
+/* 見出しの余白は画面幅に比例しないので、狭い端末ではカードの左右を
+   さらに詰めて1行に収まる余地をつくる（iPhone SE 第1世代など） */
+@media (max-width: 380px) {
+  .hero-body { padding: 24px 16px 26px; }
 }
 
 /* ------------------------------------------------------------
