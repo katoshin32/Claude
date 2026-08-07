@@ -228,7 +228,10 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .flow-note p:first-child{font-size:1.05rem;color:var(--brown);font-family:var(--serif)}
 .flow-note p:last-child{font-size:.88rem;color:var(--ink-mid)}
 .lawyer{display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:start}
-.lawyer-photo img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);background:var(--bg-deep);aspect-ratio:4 / 5;object-fit:cover}
+.lawyer-photo>img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);background:var(--bg-deep);aspect-ratio:4 / 5;object-fit:cover}
+.lw-books{margin:14px 0 0}
+.lw-books img{width:100%;aspect-ratio:4 / 3;object-fit:cover;border-radius:10px;background:var(--bg-deep);box-shadow:0 3px 12px #5a3c1e1a}
+.lw-books figcaption{margin-top:8px;font-size:.72rem;color:var(--ink-soft);text-align:center;line-height:1.7}
 .lawyer-name{font-family:var(--serif);font-size:1.6rem;color:var(--brown);margin-bottom:2px}
 .lawyer-name span{font-size:1rem}
 .lawyer-affil{font-size:.84rem;color:var(--accent-dark);margin-bottom:20px}
@@ -257,6 +260,9 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .ac-list dd{margin:0;font-size:.89rem;color:var(--ink-mid);line-height:1.9}
 .access-map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--rule);background:var(--bg-deep);aspect-ratio:4 / 3}
 .access-map iframe{width:100%;height:100%;border:0;display:block}
+.ac-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.ac-photos img{width:100%;aspect-ratio:4 / 3;object-fit:cover;border-radius:12px;background:var(--bg-deep);box-shadow:0 3px 14px #5a3c1e1a}
+.ac-photos span{display:block;margin-top:9px;text-align:center;font-size:.79rem;font-weight:700;color:var(--ink-soft);letter-spacing:.04em}
 .faq-list{display:flex;flex-direction:column;gap:12px}
 .faq-item{background:#fff;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
 .faq-item>summary{cursor:pointer;list-style:none;position:relative;padding:18px 56px 18px 54px;font-family:var(--serif);font-size:1.02rem;color:var(--brown);line-height:1.6}
@@ -289,6 +295,7 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .fee-headline{border-right:0;border-bottom:1px solid var(--accent-pale)}
 .fee-other-body,.promise-list{grid-template-columns:1fr}
 .access{grid-template-columns:1fr;gap:26px}
+.ac-photos{gap:14px}
 .result-grid{grid-template-columns:1fr 1fr}
 .result-card.is-primary{grid-column:span 2}
 .flow-list{grid-template-columns:1fr 1fr;gap:26px 18px}
@@ -319,6 +326,7 @@ html{scroll-padding-top:68px}}
 .result-card.is-primary .rc-figures{grid-column:1;grid-row:auto;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 0;margin:4px 0 12px}
 .flow-list{grid-template-columns:1fr;gap:26px}
 .lawyer-cols{grid-template-columns:1fr;gap:22px}
+.ac-photos{grid-template-columns:1fr 1fr}
 .callout-warm{padding:22px 20px}
 .faq-item>summary{padding:16px 44px;font-size:.96rem}
 .faq-item>summary:before{left:18px;top:16px}
@@ -995,6 +1003,11 @@ export default function Home() {
             <div className="lawyer-photo">
               {/* 画像差し替え: 弁護士本人の写真 */}
               <img src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="400" height="500" loading="lazy" />
+              <figure className="lw-books">
+                <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/4f962a88-d256-42d7-b3ee-90d5966c07e5_compressed_unnamed.webp"
+                     alt="事務所に常備している判例解説" width="800" height="600" loading="lazy" />
+                <figcaption>判例解説・実務書を常備しています</figcaption>
+              </figure>
             </div>
             <div className="lawyer-body">
               <p className="lawyer-name">加藤 信 <span>弁護士</span></p>
@@ -1117,6 +1130,25 @@ export default function Home() {
                 referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
+
+          {/* 実在感を伝える写真。来所前に「どんな場所か」が分かるようにする */}
+          <ul className="ac-photos" data-stagger>
+            <li>
+              <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/ef3d94dd-d58b-473b-9ea1-1a38af26fedc_compressed_unnamed.webp"
+                   alt="事務所のエントランス" width="800" height="600" loading="lazy" />
+              <span>エントランス</span>
+            </li>
+            <li>
+              <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/85130a63-0212-4db3-b56d-f633b5fe57d7_compressed_unnamed.webp"
+                   alt="ご相談いただく相談室" width="800" height="600" loading="lazy" />
+              <span>相談室</span>
+            </li>
+            <li>
+              <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/14f78b34-fd39-43d9-a203-7d082901fbe6_compressed_unnamed.webp"
+                   alt="事務所の看板" width="800" height="600" loading="lazy" />
+              <span>受付</span>
+            </li>
+          </ul>
         </div>
       </section>
 

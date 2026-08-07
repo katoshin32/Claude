@@ -690,9 +690,19 @@ ul.do-list li::before {
    8. 弁護士紹介
    ------------------------------------------------------------ */
 .lawyer { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start; }
-.lawyer-photo img {
+.lawyer-photo > img {
   width: 100%; border-radius: var(--radius); box-shadow: var(--shadow);
   background: var(--bg-deep); aspect-ratio: 4 / 5; object-fit: cover;
+}
+/* 蔵書の写真。専門性の裏付けとして弁護士写真の下に添える */
+.lw-books { margin: 14px 0 0; }
+.lw-books img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: 10px; background: var(--bg-deep);
+  box-shadow: 0 3px 12px rgba(90, 60, 30, .10);
+}
+.lw-books figcaption {
+  margin-top: 8px; font-size: .72rem; color: var(--ink-soft); text-align: center; line-height: 1.7;
 }
 .lawyer-name { font-family: var(--serif); font-size: 1.6rem; color: var(--brown); margin-bottom: 2px; }
 .lawyer-name span { font-size: 1rem; }
@@ -766,6 +776,20 @@ ul.do-list li::before {
   aspect-ratio: 4 / 3;
 }
 .access-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* 事務所の写真。読み込めなかった場合も枠が崩れないよう背景を敷く */
+.ac-photos {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px;
+}
+.ac-photos img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: 12px; background: var(--bg-deep);
+  box-shadow: 0 3px 14px rgba(90, 60, 30, .10);
+}
+.ac-photos span {
+  display: block; margin-top: 9px; text-align: center;
+  font-size: .79rem; font-weight: 700; color: var(--ink-soft); letter-spacing: .04em;
+}
 
 /* ------------------------------------------------------------
    10. FAQ
@@ -869,6 +893,7 @@ ul.do-list li::before {
   /* 2列だと3枚目が取り残されて座りが悪いので1列にする */
   .promise-list { grid-template-columns: 1fr; }
   .access { grid-template-columns: 1fr; gap: 26px; }
+  .ac-photos { gap: 14px; }
   .result-grid { grid-template-columns: 1fr 1fr; }
   .result-card.is-primary { grid-column: span 2; }
   .flow-list { grid-template-columns: 1fr 1fr; gap: 26px 18px; }
@@ -921,6 +946,7 @@ ul.do-list li::before {
   }
   .flow-list { grid-template-columns: 1fr; gap: 26px; }
   .lawyer-cols { grid-template-columns: 1fr; gap: 22px; }
+  .ac-photos { grid-template-columns: 1fr 1fr; }
   .callout-warm { padding: 22px 20px; }
   .faq-item > summary { padding: 16px 44px 16px 44px; font-size: .96rem; }
   .faq-item > summary::before { left: 18px; top: 16px; }
