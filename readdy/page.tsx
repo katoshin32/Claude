@@ -42,44 +42,39 @@ ul,ol{margin:0;padding:0;list-style:none}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent-dark)}
 .ico-line{display:inline-block;width:20px;height:19px;margin-right:2px;background:currentColor;-webkit-mask:no-repeat center / contain;mask:no-repeat center / contain;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 23'%3E%3Cpath d='M12 0C5.37 0 0 4.27 0 9.54c0 4.72 4.26 8.67 10.02 9.42.39.08.92.26 1.05.59.12.3.08.77.04 1.08l-.17 1.02c-.05.3-.24 1.18 1.06.64s6.99-4.12 9.54-7.05C23.2 13.32 24 11.53 24 9.54 24 4.27 18.63 0 12 0z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 23'%3E%3Cpath d='M12 0C5.37 0 0 4.27 0 9.54c0 4.72 4.26 8.67 10.02 9.42.39.08.92.26 1.05.59.12.3.08.77.04 1.08l-.17 1.02c-.05.3-.24 1.18 1.06.64s6.99-4.12 9.54-7.05C23.2 13.32 24 11.53 24 9.54 24 4.27 18.63 0 12 0z'/%3E%3C/svg%3E")}
 .btn-lg .ico-line{width:24px;height:23px}
-.site-header{position:sticky;top:0;z-index:100;background:#3b2b20f7;backdrop-filter:saturate(140%) blur(6px)}
-.header-inner{display:flex;align-items:center;gap:24px;min-height:62px}
-.brand{text-decoration:none;color:#fff;line-height:1.3;margin-right:auto}
-.brand-ja{display:block;font-family:var(--serif);font-size:.96rem;letter-spacing:.08em}
-.brand-en{display:block;font-size:.58rem;letter-spacing:.18em;color:#c9b49e}
-.header-nav{display:flex;gap:22px}
-.header-nav a{color:#e7d9c8;text-decoration:none;font-size:.84rem;letter-spacing:.06em}
-.header-nav a:hover{color:#fff}
+.site-header{position:sticky;top:0;z-index:100;background:#fdfaf6eb;backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid rgba(184,115,51,.14)}
+.header-inner{display:flex;align-items:center;gap:30px;min-height:70px}
+.brand{text-decoration:none;color:var(--brown);line-height:1.35;margin-right:auto}
+.brand-ja{display:block;font-family:var(--serif);font-size:1.02rem;letter-spacing:.1em}
+.brand-en{display:block;font-size:.56rem;letter-spacing:.22em;color:var(--accent);margin-top:2px}
+.header-nav{display:flex;gap:26px}
+.header-nav a{position:relative;color:var(--ink-mid);text-decoration:none;font-size:.84rem;letter-spacing:.08em;padding:6px 0;transition:color .2s}
+.header-nav a:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.header-nav a:hover{color:var(--accent-dark)}
+.header-nav a:hover:after{transform:scaleX(1)}
+.header-cta{box-shadow:0 4px 14px #06c75547}
 .hero{border-bottom:1px solid var(--rule)}
-.hero-main{position:relative;background:#fbf3e7;padding:44px 0 40px;overflow:hidden}
-.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 300px;gap:36px;align-items:start}
-.hero-photo{position:absolute;inset:0 0 0 38%;z-index:0}
-.hero-photo img{width:100%;height:100%;object-fit:cover}
-.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fbf3e7,#fbf3e78c 22%,#fbf3e700 46%)}
-.hero-body{background:#fffffff5;border-radius:18px;padding:34px 36px 36px;box-shadow:0 10px 40px #5a3c1e21}
-.hero-eyebrow{display:inline-block;background:var(--accent-pale);color:var(--accent-dark);font-size:.8rem;font-weight:700;letter-spacing:.05em;padding:7px 20px;border-radius:999px;margin-bottom:20px;box-shadow:0 2px 10px #5a3c1e12}
-.hero-title{font-size:clamp(1.5rem,6.3vw,2.3rem);line-height:1.55;margin-bottom:22px;color:var(--brown)}
+.hero-main{position:relative;background:#fbf3e7;overflow:hidden;display:flex;align-items:center;min-height:clamp(460px,52vw,620px);padding:52px 0}
+.hero-inner{position:relative;z-index:2;width:100%}
+.hero-photo{position:absolute;inset:0;z-index:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero{--hero-text-w: 32rem}
+.hero-main{--hero-text-end: calc(max(0px, (100vw - var(--wrap)) / 2) + 20px + var(--hero-text-w))}
+.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#FBF3E7 0%,#FBF3E7 calc(var(--hero-text-end) - 120px),rgba(251,243,231,.92) var(--hero-text-end),rgba(251,243,231,.45) calc(var(--hero-text-end) + 150px),rgba(251,243,231,0) calc(var(--hero-text-end) + 320px)),linear-gradient(0deg,#f1e3cbd9,#f1e3cb00 16%)}
+.hero-body{position:relative;max-width:var(--hero-text-w)}
+.hero-eyebrow{display:inline-block;color:var(--accent-dark);font-size:.78rem;font-weight:700;letter-spacing:.08em;line-height:1.7;margin-bottom:18px;padding-left:15px;border-left:3px solid var(--accent)}
+.hero-title{font-size:clamp(1.5rem,6.3vw,2.45rem);line-height:1.6;margin-bottom:20px;color:var(--brown);letter-spacing:.02em}
 .ht-line{display:inline-block}
 .ht-em{font-weight:600;color:var(--accent-dark)}
 .ht-mark{color:var(--accent);font-weight:400}
-.hero-lead{font-size:1.02rem;color:var(--ink-mid);max-width:40em;margin-bottom:26px}
-.hero-price{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
-.hero-price li{flex:1 1 150px;background:#fff;border:1px solid var(--accent-pale);border-radius:18px;padding:14px 16px;text-align:center;box-shadow:0 2px 10px #5a3c1e0d}
-.hero-price .is-cap{border-color:var(--accent);background:#fff}
+.hero-lead{font-size:1rem;color:var(--ink-mid);max-width:27em;margin-bottom:26px}
+.hero-price{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.hero-price li{flex:1 1 150px;background:#fffffff0;border:1px solid var(--accent-pale);border-radius:14px;padding:13px 16px 14px;text-align:center;box-shadow:0 4px 16px #5a3c1e14}
+.hero-price .is-cap{border-color:var(--accent)}
 .hp-label{display:block;font-size:.74rem;color:var(--ink-soft);letter-spacing:.04em}
 .hp-value{display:block;font-family:var(--serif);font-size:1.85rem;font-weight:600;color:var(--accent-dark);line-height:1.25;white-space:nowrap}
 .hp-value small{font-size:.82rem;margin-left:1px}
 .hp-note{display:block;font-size:.68rem;color:var(--ink-soft)}
-.hero-cta-alt{font-size:.8rem;color:var(--ink-soft);margin-top:14px;line-height:1.9}
-.hero-figure{position:relative;z-index:2}
-.hero-illust{width:100%;height:auto;display:block}
-.hero-lawyer{margin:4px 0 0;text-align:center}
-.hero-avatar{width:min(230px,84%);height:auto;aspect-ratio:1;margin:0 auto 14px;border-radius:50%;object-fit:cover;object-position:center 18%;border:6px solid #fff;box-shadow:0 10px 30px #3c281447;background:var(--bg-deep)}
-.hero-lawyer figcaption{display:inline-block;line-height:1.5;background:#fffffff2;border-radius:14px;padding:9px 22px 12px;box-shadow:0 4px 18px #3c281429}
-.hl-role{display:inline-block;margin-top:-26px;font-size:.68rem;font-weight:700;letter-spacing:.12em;color:#fff;background:var(--accent);border-radius:999px;padding:3px 14px;margin-bottom:8px}
-.hl-name{display:block;font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--brown);letter-spacing:.05em}
-.hl-name small{font-size:.8rem;margin-left:6px}
-.hl-bar{display:block;font-size:.78rem;color:var(--ink-soft);margin-top:2px}
 .hero-foot{position:relative;z-index:1;background:#f1e3cb;padding:56px 0 40px}
 .hero-circles{display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
 .hero-circles li{width:172px;height:172px;border-radius:50%;background:#fff;border:2px solid var(--accent-pale);box-shadow:0 6px 20px #5a3c1e1f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 14px;text-align:center}
@@ -104,8 +99,15 @@ ul,ol{margin:0;padding:0;list-style:none}
 .check-list{display:flex;flex-direction:column;gap:12px;margin-bottom:44px}
 .check-list li{display:flex;align-items:center;gap:16px;background:var(--bg-warm);border-radius:10px;padding:17px 26px;color:var(--brown);font-weight:500;line-height:1.7}
 .check-list li:before{content:"";flex:0 0 auto;width:23px;height:23px;background:no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C0A16A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='3'/%3E%3Cpath d='M8 12.4l2.9 2.9 5.4-5.9'/%3E%3C/svg%3E")}
-.ally{background:#f1e3cb;border-radius:var(--radius);padding:16px}
+.ally{background:#f1e3cb;border-radius:var(--radius);padding:16px;margin-top:62px}
 .ally-inner{background:#ffffffeb;border:1px solid var(--accent-pale);border-radius:9px;padding:36px 32px;text-align:center}
+.ally-lawyer{width:132px;height:132px;margin:-84px auto 22px;border-radius:50%;overflow:hidden;border:5px solid #fff;background:var(--bg-deep);box-shadow:0 8px 26px #3c281438}
+.ally-lawyer img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 18%}
+.ally-sign{margin-top:24px;padding-top:18px;border-top:1px solid var(--accent-pale)}
+.as-role{display:block;font-size:.7rem;font-weight:700;letter-spacing:.16em;color:var(--accent);margin-bottom:4px}
+.as-name{display:block;font-family:var(--serif);font-size:1.16rem;font-weight:600;color:var(--brown);letter-spacing:.06em}
+.as-name small{font-size:.78rem;margin-left:6px}
+.as-affil{display:block;font-size:.76rem;color:var(--ink-soft);margin-top:3px}
 .ally-lead{color:var(--brown-soft);font-size:.93rem;line-height:2;margin-bottom:22px}
 .ally-punch{font-family:var(--serif);color:var(--accent-dark);font-weight:600;font-size:clamp(1.1rem,2.3vw,1.5rem);line-height:1.85;letter-spacing:.03em}
 .ally-punch span{display:inline-block}
@@ -235,9 +237,6 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .flow-note p:last-child{font-size:.88rem;color:var(--ink-mid)}
 .lawyer{display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:start}
 .lawyer-photo>img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);background:var(--bg-deep);aspect-ratio:4 / 5;object-fit:cover}
-.lw-books{margin:14px 0 0}
-.lw-books img{width:100%;aspect-ratio:4 / 3;object-fit:cover;border-radius:10px;background:var(--bg-deep);box-shadow:0 3px 12px #5a3c1e1a}
-.lw-books figcaption{margin-top:8px;font-size:.72rem;color:var(--ink-soft);text-align:center;line-height:1.7}
 .lawyer-name{font-family:var(--serif);font-size:1.6rem;color:var(--brown);margin-bottom:2px}
 .lawyer-name span{font-size:1rem}
 .lawyer-affil{font-size:.84rem;color:var(--accent-dark);margin-bottom:20px}
@@ -266,9 +265,10 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .ac-list dd{margin:0;font-size:.89rem;color:var(--ink-mid);line-height:1.9}
 .access-map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--rule);background:var(--bg-deep);aspect-ratio:4 / 3}
 .access-map iframe{width:100%;height:100%;border:0;display:block}
-.ac-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.ac-photos{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:32px}
 .ac-photos img{width:100%;aspect-ratio:4 / 3;object-fit:cover;border-radius:12px;background:var(--bg-deep);box-shadow:0 3px 14px #5a3c1e1a}
-.ac-photos span{display:block;margin-top:9px;text-align:center;font-size:.79rem;font-weight:700;color:var(--ink-soft);letter-spacing:.04em}
+.ac-ph-name{display:block;margin-top:12px;font-size:.92rem;font-weight:700;color:var(--brown);letter-spacing:.04em}
+.ac-ph-desc{display:block;margin-top:5px;font-size:.82rem;color:var(--ink-mid);line-height:1.8}
 .faq-list{display:flex;flex-direction:column;gap:12px}
 .faq-item{background:#fff;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
 .faq-item>summary{cursor:pointer;list-style:none;position:relative;padding:18px 56px 18px 54px;font-family:var(--serif);font-size:1.02rem;color:var(--brown);line-height:1.6}
@@ -295,12 +295,10 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 .footer-nav a{color:#c9b49e;text-decoration:none;font-size:.8rem}
 .footer-nav a:hover{color:#fff;text-decoration:underline}
 .footer-copy{font-size:.7rem;color:#8e7b68}
-@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:24px}
-.hero-figure{max-width:340px;margin:0 auto}
-.hero-main{padding-top:210px}
-.hero-photo{inset:0 0 auto;height:250px}
-.hero-photo:after{background:linear-gradient(180deg,#fbf3e700 45%,#fbf3e7b3 78%,#fbf3e7)}
-.hero-body{padding:28px 24px 30px}
+@media(max-width:900px){.hero-main{display:block;min-height:0;padding:250px 0 40px}
+.hero-photo{inset:0 0 auto;height:268px}
+.hero-photo:after{background:linear-gradient(180deg,#fbf3e700 42%,#fbf3e7b8 76%,#fbf3e7)}
+.hero-body{max-width:none}
 .split,.fee-main{grid-template-columns:1fr}
 .fee-headline{border-right:0;border-bottom:1px solid var(--accent-pale)}
 .fee-other-body,.promise-list{grid-template-columns:1fr}
@@ -316,11 +314,10 @@ ul.do-list li:before{content:"";position:absolute;left:4px;top:17px;width:12px;h
 html{scroll-padding-top:68px}}
 @media(max-width:620px){body{font-size:15.5px;line-height:1.85}
 .sec{padding:54px 0}
-.hero-main{padding-top:178px;padding-bottom:34px}
-.hero-photo{height:208px}
+.hero-main{padding-top:196px;padding-bottom:34px}
+.hero-photo{height:216px}
 .hero-foot{padding:48px 0 34px}
-.hero-body{padding:26px 20px 28px}
-.hero-title{font-size:clamp(1.2rem,6vw,2.3rem);line-height:1.5}
+.hero-title{font-size:clamp(1.3rem,6.3vw,2.45rem);line-height:1.55}
 .hero-circles{gap:14px}
 .hero-circles li{width:calc(50% - 7px);height:auto;aspect-ratio:1;border-width:4px}
 .hero-price li{flex:1 1 100%;display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:0 12px;text-align:left;padding:11px 16px}
@@ -338,7 +335,7 @@ html{scroll-padding-top:68px}}
 .result-card.is-primary .rc-figures{grid-column:1;grid-row:auto;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 0;margin:4px 0 12px}
 .flow-list{grid-template-columns:1fr;gap:26px}
 .lawyer-cols{grid-template-columns:1fr;gap:22px}
-.ac-photos{grid-template-columns:1fr 1fr}
+.ac-photos{grid-template-columns:1fr;gap:24px}
 .callout-warm{padding:22px 20px}
 .faq-item>summary{padding:16px 44px;font-size:.96rem}
 .faq-item>summary:before{left:18px;top:16px}
@@ -347,15 +344,16 @@ html{scroll-padding-top:68px}}
 .split-col{padding:24px 22px}
 .talk-demo{padding:18px 14px 14px}
 .bubble{max-width:84%}}
-@media(max-width:380px){.hero-body{padding:24px 16px 26px}}
 @keyframes lpRise{0%{opacity:0;transform:translateY(16px)}
 to{opacity:1;transform:none}}
+@keyframes lpFade{0%{opacity:0}
+to{opacity:1}}
 @keyframes lpBubble{0%{opacity:0;transform:translateY(12px) scale(.96)}
 to{opacity:1;transform:none}}
-.hero-eyebrow,.hero-title,.hero-lead,.hero-price,.hero-cta,.hero-figure,.hero-circles li{animation:lpRise .6s cubic-bezier(.22,.85,.3,1) backwards}
+.hero-eyebrow,.hero-title,.hero-lead,.hero-price,.hero-cta,.hero-photo,.hero-circles li{animation:lpRise .6s cubic-bezier(.22,.85,.3,1) backwards}
+.hero-photo{animation:lpFade 1.1s ease backwards}
 .hero-eyebrow{animation-delay:.04s}
 .hero-title{animation-delay:.1s}
-.hero-figure{animation-delay:.22s}
 .hero-lead{animation-delay:.2s}
 .hero-price{animation-delay:.28s}
 .hero-cta{animation-delay:.36s}
@@ -379,7 +377,8 @@ to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
 .btn{transition:none}
 .btn:hover{transform:none}
-.hero-eyebrow,.hero-title,.hero-lead,.hero-price,.hero-cta,.hero-figure,.hero-circles li,.anim-ready [data-reveal],.anim-ready [data-stagger]>*,.anim-ready [data-talk]>.talk-row,.anim-ready [data-talk].is-in>.talk-row{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}}`;
+.header-nav a,.header-nav a:after{transition:none}
+.hero-eyebrow,.hero-title,.hero-lead,.hero-price,.hero-cta,.hero-photo,.hero-circles li,.anim-ready [data-reveal],.anim-ready [data-stagger]>*,.anim-ready [data-talk]>.talk-row,.anim-ready [data-talk].is-in>.talk-row{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}}`;
 
 export default function Home() {
   /* スクロールで要素を出す。
@@ -448,8 +447,8 @@ export default function Home() {
            ============================================================ */}
       <section className="hero">
         <div className="hero-main">
-          {/* 右側に事務所の写真。文字は白いカードの上に置くので、
-               写真を暗く覆う必要がない */}
+          {/* 事務所の写真を全面に敷き、文字は左に直接置く。
+               枠で囲わない代わりに、左からのグラデーションで読みやすさを確保する */}
           <div className="hero-photo" aria-hidden="true">
             <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/14f78b34-fd39-43d9-a203-7d082901fbe6_compressed_unnamed.webp"
                  alt="" width="1400" height="1050" loading="eager" fetchPriority="high" />
@@ -479,25 +478,7 @@ export default function Home() {
                   <span className="btn-main">LINEで書類の写真を送る</span>
                   <span className="btn-sub">無料・24時間受付／弁護士本人が確認します</span>
                 </a>
-                <p className="hero-cta-alt">
-                  土日祝も原則24時間以内に返信／オンラインで全国対応<br />
-                  LINEをお使いでない方は
-                  <a href="#contact-alt">お問い合わせフォーム・お電話</a>
-                  からもご相談いただけます。
-                </p>
               </div>
-            </div>
-
-            <div className="hero-figure">
-
-              <figure className="hero-lawyer">
-                <img className="hero-avatar" src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="480" height="480" loading="eager" />
-                <figcaption>
-                  <span className="hl-role">担当</span>
-                  <span className="hl-name">加藤 信<small>弁護士</small></span>
-                  <span className="hl-bar">愛知県弁護士会所属</span>
-                </figcaption>
-              </figure>
             </div>
           </div>
         </div>
@@ -564,6 +545,10 @@ export default function Home() {
 
           <div className="ally" data-reveal>
             <div className="ally-inner">
+              {/* 誰が言っているのかを見せる。宣言は、顔が見えるほど強くなる */}
+              <figure className="ally-lawyer">
+                <img src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="480" height="480" loading="lazy" />
+              </figure>
               <p className="ally-lead">
                 トレントの仕組みをよく知らないまま使ってしまった——<br />
                 そういう方から、私たちは数多くのご相談をお受けしています。<br />
@@ -572,6 +557,11 @@ export default function Home() {
               <p className="ally-punch">
                 <span>ひとりで抱え込まず、</span><span>頼ってしまってください。</span><br />
                 <span>ご相談いただいたその時から、</span><span>私たちは<em>あなたの味方</em>です。</span>
+              </p>
+              <p className="ally-sign">
+                <span className="as-role">担当弁護士</span>
+                <span className="as-name">加藤 信<small>弁護士</small></span>
+                <span className="as-affil">愛知県弁護士会所属</span>
               </p>
             </div>
           </div>
@@ -869,7 +859,6 @@ export default function Home() {
                 <p className="fo-price">着手金 33万円（税込）＋ 成功報酬</p>
                 <p className="fo-desc">
                   裁判を起こされた場合に、訴訟手続きの全面対応・裁判所への出廷代理・和解交渉までを行うプランです。
-                  標準対応プランからの継続の場合、追加着手金は11万円（税込）となります。
                   成功報酬は減額できた金額の20%です。
                 </p>
               </div>
@@ -1024,11 +1013,6 @@ export default function Home() {
             <div className="lawyer-photo">
               {/* 画像差し替え: 弁護士本人の写真 */}
               <img src="https://static.readdy.ai/image/5e182d52a94dfeeda6703180d188c585/23d653c5a2e092151eaee21a33c16434.png" alt="加藤信弁護士" width="400" height="500" loading="lazy" />
-              <figure className="lw-books">
-                <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/4f962a88-d256-42d7-b3ee-90d5966c07e5_compressed_unnamed.webp"
-                     alt="事務所に常備している判例解説" width="800" height="600" loading="lazy" />
-                <figcaption>判例解説・実務書を常備しています</figcaption>
-              </figure>
             </div>
             <div className="lawyer-body">
               <p className="lawyer-name">加藤 信 <span>弁護士</span></p>
@@ -1157,17 +1141,14 @@ export default function Home() {
             <li>
               <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/ef3d94dd-d58b-473b-9ea1-1a38af26fedc_compressed_unnamed.webp"
                    alt="事務所のエントランス" width="800" height="600" loading="lazy" />
-              <span>エントランス</span>
+              <span className="ac-ph-name">エントランス</span>
+              <span className="ac-ph-desc">お客様にリラックスしていただけるよう、緑を飾っています。</span>
             </li>
             <li>
               <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/85130a63-0212-4db3-b56d-f633b5fe57d7_compressed_unnamed.webp"
                    alt="ご相談いただく相談室" width="800" height="600" loading="lazy" />
-              <span>相談室</span>
-            </li>
-            <li>
-              <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/14f78b34-fd39-43d9-a203-7d082901fbe6_compressed_unnamed.webp"
-                   alt="事務所の看板" width="800" height="600" loading="lazy" />
-              <span>受付</span>
+              <span className="ac-ph-name">相談室</span>
+              <span className="ac-ph-desc">秘密保護に配慮した会議室をご用意しています。最大8名まで参加いただけます。</span>
             </li>
           </ul>
         </div>

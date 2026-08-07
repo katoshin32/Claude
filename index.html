@@ -70,8 +70,8 @@
      ============================================================ -->
 <section class="hero">
   <div class="hero-main">
-    <!-- 右側に事務所の写真。文字は白いカードの上に置くので、
-         写真を暗く覆う必要がない -->
+    <!-- 事務所の写真を全面に敷き、文字は左に直接置く。
+         枠で囲わない代わりに、左からのグラデーションで読みやすさを確保する -->
     <div class="hero-photo" aria-hidden="true">
       <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/14f78b34-fd39-43d9-a203-7d082901fbe6_compressed_unnamed.webp"
            alt="" width="1400" height="1050" loading="eager" fetchpriority="high">
@@ -101,25 +101,7 @@
             <span class="btn-main">LINEで書類の写真を送る</span>
             <span class="btn-sub">無料・24時間受付／弁護士本人が確認します</span>
           </a>
-          <p class="hero-cta-alt">
-            土日祝も原則24時間以内に返信／オンラインで全国対応<br>
-            LINEをお使いでない方は
-            <a href="#contact-alt">お問い合わせフォーム・お電話</a>
-            からもご相談いただけます。
-          </p>
         </div>
-      </div>
-
-      <div class="hero-figure">
-
-        <figure class="hero-lawyer">
-          <img class="hero-avatar" src="assets/img/lawyer.jpg" alt="加藤信弁護士" width="480" height="480" loading="eager">
-          <figcaption>
-            <span class="hl-role">担当</span>
-            <span class="hl-name">加藤 信<small>弁護士</small></span>
-            <span class="hl-bar">愛知県弁護士会所属</span>
-          </figcaption>
-        </figure>
       </div>
     </div>
   </div>
@@ -186,6 +168,10 @@
 
     <div class="ally" data-reveal>
       <div class="ally-inner">
+        <!-- 誰が言っているのかを見せる。宣言は、顔が見えるほど強くなる -->
+        <figure class="ally-lawyer">
+          <img src="assets/img/lawyer.jpg" alt="加藤信弁護士" width="480" height="480" loading="lazy">
+        </figure>
         <p class="ally-lead">
           トレントの仕組みをよく知らないまま使ってしまった——<br>
           そういう方から、私たちは数多くのご相談をお受けしています。<br>
@@ -194,6 +180,11 @@
         <p class="ally-punch">
           <span>ひとりで抱え込まず、</span><span>頼ってしまってください。</span><br>
           <span>ご相談いただいたその時から、</span><span>私たちは<em>あなたの味方</em>です。</span>
+        </p>
+        <p class="ally-sign">
+          <span class="as-role">担当弁護士</span>
+          <span class="as-name">加藤 信<small>弁護士</small></span>
+          <span class="as-affil">愛知県弁護士会所属</span>
         </p>
       </div>
     </div>
@@ -491,7 +482,6 @@
           <p class="fo-price">着手金 33万円（税込）＋ 成功報酬</p>
           <p class="fo-desc">
             裁判を起こされた場合に、訴訟手続きの全面対応・裁判所への出廷代理・和解交渉までを行うプランです。
-            標準対応プランからの継続の場合、追加着手金は11万円（税込）となります。
             成功報酬は減額できた金額の20%です。
           </p>
         </div>
@@ -646,11 +636,6 @@
       <div class="lawyer-photo">
         <!-- 画像差し替え: 弁護士本人の写真 -->
         <img src="assets/img/lawyer.jpg" alt="加藤信弁護士" width="400" height="500" loading="lazy">
-        <figure class="lw-books">
-          <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/4f962a88-d256-42d7-b3ee-90d5966c07e5_compressed_unnamed.webp"
-               alt="事務所に常備している判例解説" width="800" height="600" loading="lazy">
-          <figcaption>判例解説・実務書を常備しています</figcaption>
-        </figure>
       </div>
       <div class="lawyer-body">
         <p class="lawyer-name">加藤 信 <span>弁護士</span></p>
@@ -779,17 +764,14 @@
       <li>
         <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/ef3d94dd-d58b-473b-9ea1-1a38af26fedc_compressed_unnamed.webp"
              alt="事務所のエントランス" width="800" height="600" loading="lazy">
-        <span>エントランス</span>
+        <span class="ac-ph-name">エントランス</span>
+        <span class="ac-ph-desc">お客様にリラックスしていただけるよう、緑を飾っています。</span>
       </li>
       <li>
         <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/85130a63-0212-4db3-b56d-f633b5fe57d7_compressed_unnamed.webp"
              alt="ご相談いただく相談室" width="800" height="600" loading="lazy">
-        <span>相談室</span>
-      </li>
-      <li>
-        <img src="https://storage.helloreaddy.io/project_files/71ae5a85-f6ac-4a23-b875-ca9280ff49b3/14f78b34-fd39-43d9-a203-7d082901fbe6_compressed_unnamed.webp"
-             alt="事務所の看板" width="800" height="600" loading="lazy">
-        <span>受付</span>
+        <span class="ac-ph-name">相談室</span>
+        <span class="ac-ph-desc">秘密保護に配慮した会議室をご用意しています。最大8名まで参加いただけます。</span>
       </li>
     </ul>
   </div>
