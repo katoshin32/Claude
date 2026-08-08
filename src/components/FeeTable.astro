@@ -1,0 +1,110 @@
+---
+/**
+ * 料金表。fees.yaml のカテゴリを1つ受け取って描画する。
+ *
+ * ページ側に金額を書かないための唯一の出口。
+ * 料金を表示したい場所には必ずこのコンポーネントを置く。
+ */
+import { formatCharge, type FeeCategory } from '../lib/fees';
+
+interface Props {
+  category: FeeCategory;
+}
+
+const { category } = Astro.props;
+
+// そのカテゴリで実際に使われている列だけを出す。
+// （顧問料しかないカテゴリに空の「着手金」列を出さないため）
+const columns = (
+  [
+    ['consultation', '相談料'],
+    ['retainer', '着手金'],
+    ['successFee', '報酬金'],
+    ['handlingFee', '手数料'],
+    ['monthly', '月額'],
+    ['perDiem', '日当'],
+  ] as const
+).filter(([key]) => category.items.some((item) => item[key] !== undefined));
+---
+
+<section class="fee-category" aria-labelledby={`fee-${category.id}`}>
+  <h3 id={`fee-${category.id}`}>{category.name}</h3>
+  {category.description && <p class="fee-category__lead">{category.description}</p>}
+
+  <div class="fee-table__scroll">
+    <table class="fee-table">
+      <thead>
+        <tr>
+          <th scope="col">項目</th>
+          {columns.map(([, label]) => <th scope="col">{label}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          category.items.map((item) => (
+            <tr>
+              <th scope="row">
+                {item.name}
+                {item.notes.length > 0 && (
+                  <ul class="fee-table__notes">
+                    {item.notes.map((note) => (
+                      <li>{note}</li>
+                    ))}
+                  </ul>
+                )}
+              </th>
+              {columns.map(([key]) => (
+                <td>{formatCharge(item[key])}</td>
+              ))}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .fee-category {
+    margin-block: 2.5rem;
+  }
+  .fee-category__lead {
+    color: var(--color-muted);
+    margin-block: 0.5rem 1rem;
+  }
+  /* 横に広い表はページ全体ではなく表の中だけをスクロールさせる */
+  .fee-table__scroll {
+    overflow-x: auto;
+  }
+  .fee-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 32rem;
+  }
+  .fee-table th,
+  .fee-table td {
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.85rem 1rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .fee-table thead th {
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+    white-space: nowrap;
+  }
+  .fee-table tbody th {
+    font-weight: 600;
+  }
+  .fee-table td {
+    white-space: nowrap;
+  }
+  .fee-table__notes {
+    margin: 0.4rem 0 0;
+    padding-left: 1.1rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--color-muted);
+  }
+</style>

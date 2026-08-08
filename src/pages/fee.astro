@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeeTable from '../components/FeeTable.astro';
+import { fees } from '../lib/fees';
+---
+
+<BaseLayout
+  title="弁護士費用"
+  description="TODO: 現行 /fee ページのmeta descriptionを移植してください。"
+>
+  <h1>弁護士費用</h1>
+
+  <p>
+    当事務所の弁護士費用は以下のとおりです。
+    表示金額は{fees.taxDisplay === 'included' ? '消費税込み' : '消費税別'}です。
+  </p>
+
+  {fees.categories.map((category) => <FeeTable category={category} />)}
+
+  <h2>ご注意</h2>
+  <ul>
+    <li>実費（印紙代・郵券代・交通費等）は別途申し受けます。</li>
+    <li>事案の内容により金額が変動する場合があります。詳細はご相談時にご説明いたします。</li>
+  </ul>
+
+  <p><a href="/contact">費用に関するお問い合わせ</a></p>
+</BaseLayout>

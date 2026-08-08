@@ -1,0 +1,57 @@
+# ============================================================
+#  事務所基本情報（唯一の情報源 / single source of truth）
+# ============================================================
+#
+#  ★★★ 現在の値は仮です。実際の情報に差し替えてください ★★★
+#
+#  ヘッダー・フッター・お問い合わせページ・構造化データ（JSON-LD）・
+#  Googleビジネスプロフィール連携は、すべてここを参照します。
+#
+#  ローカルSEOでは、名称・住所・電話番号（いわゆる NAP）が
+#  サイト内およびGoogleビジネスプロフィールとで完全に一致していることが
+#  評価に影響します。1箇所で管理することで表記ゆれを防ぎます。
+
+name: 富田・島岡法律事務所
+nameEn: Tomida & Shimaoka Law Office
+url: https://tomida-shimaoka.com
+
+# 「東京都千代田区〇〇1-2-3 〇〇ビル4階」のように、
+# Googleビジネスプロフィールと一字一句同じ表記にすること。
+address:
+  postalCode: 'TODO'
+  region: 'TODO'      # 都道府県
+  locality: 'TODO'    # 市区町村
+  street: 'TODO'      # 番地・建物名
+
+tel: 'TODO'
+fax: ''
+email: 'TODO'
+
+# 所属弁護士会（YMYL領域のE-E-A-T上、明示が有効）
+barAssociation: 'TODO'
+
+businessHours:
+  weekdays: '平日 9:00〜18:00'
+  note: '土日祝日・時間外のご相談は事前予約制で対応いたします'
+
+# 所属弁護士。/about に一覧、将来的に個別プロフィールページを作る土台。
+lawyers:
+  - id: tomida
+    name: 'TODO'
+    nameKana: 'TODO'
+    title: 代表弁護士
+    registrationNumber: 'TODO'   # 弁護士登録番号
+    barAssociation: 'TODO'
+    admittedYear: null           # 登録年（西暦）
+    practiceAreas: []            # fees.yaml の categories.id を列挙
+    bio: 'TODO'
+
+  - id: shimaoka
+    name: 'TODO'
+    nameKana: 'TODO'
+    title: 弁護士
+    registrationNumber: 'TODO'
+    barAssociation: 'TODO'
+    admittedYear: null
+    practiceAreas: []
+    bio: 'TODO'

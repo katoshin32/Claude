@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { firm, addressLine } from '../lib/firm';
+---
+
+<BaseLayout
+  title="事務所紹介"
+  description="TODO: 現行 /about ページのmeta descriptionを移植してください。"
+>
+  <h1>事務所紹介</h1>
+
+  <p>TODO: 現行 /about ページの本文を移植してください。</p>
+
+  <h2>所属弁護士</h2>
+  {
+    firm.lawyers.map((lawyer) => (
+      <section>
+        <h3>
+          {lawyer.name}
+          {lawyer.nameKana && lawyer.nameKana !== 'TODO' && <span>（{lawyer.nameKana}）</span>}
+        </h3>
+        <p>{lawyer.title}</p>
+        {/* 登録番号・所属弁護士会の明示はYMYL領域の信頼性評価に効く */}
+        {lawyer.registrationNumber !== 'TODO' && <p>登録番号: {lawyer.registrationNumber}</p>}
+        {lawyer.barAssociation !== 'TODO' && <p>{lawyer.barAssociation}</p>}
+        {lawyer.bio !== 'TODO' && <p>{lawyer.bio}</p>}
+      </section>
+    ))
+  }
+
+  <h2>事務所概要</h2>
+  <dl>
+    <dt>名称</dt>
+    <dd>{firm.name}</dd>
+    {addressLine && (
+      <>
+        <dt>所在地</dt>
+        <dd>{addressLine}</dd>
+      </>
+    )}
+    {firm.tel !== 'TODO' && (
+      <>
+        <dt>電話番号</dt>
+        <dd>{firm.tel}</dd>
+      </>
+    )}
+    <dt>受付時間</dt>
+    <dd>{firm.businessHours.weekdays}</dd>
+  </dl>
+</BaseLayout>

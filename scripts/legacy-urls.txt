@@ -1,0 +1,23 @@
+# 現行サイト（STUDIO）のURL一覧。
+# 出典: https://tomida-shimaoka.com/sitemap-static.xml （2026-08-08 取得）
+#
+# このファイルが移行の「正解データ」になる。
+# scripts/check-urls.mjs がここと dist/ を突き合わせ、
+# 1本でも欠けていればビルドを異常終了させる。
+#
+# ★未反映★ /news 配下の記事とカテゴリのURLがまだ入っていない。
+# 以下2つのサイトマップの中身を取得して追記すること:
+#   https://tomida-shimaoka.com/sitemap-dynamic/sitemap-dynamic-news-s--c-slug.xml
+#   https://tomida-shimaoka.com/sitemap-dynamic/sitemap-dynamic-news-s-category-s--c-slug.xml
+
+https://tomida-shimaoka.com/
+https://tomida-shimaoka.com/FAQ
+https://tomida-shimaoka.com/service-1
+https://tomida-shimaoka.com/service
+https://tomida-shimaoka.com/fee
+https://tomida-shimaoka.com/about
+https://tomida-shimaoka.com/news
+https://tomida-shimaoka.com/contact
+https://tomida-shimaoka.com/thanks
+https://tomida-shimaoka.com/privacy_policy
+https://tomida-shimaoka.com/password

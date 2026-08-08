@@ -1,0 +1,104 @@
+# ============================================================
+#  弁護士費用マスタ（唯一の情報源 / single source of truth）
+# ============================================================
+#
+#  ★★★ 現在の値はすべて仮の数値（サンプル）です ★★★
+#  実際の料金表に差し替えるまで公開しないでください。
+#  差し替えるのはこのファイル1枚だけです。
+#
+#  ── このファイルの役割 ──
+#  サイト内で金額を表示している箇所（料金ページ、各分野ページ、
+#  FAQ、トップの抜粋など）は、すべてここを参照して描画されます。
+#  ページ側に金額をベタ書きしている箇所は存在しません。
+#  したがって「ページ間で金額が食い違う」ことが構造上起こりません。
+#
+#  ── 安全装置 ──
+#  ・存在しない id を参照するとビルドが失敗し、公開されません
+#  ・id が重複しているとビルドが失敗します
+#  ・税抜金額だけを持ち、税込は自動計算します（税表記のゆれが起きません）
+#  ・料率が 0〜1 の範囲外だとビルドが失敗します
+#
+#  ── 消費税 ──
+#  amount / rate はすべて【税抜】で記入してください。
+#  税込表示は taxRate から自動計算されます。税率改定時は
+#  taxRate の 1 行を直すだけで全ページに反映されます。
+
+taxRate: 0.10
+
+# 画面上でどちらを主に見せるか: included（税込を主）/ excluded（税抜を主）
+taxDisplay: included
+
+# ------------------------------------------------------------
+#  charge の書き方（5種類）
+# ------------------------------------------------------------
+#   { type: free }                             … 無料
+#   { type: fixed,  amount: 55000 }            … 定額（税抜）
+#   { type: percent, rate: 0.08, base: 経済的利益 }
+#                                              … 割合（税抜・rateは0〜1）
+#   { type: hourly, amount: 11000 }            … 時間制（税抜 / 1時間あたり）
+#   { type: tiered, base: 経済的利益, tiers: [...] }
+#                                              … 段階制（旧報酬規程型）
+#
+#   tiers の各段は upTo（この金額以下に適用 / 最終段は null＝上限なし）と
+#   rate または amount を持ちます。
+# ------------------------------------------------------------
+
+categories:
+  - id: general
+    name: 法律相談
+    items:
+      - id: shodan-ippan
+        name: 一般法律相談
+        consultation: { type: hourly, amount: 10000 }
+        notes:
+          - 初回30分は無料
+
+  - id: souzoku
+    name: 相続・遺言
+    items:
+      - id: isan-bunkatsu-kosho
+        name: 遺産分割（交渉）
+        retainer: { type: fixed, amount: 300000 }
+        successFee: { type: percent, rate: 0.10, base: 取得した経済的利益 }
+        notes:
+          - 調停に移行する場合は別途着手金が必要です
+
+      - id: isan-bunkatsu-chotei
+        name: 遺産分割（調停・審判）
+        retainer: { type: fixed, amount: 400000 }
+        successFee:
+          type: tiered
+          base: 取得した経済的利益
+          tiers:
+            - { upTo: 30000000, rate: 0.10 }
+            - { upTo: 300000000, rate: 0.06 }
+            - { upTo: null, rate: 0.04 }
+
+      - id: yuigon-sakusei
+        name: 遺言書作成
+        retainer: { type: fixed, amount: 150000 }
+        notes:
+          - 公正証書遺言の場合、公証人手数料が別途かかります
+
+  - id: rikon
+    name: 離婚・男女問題
+    items:
+      - id: rikon-kosho
+        name: 離婚交渉
+        retainer: { type: fixed, amount: 300000 }
+        successFee: { type: fixed, amount: 300000 }
+
+      - id: rikon-chotei
+        name: 離婚調停
+        retainer: { type: fixed, amount: 400000 }
+        successFee: { type: fixed, amount: 400000 }
+
+  - id: komon
+    name: 顧問
+    items:
+      - id: komon-standard
+        name: 顧問契約（スタンダード）
+        monthly: { type: fixed, amount: 50000 }
+        notes:
+          - 月3時間までの相談を含みます
+          - 個別案件をご依頼の場合、着手金を10%減額します

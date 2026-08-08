@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { firm, addressLine } from '../lib/firm';
+---
+
+<BaseLayout
+  title="お問い合わせ"
+  description="TODO: 現行 /contact ページのmeta descriptionを移植してください。"
+>
+  <h1>お問い合わせ</h1>
+
+  <p>TODO: 現行 /contact ページの案内文を移植してください。</p>
+
+  {firm.tel !== 'TODO' && <p>お電話: {firm.tel}（{firm.businessHours.weekdays}）</p>}
+  {addressLine && <p>{addressLine}</p>}
+
+  {/*
+    TODO: フォームの実装方法を決める。
+    静的サイトなのでフォーム送信には外部サービスが必要。候補:
+      - Cloudflare Pages Functions（同一ドメインで完結、追加費用なし）
+      - Formspree / Tally など外部フォームサービス
+    法律相談の入り口になるため、送信内容の秘匿性（TLS・保存先・
+    通知メールの経路）を確認したうえで選定すること。
+    送信後は /thanks へ遷移させる。
+  */}
+</BaseLayout>

@@ -1,0 +1,67 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { firm } from '../../lib/firm';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('news', ({ data }) => !data.draft);
+  // ファイル名（post.id）がそのままURLになる。
+  // 移行時は現行スラッグと必ず一致させること。
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+};
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const author = post.data.author
+  ? firm.lawyers.find((lawyer) => lawyer.id === post.data.author)
+  : undefined;
+
+// author を指定したのに firm.yaml に該当がなければビルドを止める。
+// 署名の切れたリンクが本番に出るのを防ぐ。
+if (post.data.author && !author) {
+  throw new Error(
+    `記事 "${post.id}" の author "${post.data.author}" が firm.yaml の lawyers に存在しません。`,
+  );
+}
+
+const dateFormat = new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishedAt.toISOString(),
+  ...(post.data.updatedAt && { dateModified: post.data.updatedAt.toISOString() }),
+  ...(author && { author: { '@type': 'Person', name: author.name, jobTitle: author.title } }),
+  publisher: { '@type': 'Organization', name: firm.name },
+};
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article>
+    <nav aria-label="パンくず">
+      <a href="/news">お知らせ</a> ›
+      <a href={`/news/category/${post.data.category}`}>{post.data.categoryName}</a>
+    </nav>
+
+    <h1>{post.data.title}</h1>
+
+    <p>
+      <time datetime={post.data.publishedAt.toISOString().slice(0, 10)}>
+        {dateFormat.format(post.data.publishedAt)}
+      </time>
+      {author && <span>／ {author.title} {author.name}</span>}
+    </p>
+
+    <Content />
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { firm } from '../lib/firm';
+import { fees } from '../lib/fees';
+---
+
+<BaseLayout
+  title={`${firm.name}`}
+  description="TODO: トップページのmeta description。現行サイトの文言を移植してください。"
+>
+  <h1>{firm.name}</h1>
+
+  <p>TODO: トップページ本文。現行サイトのテキストを移植してください。</p>
+
+  <h2>取扱分野</h2>
+  <ul>
+    {fees.categories.map((category) => <li>{category.name}</li>)}
+  </ul>
+
+  <p><a href="/fee">弁護士費用について</a></p>
+  <p><a href="/contact">ご相談のお問い合わせ</a></p>
+</BaseLayout>

@@ -1,0 +1,232 @@
+---
+/**
+ * 全ページ共通レイアウト。
+ *
+ * title / description を必須にしてあるので、
+ * 「SEO設定を入れ忘れたページ」が作れない。
+ */
+import { firm, addressLine } from '../lib/firm';
+
+interface Props {
+  title: string;
+  description: string;
+  /** 検索結果に出したくないページ（送信完了・パスワード保護など）で true */
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const pageTitle = Astro.url.pathname === '/' ? title : `${title} | ${firm.name}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  name: firm.name,
+  url: firm.url,
+  ...(addressLine && {
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'JP',
+      postalCode: firm.address.postalCode,
+      addressRegion: firm.address.region,
+      addressLocality: firm.address.locality,
+      streetAddress: firm.address.street,
+    },
+  }),
+  ...(firm.tel !== 'TODO' && { telephone: firm.tel }),
+  employee: firm.lawyers
+    .filter((lawyer) => lawyer.name !== 'TODO')
+    .map((lawyer) => ({
+      '@type': 'Attorney',
+      name: lawyer.name,
+      jobTitle: lawyer.title,
+      ...(lawyer.barAssociation && { memberOf: lawyer.barAssociation }),
+    })),
+};
+
+const nav = [
+  { href: '/about', label: '事務所紹介' },
+  { href: '/service', label: '取扱分野' },
+  { href: '/fee', label: '弁護士費用' },
+  { href: '/FAQ', label: 'よくあるご質問' },
+  { href: '/news', label: 'お知らせ' },
+  { href: '/contact', label: 'お問い合わせ' },
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={firm.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">本文へスキップ</a>
+
+    <header class="site-header">
+      <div class="shell">
+        <a class="site-header__brand" href="/">{firm.name}</a>
+        <nav aria-label="メインナビゲーション">
+          <ul>
+            {
+              nav.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={Astro.url.pathname === item.href ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="shell">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <p class="site-footer__name">{firm.name}</p>
+        {addressLine && <p>{addressLine}</p>}
+        {firm.tel !== 'TODO' && <p>TEL: {firm.tel}</p>}
+        <p>{firm.businessHours.weekdays}</p>
+        {firm.barAssociation !== 'TODO' && <p>{firm.barAssociation}</p>}
+        <ul class="site-footer__links">
+          <li><a href="/privacy_policy">プライバシーポリシー</a></li>
+          <li><a href="/contact">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <style is:global>
+      :root {
+        --color-bg: #ffffff;
+        --color-text: #1a1a1a;
+        --color-muted: #5f6368;
+        --color-border: #e2e4e8;
+        --color-accent: #1b3a63;
+        --shell: 68rem;
+        color-scheme: light;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--color-bg);
+        color: var(--color-text);
+        font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', system-ui, sans-serif;
+        line-height: 1.8;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      .shell {
+        width: min(100% - 2.5rem, var(--shell));
+        margin-inline: auto;
+      }
+
+      main.shell {
+        padding-block: 3rem 5rem;
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 4vw, 2.25rem);
+        line-height: 1.4;
+        letter-spacing: 0.01em;
+      }
+
+      a {
+        color: var(--color-accent);
+      }
+
+      .skip {
+        position: absolute;
+        left: -9999px;
+      }
+      .skip:focus {
+        left: 1rem;
+        top: 1rem;
+        z-index: 10;
+        background: #fff;
+        padding: 0.5rem 1rem;
+      }
+
+      .site-header {
+        border-bottom: 1px solid var(--color-border);
+      }
+      .site-header .shell {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem 1.5rem;
+        padding-block: 1rem;
+      }
+      .site-header__brand {
+        font-weight: 700;
+        font-size: 1.0625rem;
+        text-decoration: none;
+        color: var(--color-text);
+      }
+      .site-header nav ul,
+      .site-footer__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.25rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .site-header nav a {
+        font-size: 0.9375rem;
+        text-decoration: none;
+      }
+      .site-header nav a[aria-current='page'] {
+        text-decoration: underline;
+        text-underline-offset: 0.35em;
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--color-border);
+        padding-block: 2.5rem 3.5rem;
+        font-size: 0.875rem;
+        color: var(--color-muted);
+      }
+      .site-footer p {
+        margin: 0.2rem 0;
+      }
+      .site-footer__name {
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 0.5rem !important;
+      }
+      .site-footer__links {
+        margin-top: 1.25rem !important;
+      }
+    </style>
+  </body>
+</html>

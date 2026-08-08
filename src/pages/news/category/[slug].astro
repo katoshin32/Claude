@@ -1,0 +1,63 @@
+---
+/**
+ * カテゴリ別の記事一覧（現行の /news/category/:slug）。
+ *
+ * 見落とされやすいが、士業サイトではカテゴリページが
+ * 「分野名＋地域」系のクエリで流入を持っていることが多い。
+ * URLを維持し、記事への内部リンクを張る。
+ */
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('news', ({ data }) => !data.draft);
+
+  const grouped = new Map<string, { name: string; posts: typeof posts }>();
+  for (const post of posts) {
+    const entry = grouped.get(post.data.category);
+    if (entry) {
+      entry.posts.push(post);
+    } else {
+      grouped.set(post.data.category, { name: post.data.categoryName, posts: [post] });
+    }
+  }
+
+  return [...grouped.entries()].map(([slug, { name, posts: categoryPosts }]) => ({
+    params: { slug },
+    props: {
+      name,
+      posts: categoryPosts.sort(
+        (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+      ),
+    },
+  }));
+};
+
+const { name, posts } = Astro.props;
+
+const dateFormat = new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={name} description={`${name}に関する記事の一覧です。`}>
+  <nav aria-label="パンくず"><a href="/news">お知らせ</a> › {name}</nav>
+
+  <h1>{name}</h1>
+
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <time datetime={post.data.publishedAt.toISOString().slice(0, 10)}>
+            {dateFormat.format(post.data.publishedAt)}
+          </time>
+          <a href={`/news/${post.id}`}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

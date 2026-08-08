@@ -1,0 +1,30 @@
+---
+/**
+ * ⚠️ 要調査ページ ⚠️
+ *
+ * 現行サイトに /service と /service-1 の2つが存在する。
+ * 末尾の "-1" は STUDIO でページを複製したときの自動採番なので、
+ * /service の重複（作りかけの残骸）である可能性が高い。
+ *
+ * 公開前に必ず判断すること:
+ *
+ *  A) Search Console で /service-1 に検索流入がない、かつ内容が
+ *     /service と重複している場合
+ *     → このファイルを削除し、/service-1 → /service の301リダイレクトを
+ *        public/_redirects に追加する（重複コンテンツの解消になる）
+ *
+ *  B) /service-1 に独自の内容があり、検索流入もある場合
+ *     → このページとして残し、内容を移植する
+ *
+ * 判断がつくまでは、現行URLを壊さないためこのファイルを残しておく。
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="取扱分野"
+  description="TODO: 現行 /service-1 ページのmeta descriptionを移植してください。"
+>
+  <h1>取扱分野</h1>
+  <p>TODO: 現行 /service-1 ページの内容を確認のうえ、移植または統合してください。</p>
+</BaseLayout>

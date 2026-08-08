@@ -1,0 +1,54 @@
+---
+/**
+ * ⚠️ URLの大文字を変更しないこと ⚠️
+ *
+ * 現行サイトのURLは /FAQ（大文字）。URLは大文字小文字を区別するため、
+ * ファイル名を faq.astro にすると /FAQ が404になり、
+ * このページが積み上げた検索評価を失う。
+ *
+ * public/_redirects で /faq → /FAQ のリダイレクトを設定済み
+ * （小文字でアクセスされた場合の取りこぼし防止）。
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// FAQPage構造化データを出すため、質問と回答をデータとして持つ。
+// 検索結果にQ&Aが直接表示される可能性がある。
+const faqs = [
+  {
+    question: 'TODO: 現行 /FAQ ページの質問1を移植してください。',
+    answer: 'TODO: 回答1',
+  },
+  {
+    question: 'TODO: 質問2',
+    answer: 'TODO: 回答2',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="よくあるご質問"
+  description="TODO: 現行 /FAQ ページのmeta descriptionを移植してください。"
+>
+  <h1>よくあるご質問</h1>
+
+  {
+    faqs.map((faq) => (
+      <section>
+        <h2>{faq.question}</h2>
+        <p>{faq.answer}</p>
+      </section>
+    ))
+  }
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</BaseLayout>
